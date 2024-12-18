@@ -16,7 +16,7 @@ public class TopStoriesFlow extends AppiumHelpers {
   }
 
   public void selectStories(String storiesName) throws Exception {
-    swipeToUpFindWebElementXpath(elementTextXpathString(storiesName), 8, 15).click();
+    swipeToUpFindFinancialTimesWebElementXpath(storiesName, 8, 15).click();
   }
 
   public void clickMenuNavigationButton() {

@@ -1,8 +1,8 @@
 package gt.org.Steps;
 
-import cucumber.api.java.en.When;
 import gt.org.utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.java.en.When;
 
 public class BaseSteps {
 
@@ -14,14 +14,14 @@ public class BaseSteps {
     driver = driverManager.getDriver();
   }
 
-  @When("^the user (reset|restart) the APP$")
+  @When("^the user (restart|quit) the APP$")
   public void driverAction(String item) {
     switch (item) {
-      case "reset":
-        driver.resetApp();
-        break;
       case "restart":
         driverManager.restartApp();
+        break;
+      case "quit":
+        driverManager.quitApp();
         break;
       default:
         throw new IllegalArgumentException("Illegal Argument : " + item);

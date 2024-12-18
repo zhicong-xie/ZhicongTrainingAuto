@@ -1,9 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.NotificationsFlow;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class NotificationsSteps {
 
@@ -18,7 +18,7 @@ public class NotificationsSteps {
     boolean expected = true;
     boolean actual = notificationsFlow.isNotificationsScreenTitleDisplayed();
     String reason = "the Notifications screen is not displayed";
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user turn on switch button in the Notifications screen if is off state$")
@@ -44,7 +44,7 @@ public class NotificationsSteps {
       default:
         throw new IllegalArgumentException("Illegal Argument : " + item);
     }
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user click (.*) check box in the Notifications screen$")

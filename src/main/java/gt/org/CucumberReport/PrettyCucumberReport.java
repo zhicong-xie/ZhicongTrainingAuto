@@ -20,8 +20,6 @@ public class PrettyCucumberReport {
         String projectName = "Zhicong cucumber Report";
         Configuration configuration = new Configuration(reportOutputDirectory, projectName);
         configuration.setBuildNumber(buildNumber);
-        configuration.addClassifications("Browser", "Firefox");
-        configuration.addClassifications("Branch", "release/1.0");
         configuration.setSortingMethod(SortingMethod.NATURAL);
         configuration.addPresentationModes(PresentationMode.EXPAND_ALL_STEPS);
         ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);

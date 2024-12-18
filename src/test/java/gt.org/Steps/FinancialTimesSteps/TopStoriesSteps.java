@@ -1,9 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.TopStoriesFlow;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class TopStoriesSteps {
 
@@ -18,7 +18,7 @@ public class TopStoriesSteps {
     boolean expected = true;
     boolean actual = topStoriesFlow.isTopStoriesScreenDisplayed();
     String reason = "the FT Top Stories screen is not displayed";
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user select (.*) stories in the FT Top Stories screen$")

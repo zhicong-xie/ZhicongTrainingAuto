@@ -18,32 +18,32 @@ public class NotificationsFlow extends AppiumHelpers {
   public String getCheckBoxStatus(String optionName) {
     switch (optionName.toLowerCase()) {
       case "breaking news":
-        return waitForElement(notificationsPage.breakingNewsCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.breakingNewsCheckBox).getDomAttribute("checked");
 
       case "highlights":
-        return waitForElement(notificationsPage.highlightsCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.highlightsCheckBox).getDomAttribute("checked");
 
       case "recommended for you":
-        return waitForElement(notificationsPage.recommendedForYouCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.recommendedForYouCheckBox).getDomAttribute("checked");
 
       case "morning briefing":
-        return waitForElement(notificationsPage.morningBriefingCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.morningBriefingCheckBox).getDomAttribute("checked");
 
       case "myft instant alerts":
-        return waitForElement(notificationsPage.myFtInstantAlertsCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.myFtInstantAlertsCheckBox).getDomAttribute("checked");
       case "ft news briefing podcast":
         return waitForElement(notificationsPage.fTNewsBriefingPodcastCheckBox)
-            .getAttribute("checked");
+            .getDomAttribute("checked");
 
       case "ft weekend podcast":
-        return waitForElement(notificationsPage.fTWeekendPodcastCheckBox).getAttribute("checked");
+        return waitForElement(notificationsPage.fTWeekendPodcastCheckBox).getDomAttribute("checked");
       default:
         throw new IllegalArgumentException("Illegal Argument : " + optionName);
     }
   }
 
   public void turnOnSwitchButton() {
-    if (waitForElement(notificationsPage.switchButton).getAttribute("checked").equals("false")) {
+    if (waitForElement(notificationsPage.switchButton).getDomAttribute("checked").equals("false")) {
       waitForElement(notificationsPage.switchButton).click();
     }
   }

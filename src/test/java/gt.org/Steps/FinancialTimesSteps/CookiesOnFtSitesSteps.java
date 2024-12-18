@@ -1,9 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.CookiesOnFtSitesFlow;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class CookiesOnFtSitesSteps {
 
@@ -18,7 +18,7 @@ public class CookiesOnFtSitesSteps {
     boolean expected = true;
     boolean actual = cookiesOnFtSitesFlow.isCookiesOnFtSitesTitleDisplayed();
     String reason = "the Cookies on FT sites screen is not displayed";
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user click (Manage Cookies|Accept Cookies) button in the Cookies on FT sites screen$")

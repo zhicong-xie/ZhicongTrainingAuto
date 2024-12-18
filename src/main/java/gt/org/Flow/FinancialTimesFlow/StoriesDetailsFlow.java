@@ -28,6 +28,6 @@ public class StoriesDetailsFlow extends AppiumHelpers {
   }
 
   public boolean checkTextContent(String textContent) {
-    return checkElementByXpath(elementTextXpathString(textContent), 2);
+    return checkElementByXpath(textContent, 2);
   }
 }

@@ -1,10 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import gt.org.Flow.FinancialTimesFlow.LoginOptionFlow;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.MenuNavigationViewFlow;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class MenuNavigationViewSteps {
 
@@ -19,7 +18,7 @@ public class MenuNavigationViewSteps {
     boolean expected = true;
     boolean actual = menuNavigationViewFlow.isSearchButtonDisplayed();
     String reason = "the Menu navigation view is not displayed";
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When(

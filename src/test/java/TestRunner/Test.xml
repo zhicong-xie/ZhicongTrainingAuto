@@ -3,7 +3,7 @@
 <suite name="TestNg" parallel="tests" thread-count="2">
     <test name="testng">
         <classes>
-            <class name="gt.org.TestRunner.TestRunner"/>
+            <class name="TestRunner.TestRunner"/>
         </classes>
     </test>
 </suite>

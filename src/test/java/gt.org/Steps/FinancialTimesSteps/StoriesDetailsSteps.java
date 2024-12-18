@@ -1,9 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.StoriesDetailsFlow;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class StoriesDetailsSteps {
 
@@ -18,7 +18,7 @@ public class StoriesDetailsSteps {
     boolean expected = true;
     boolean actual = storiesDetailsFlow.isStoriesDetailsScreenDisplayed();
     String reason = "the FT Stories details screen is not displayed";
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @Then("^the user able to (.*) text content in the FT Stories details screen$")
@@ -26,7 +26,7 @@ public class StoriesDetailsSteps {
     boolean expected = true;
     boolean actual = storiesDetailsFlow.checkTextContent(textContent);
     String reason = String.format("the %s text content is not displayed", textContent);
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user click (Back|Share|Collection) in the FT Stories details screen$")

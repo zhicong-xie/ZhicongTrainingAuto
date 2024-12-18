@@ -1,8 +1,8 @@
-Feature: Zhicong AT Training Practice assignment
+Feature: Zhicong Week 2 Practice assignment
 
   @AC1
   Scenario: the user opens the TF APP for the first time, Verify skipping login
-    Given the user reset the APP
+    Given the user reset and launch the APP
     Then the user in the Cookies on FT sites screen
     When the user click Accept Cookies button in the Cookies on FT sites screen
     Then the user in the FT login option screen
@@ -74,4 +74,4 @@ Feature: Zhicong AT Training Practice assignment
     Then the user able to see FT Weekend podcast check box status is not checked in the Notifications screen
     When the user click FT Weekend podcast check box in the Notifications screen
     Then the user able to see FT Weekend podcast check box status is checked in the Notifications screen
-    When the user restart the APP
+    When the user quit the APP

@@ -1,10 +1,9 @@
 package gt.org.Steps.FinancialTimesSteps;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import gt.org.Flow.FinancialTimesFlow.SearchResultFlow;
-import gt.org.Flow.FinancialTimesFlow.StoriesDetailsFlow;
-import org.junit.Assert;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 import java.util.LinkedHashMap;
 
@@ -31,7 +30,7 @@ public class SearchResultSteps {
       default:
         throw new IllegalArgumentException("Illegal Argument : " + item);
     }
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @Then("^the user able to (see|not see) search history in the Search result screen$")
@@ -51,7 +50,7 @@ public class SearchResultSteps {
       default:
         throw new IllegalArgumentException("Illegal Argument : " + item);
     }
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @Then("^the user able to (see|not see) search result in the Search result screen$")
@@ -71,7 +70,7 @@ public class SearchResultSteps {
       default:
         throw new IllegalArgumentException("Illegal Argument : " + item);
     }
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 
   @When("^the user click (Back|Voice input|Clear input box) in the Search result screen$")
@@ -130,6 +129,6 @@ public class SearchResultSteps {
         break;
       }
     }
-    Assert.assertEquals(reason, expected, actual);
+    Assert.assertEquals(actual,expected,reason);
   }
 }
