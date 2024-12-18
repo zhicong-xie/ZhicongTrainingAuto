@@ -1,4 +1,4 @@
-Feature: Storellet APP Login function
+Feature: Verify Storellet APP Login function
 
   Scenario: the user first open Storellet APP and go to Login page
     Given the user click Close button in the Update notification partial modal screen if exist
@@ -33,6 +33,7 @@ Feature: Storellet APP Login function
       | 86       | 18318414197 | Abc123       |
       | 852      | 99998031    | Testing!234  |
       | 852      | 99998039    | Testing!2345 |
+      | 853      | 99998039    | Testing!234  |
 
   Scenario Outline: Login successfully with correct data
     Given the user in the Storellet login screen
@@ -46,13 +47,7 @@ Feature: Storellet APP Login function
     Then the user in the Storellet wallet screen
     When the user click Home button in the Storellet bottom navigation bar
     Then the user in the Storellet main screen
-    When the user quit the APP
+    When the user restart the APP
     Examples:
-      | AreaCode | PhoneNumber | Password     |
+      | AreaCode | PhoneNumber | Password    |
       | 852      | 99998039    | Testing!234 |
-
-#  Scenario: Check Home page first big promotion image is not null and save to local folder
-#    Given the user in the Storellet main screen
-#    Then the first big promotion image is not null in the Storellet main screen
-#    When the user save the Storellet main screen first big promotion image to local folder
-#    When the user restart the APP
