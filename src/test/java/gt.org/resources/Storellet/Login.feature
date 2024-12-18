@@ -1,4 +1,4 @@
-Feature: Zhicong Week 3 – 4 Automated Testing Assignment for Mobile App
+Feature: Storellet APP Login function
 
   Scenario: the user first open Storellet APP and go to Login page
     Given the user click Close button in the Update notification partial modal screen if exist

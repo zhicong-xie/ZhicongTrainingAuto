@@ -68,16 +68,4 @@ public class DriverManager {
   public AndroidDriver getDriver() {
     return driver;
   }
-
-  //    @After
-  //    public void afterScenario(Scenario scenario) {
-  //        if (scenario.isFailed()) {
-  //            // Take a screenshot...
-  //            final byte[] screenshot = ((TakesScreenshot)
-  // driver).getScreenshotAs(OutputType.BYTES);
-  //            // ... and embed it in the report.
-  //            scenario.embed(screenshot, "image/png");
-  //        }
-  //    }
-
 }
