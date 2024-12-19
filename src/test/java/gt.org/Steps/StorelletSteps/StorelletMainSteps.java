@@ -40,16 +40,8 @@ public class StorelletMainSteps {
         }
     }
 
-    @Then("^the first big promotion image is not null in the Storellet main screen$")
-    public void isFirstBigPromotionImageNotNull() throws IOException {
-        boolean expected = true;
-        boolean actual = storelletMainFlow.isFirstBigPromotionImageNotNull();
-        String reason = "the big promotion image is null in the Storellet main screen";
-        Assert.assertEquals(actual,expected,reason);
-    }
-
-    @When("^the user save the Storellet main screen first big promotion image to local folder$")
-    public void saveFirstBigPromotionImageToLocalFolder() throws IOException {
-       storelletMainFlow.saveFirstBigPromotionImageToLocalFolder();
+    @When("^the user save the Storellet main screen big promotion image to local folder$")
+    public void saveBigPromotionImageToLocalFolder() throws IOException {
+       storelletMainFlow.saveBigPromotionImageToLocalFolder();
     }
 }

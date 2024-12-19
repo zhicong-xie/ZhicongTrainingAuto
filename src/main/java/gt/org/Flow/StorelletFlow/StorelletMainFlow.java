@@ -7,6 +7,7 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +36,32 @@ public class StorelletMainFlow extends AppiumHelpers {
         waitForElementToClickable(storelletMainPage.noticeIcon).click();
     }
 
-    public boolean isFirstBigPromotionImageNotNull() throws IOException {
-        return isImageViewNotNull(waitForElements(storelletMainPage.bigPromotionImageXpathString).get(0));
-    }
-
-    public void saveFirstBigPromotionImageToLocalFolder() throws IOException {
-        List<WebElement> images = waitForElements(storelletMainPage.bigPromotionImageXpathString);
-        saveElementScreenshot(images.get(0),"FirstBigPromotionImage");
+    public void saveBigPromotionImageToLocalFolder() throws IOException {
+        List<WebElement> imageViewElements = waitForElements(storelletMainPage.bigPromotionImageXpathString);
+        int firstImageWidth = imageViewElements.get(0).getRect().getWidth();
+        List<BufferedImage> screenshotBufferedImage = new ArrayList<>();
+        Rectangle rect = waitForElement(storelletMainPage.bigPromotionView).getRect();
+        int swipePixel = 100;
+        while (true) {
+            int elementNum = 0;
+            for (int i = 0; i < imageViewElements.size(); i++) {
+                BufferedImage bufferedImage = getElementScreenshot(imageViewElements.get(i));
+                if (imageViewElements.get(i).getRect().getWidth() == firstImageWidth && isImageViewNotNull(bufferedImage) && !compareImages(bufferedImage, screenshotBufferedImage)) {
+                    screenshotBufferedImage.add(bufferedImage);
+                    saveElementScreenshot(bufferedImage, "Big Promotion Image");
+                    swipePixel = imageViewElements.get(i).getRect().getX() + imageViewElements.get(i).getRect().getWidth();
+                } else {
+                    elementNum++;
+                }
+            }
+            if (elementNum == imageViewElements.size()) {
+                break;
+            } else {
+                int y = rect.getY();
+                int height = rect.getHeight();
+                swipeCoordinateFunction(swipePixel - 10, (y + height) / 2, 5, (y + height) / 2);
+                imageViewElements = waitForElements(storelletMainPage.bigPromotionImageXpathString);
+            }
+        }
     }
 }

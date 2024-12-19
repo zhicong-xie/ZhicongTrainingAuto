@@ -24,7 +24,7 @@ public class DriverManager {
 
   private DriverManager() {
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    desiredCapabilities.setCapability("appium:noReset", false);
+    desiredCapabilities.setCapability("appium:noReset", true);
     desiredCapabilities.setCapability("appium:fullReset", false);
     desiredCapabilities.setCapability("appium:platformName", "Android");
 

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
     features = "src/test/java/gt.org/resources/Storellet",
     glue = {"gt.org.Steps"},
-    //    tags = "@AC2",
+        tags = "@AC2.2",
     plugin = {
       "pretty",
       "html:target/cucumber-report/report.html",

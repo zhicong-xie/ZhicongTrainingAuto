@@ -15,6 +15,7 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -165,7 +166,7 @@ public class AppiumHelpers {
         TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
         touchAction
                 .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
                 .moveTo(PointOption.point(endX, endY))
                 .release()
                 .perform();
@@ -227,10 +228,11 @@ public class AppiumHelpers {
         return webElement;
     }
 
-    protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException {
+    protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException{
+        BufferedImage bufferedImage;
         try {
             File elementScreenshot = webElement.getScreenshotAs(OutputType.FILE);
-            BufferedImage bufferedImage = ImageIO.read(elementScreenshot);
+            bufferedImage = ImageIO.read(elementScreenshot);
             return bufferedImage;
         } catch (IllegalArgumentException e) {
             File fullScreenshot = ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.FILE);
@@ -239,15 +241,14 @@ public class AppiumHelpers {
             Point point = webElement.getLocation();
             Dimension size = webElement.getSize();
 
-            BufferedImage elementImage = fullImage.getSubimage(
+            bufferedImage = fullImage.getSubimage(
                     point.getX(), point.getY(),
                     size.getWidth(), size.getHeight());
-            return elementImage;
+            return bufferedImage;
         }
     }
 
-    protected boolean isImageViewNotNull(WebElement webElement) throws IOException {
-        BufferedImage bufferedImage = getElementScreenshot(webElement);
+    protected boolean isImageViewNotNull(BufferedImage bufferedImage) throws IOException {
         for (int x = 0; x < bufferedImage.getWidth(); x++) {
             for (int y = 0; y < bufferedImage.getHeight(); y++) {
                 int rgb = bufferedImage.getRGB(x, y);
@@ -260,8 +261,7 @@ public class AppiumHelpers {
         return false;
     }
 
-    protected void saveElementScreenshot(WebElement webElement,String imageName) throws IOException {
-        BufferedImage bufferedImage = getElementScreenshot(webElement);
+    protected void saveElementScreenshot(BufferedImage bufferedImage,String imageName) throws IOException {
         File parentDir = new File("target");
         File screenshotDir = new File(parentDir, "screenshot");
         if (!screenshotDir.exists()) {
@@ -271,10 +271,7 @@ public class AppiumHelpers {
         ImageIO.write(bufferedImage, "png", outputFile);
     }
 
-    protected boolean compareImages(File imgFile1, File imgFile2) throws IOException {
-        BufferedImage img1 = ImageIO.read(imgFile1);
-        BufferedImage img2 = ImageIO.read(imgFile2);
-
+    protected boolean compareImage(BufferedImage img1, BufferedImage img2){
         if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
             return false;
         }
@@ -284,6 +281,24 @@ public class AppiumHelpers {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    protected boolean compareImages(BufferedImage img1, List<BufferedImage>bufferedImageList){
+        int size = bufferedImageList.size();
+        int num = 0;
+        if (size==0) {
+            return false;
+        }else {
+            for (BufferedImage bufferedImage : bufferedImageList){
+                if (!compareImage(img1,bufferedImage)){
+                    num++;
+                }
+            }
+        }
+        if (num == size){
+            return false;
         }
         return true;
     }
@@ -314,9 +329,9 @@ public class AppiumHelpers {
                 endY = (y + height) * 4 / 5;
                 break;
             case "left":
-                startX = (x + width) * 5 / 6;
+                startX = (x + width) * 6 / 7;
                 startY = (y + height) / 2;
-                endX = (x + width) / 6;
+                endX = (x + width) / 7;
                 endY = (y + height) / 2;
                 break;
             case "right":
@@ -332,23 +347,23 @@ public class AppiumHelpers {
         TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
         touchAction
                 .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
                 .moveTo(PointOption.point(endX, endY))
                 .release()
                 .perform();
     }
 
-    protected boolean isElementDisplayCompletely(WebElement webElement){
-        Rectangle rect = webElement.getRect();
-        Dimension size = androidDriver.manage().window().getSize();
-        int width = size.width;
-        if ((rect.getX()+rect.getWidth()<= width) && rect.getX()>=0){
-            return true;
-        }
-        return false;
-    }
-
     protected byte[] takeFailScreenshot() {
         return  ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    protected void swipeCoordinateFunction(Integer startX,Integer startY,Integer endX,Integer endY){
+        TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
+        touchAction
+                .press(PointOption.point(startX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(endX, endY))
+                .release()
+                .perform();
     }
 }

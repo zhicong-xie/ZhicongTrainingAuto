@@ -36,7 +36,7 @@ public class StorelletMainPage {
     @FindBy(id = "fragment_child_discover_feature_toolbar_notice_iv")
     public WebElement noticeIcon;
 
-    @AndroidBy(xpath = "(//androidx.recyclerview.widget.RecyclerView[@resource-id = 'com.storellet:id/item_discover_horizon_image_rv'])[1]")
+    @FindBy(xpath = "(//androidx.recyclerview.widget.RecyclerView[@resource-id = 'com.storellet:id/item_discover_horizon_image_rv'])[1]")
     public WebElement bigPromotionView;
 
     public String bigPromotionImageXpathString = "(//androidx.recyclerview.widget.RecyclerView[@resource-id = 'com.storellet:id/item_discover_horizon_image_rv'])[1]//android.widget.ImageView[@resource-id ='com.storellet:id/item_discover_image_card_iv']";
