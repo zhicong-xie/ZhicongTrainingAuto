@@ -18,8 +18,8 @@ public class Hooks extends AppiumHelpers {
 
     @AfterStep
     public void afterStep(Scenario scenario) {
-        currentStepName = scenario.getName();
         if (scenario.isFailed()) {
+            currentStepName = scenario.getName();
             byte[] screenshot = takeFailScreenshot();
             scenario.attach(screenshot, "image/png", currentStepName + "_" + System.currentTimeMillis());
         }

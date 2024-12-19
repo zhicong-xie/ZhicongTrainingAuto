@@ -37,7 +37,7 @@ public class StorelletMainFlow extends AppiumHelpers {
     }
 
     public void saveBigPromotionImageToLocalFolder() throws IOException {
-        List<WebElement> imageViewElements = waitForElements(storelletMainPage.bigPromotionImageXpathString);
+        List<WebElement> imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
         int firstImageWidth = imageViewElements.get(0).getRect().getWidth();
         List<BufferedImage> screenshotBufferedImage = new ArrayList<>();
         Rectangle rect = waitForElement(storelletMainPage.bigPromotionView).getRect();
@@ -60,7 +60,7 @@ public class StorelletMainFlow extends AppiumHelpers {
                 int y = rect.getY();
                 int height = rect.getHeight();
                 swipeCoordinateFunction(swipePixel - 10, (y + height) / 2, 5, (y + height) / 2);
-                imageViewElements = waitForElements(storelletMainPage.bigPromotionImageXpathString);
+                imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
             }
         }
     }

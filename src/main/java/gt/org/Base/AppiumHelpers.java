@@ -91,12 +91,21 @@ public class AppiumHelpers {
         return w.until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    protected List<WebElement> waitForElements(String locator) {
+    protected List<WebElement> waitForElementsByXpath(String locator) {
         try {
             WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
         } catch (TimeoutException e) {
-            return Collections.emptyList(); // 返回空列表
+            return Collections.emptyList();
+        }
+    }
+
+    protected List<WebElement> waitForElementsById(String locator) {
+        try {
+            WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+            return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id(locator)));
+        } catch (TimeoutException e) {
+            return Collections.emptyList();
         }
     }
 
@@ -193,9 +202,10 @@ public class AppiumHelpers {
     }
 
     protected void dismissKeyboard() {
-        KeyEvent key = new KeyEvent();
-        key.withKey(AndroidKey.SEARCH);
-        androidDriver.pressKey(key);
+//        KeyEvent key = new KeyEvent();
+//        key.withKey(AndroidKey.SEARCH);
+//        androidDriver.pressKey(key);
+        androidDriver.hideKeyboard();
     }
 
     protected void coordinateClick(Integer x, Integer y) {
