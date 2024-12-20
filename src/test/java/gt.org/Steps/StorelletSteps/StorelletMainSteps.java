@@ -44,4 +44,9 @@ public class StorelletMainSteps {
     public void saveBigPromotionImageToLocalFolder() throws IOException {
        storelletMainFlow.saveBigPromotionImageToLocalFolder();
     }
+
+    @When("^the user select (.*) shops in the Storellet main screen$")
+    public void selectShops(String info) {
+        storelletMainFlow.selectShops(info);
+    }
 }

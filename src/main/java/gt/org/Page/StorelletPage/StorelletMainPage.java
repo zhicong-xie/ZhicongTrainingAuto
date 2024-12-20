@@ -18,7 +18,7 @@ public class StorelletMainPage {
     private DriverManager driverManager;
     private AndroidDriver driver;
 
-    public StorelletMainPage(){
+    public StorelletMainPage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);
@@ -40,4 +40,7 @@ public class StorelletMainPage {
     public WebElement bigPromotionView;
 
     public String bigPromotionImageXpathString = "(//androidx.recyclerview.widget.RecyclerView[@resource-id = 'com.storellet:id/item_discover_horizon_image_rv'])[1]//android.widget.ImageView[@resource-id ='com.storellet:id/item_discover_image_card_iv']";
+
+    @FindBy(id = "view_main_navibar_v4_container")
+    public WebElement bottomBar;
 }

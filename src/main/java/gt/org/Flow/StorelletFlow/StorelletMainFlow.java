@@ -3,6 +3,9 @@ package gt.org.Flow.StorelletFlow;
 import gt.org.Base.AppiumHelpers;
 import gt.org.Page.StorelletPage.NavigationDialogFragmentPage;
 import gt.org.Page.StorelletPage.StorelletMainPage;
+import gt.org.utils.DriverManager;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 
@@ -15,9 +18,13 @@ import java.util.List;
 public class StorelletMainFlow extends AppiumHelpers {
 
     private StorelletMainPage storelletMainPage;
+    private DriverManager driverManager;
+    private AndroidDriver driver;
 
     public StorelletMainFlow() {
         storelletMainPage = new StorelletMainPage();
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
     }
 
     public boolean isStorelletMainTitleDisplayed() {
@@ -61,6 +68,22 @@ public class StorelletMainFlow extends AppiumHelpers {
                 int height = rect.getHeight();
                 swipeCoordinateFunction(swipePixel - 10, (y + height) / 2, 5, (y + height) / 2);
                 imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
+            }
+        }
+    }
+
+    public void selectShops(String shopsInfo) {
+        while (true) {
+            if (!checkElementByXpath(shopsInfo, 2)) {
+                swipeFunction("up");
+            } else {
+                WebElement webElement = driver.findElement(By.xpath(String.format("//*[contains(@text, '%s')]/../*[@resource-id = 'com.storellet:id/item_payload_action_row_action_container']", shopsInfo)));
+                int pixel = webElement.getRect().getY() - waitForElement(storelletMainPage.bottomBar).getRect().getY();
+                if (pixel >= -100) {
+                    swipeFunction("up");
+                }
+                webElement.click();
+                break;
             }
         }
     }

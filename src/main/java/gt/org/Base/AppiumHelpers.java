@@ -79,11 +79,11 @@ public class AppiumHelpers {
     protected boolean checkElementClickable(WebElement webElement, Integer timeInSeconds) {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
-            w.until(ExpectedConditions.visibilityOf(webElement));
-
+            w.until(ExpectedConditions.elementToBeClickable(webElement));
+            return true;
         } catch (Exception e) {
+            return false;
         }
-        return w.until(ExpectedConditions.elementToBeClickable(webElement)).isEnabled();
     }
 
     protected WebElement waitForElement(WebElement webElement) {
