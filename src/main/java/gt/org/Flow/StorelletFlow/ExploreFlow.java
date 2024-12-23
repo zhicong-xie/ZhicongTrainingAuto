@@ -31,8 +31,8 @@ public class ExploreFlow extends AppiumHelpers {
 
     public void swipeLeftClickRestaurantInNewArrivalsView(String restaurantName){
         while (true){
-            if (!checkElementByXpath(String.format(explorePage.newArrivalsRestaurantName,restaurantName),3)){
-                swipeElementFunction("left", explorePage.newArrivalsView, 3,1);
+            if (!checkElementByXpath(String.format(explorePage.newArrivalsRestaurantName,restaurantName),2)){
+                swipeElementFunction("left", explorePage.newArrivalsView, 1,1);
             }else {
                 driver.findElement(By.xpath(String.format(explorePage.newArrivalsRestaurantName,restaurantName))).click();
                 break;

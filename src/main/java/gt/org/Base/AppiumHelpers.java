@@ -248,7 +248,7 @@ public class AppiumHelpers {
         return webElement;
     }
 
-    protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException{
+    protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException {
         BufferedImage bufferedImage;
         try {
             File elementScreenshot = webElement.getScreenshotAs(OutputType.FILE);
@@ -281,17 +281,17 @@ public class AppiumHelpers {
         return false;
     }
 
-    protected void saveElementScreenshot(BufferedImage bufferedImage,String imageName) throws IOException {
+    protected void saveElementScreenshot(BufferedImage bufferedImage, String imageName) throws IOException {
         File parentDir = new File("target");
         File screenshotDir = new File(parentDir, "screenshot");
         if (!screenshotDir.exists()) {
             screenshotDir.mkdir();
         }
-        File outputFile = new File(String.format("target/screenshot/%s.png", imageName+System.currentTimeMillis()));
+        File outputFile = new File(String.format("target/screenshot/%s.png", imageName + System.currentTimeMillis()));
         ImageIO.write(bufferedImage, "png", outputFile);
     }
 
-    protected boolean compareImage(BufferedImage img1, BufferedImage img2){
+    protected boolean compareImage(BufferedImage img1, BufferedImage img2) {
         if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
             return false;
         }
@@ -305,19 +305,19 @@ public class AppiumHelpers {
         return true;
     }
 
-    protected boolean compareImages(BufferedImage img1, List<BufferedImage>bufferedImageList){
+    protected boolean compareImages(BufferedImage img1, List<BufferedImage> bufferedImageList) {
         int size = bufferedImageList.size();
         int num = 0;
-        if (size==0) {
+        if (size == 0) {
             return false;
-        }else {
-            for (BufferedImage bufferedImage : bufferedImageList){
-                if (!compareImage(img1,bufferedImage)){
+        } else {
+            for (BufferedImage bufferedImage : bufferedImageList) {
+                if (!compareImage(img1, bufferedImage)) {
                     num++;
                 }
             }
         }
-        if (num == size){
+        if (num == size) {
             return false;
         }
         return true;
@@ -337,28 +337,28 @@ public class AppiumHelpers {
 
         switch (direction.toLowerCase()) {
             case "up":
-                startX = (x + width) / 2;
-                startY = (y + height) * 4 / 5;
-                endX = (x + width) / 2;
-                endY = (y + height) / 5;
+                startX = x + (width / 2);
+                startY = y + (height * 4 / 5);
+                endX = x + (width / 2);
+                endY = y + (height / 5);
                 break;
             case "down":
-                startX = (x + width) / 2;
-                startY = (y + height) / 5;
-                endX = (x + width) / 2;
-                endY = (y + height) * 4 / 5;
+                startX = x + (width / 2);
+                startY = y + (height  / 5);
+                endX = x + (width / 2);
+                endY = y + (height * 4 / 5);
                 break;
             case "left":
-                startX = (x + width) * 6 / 7;
-                startY = (y + height) / 2;
-                endX = (x + width) / 7;
-                endY = (y + height) / 2;
+                startX = x + (width* 5 / 6);
+                startY = y +  (height/ 2);
+                endX = x + (width / 6);
+                endY = y +  (height/ 2);
                 break;
             case "right":
-                startX = (x + width) / 6;
-                startY = (y + height) / 2;
-                endX = (x + width) * 5 / 6;
-                endY = (y + height) / 2;
+                startX =  x + (width / 6);
+                startY = y +  (height/ 2);
+                endX =  x + (width* 5 / 6);
+                endY = y +  (height/ 2);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
@@ -374,10 +374,10 @@ public class AppiumHelpers {
     }
 
     protected byte[] takeFailScreenshot() {
-        return  ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.BYTES);
     }
 
-    protected void swipeCoordinateFunction(Integer startX,Integer startY,Integer endX,Integer endY){
+    protected void swipeCoordinateFunction(Integer startX, Integer startY, Integer endX, Integer endY) {
         TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
         touchAction
                 .press(PointOption.point(startX, startY))
