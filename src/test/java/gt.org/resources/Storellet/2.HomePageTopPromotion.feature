@@ -127,7 +127,11 @@ Feature: Verify Storellet APP Home page function
   @AC2.6
   Scenario Outline: Check Verification sent function
     Given the user in the Storellet main screen
-    When the user select <ShopsName> shops in the Storellet main screen
+    When the user click Search icon in the Storellet main screen
+    Then the user in the Storellet main search screen
+    When the user input <ShopsName> in the Storellet main search screen Search bar
+    Then the Search result is contain <ShopsName> data in the Storellet main search screen
+    And the user select first search result view in the Storellet main search screen
     Then the user in the Verify email address partial modal screen
     And the user able to see email address field displayed <UpdateEmailAddress> in the Verify email address partial modal screen
     When the user click Verification send button in the Verify email address partial modal screen
@@ -138,6 +142,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
     And the user able to not see New join button in the Storellet shops details screen
     And the user able to see More details button in the Storellet shops details screen
+    When the user click Back button in the Storellet shops details screen
+    Then the user in the Storellet main search screen
+    And the Search result is contain <ShopsName> data in the Storellet main search screen
     When the user restart the APP
     Examples:
       | ShopsName | UpdateEmailAddress |

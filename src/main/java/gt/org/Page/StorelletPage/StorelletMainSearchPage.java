@@ -27,4 +27,7 @@ public class StorelletMainSearchPage {
 
     @FindBy(id = "search_close_btn")
     public WebElement searchBarClearButton;
+
+    @FindBy(id = "item_search_result_container")
+    public WebElement firstSearchResultView;
 }

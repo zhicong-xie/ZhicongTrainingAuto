@@ -40,4 +40,8 @@ public class StorelletMainSearchSteps {
         storelletMainSearchFlow.clickSearchBarClearButton();
     }
 
+    @When("^the user select first search result view in the Storellet main search screen$")
+    public void selectFirstSearchResultView() {
+        storelletMainSearchFlow.selectFirstSearchResultView();
+    }
 }

@@ -56,4 +56,8 @@ public class StorelletMainSearchFlow extends AppiumHelpers {
         waitForElement(storelletMainSearchPage.searchBarClearButton).click();
         dismissKeyboard();
     }
+
+    public void selectFirstSearchResultView(){
+        waitForElement(storelletMainSearchPage.firstSearchResultView).click();
+    }
 }
