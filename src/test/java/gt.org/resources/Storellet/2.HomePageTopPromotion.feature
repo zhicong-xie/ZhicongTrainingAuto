@@ -137,7 +137,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Storellet main search screen
     When the user input <ShopsName> in the Storellet main search screen Search bar
     Then the Search result is contain <ShopsName> data in the Storellet main search screen
-    And the user select first search result view in the Storellet main search screen
+    When the user select first search result view in the Storellet main search screen
     Then the user in the Verify email address partial modal screen
     And the user able to see email address field displayed <UpdateEmailAddress> in the Verify email address partial modal screen
     When the user click Verification send button in the Verify email address partial modal screen
