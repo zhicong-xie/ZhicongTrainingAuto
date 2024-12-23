@@ -2,13 +2,15 @@ Feature: Verify Storellet APP Home page function
 
   @AC2.1
   Scenario: Check Home page top promotion image is not null and save to local folder
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user save the Storellet main screen big promotion image to local folder
     And the user restart the APP
 
   @AC2.2
   Scenario Outline: Check Home page search button function
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user click Search icon in the Storellet main screen
     Then the user in the Storellet main search screen
     When the user input <SearchData> in the Storellet main search screen Search bar
@@ -22,7 +24,8 @@ Feature: Verify Storellet APP Home page function
 
   @AC2.3
   Scenario Outline: Check Click Shops view in Home page and join the shops by not need email address
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user select <ShopsName> shops in the Storellet main screen
     Then the user in the Storellet shops details screen
     And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
@@ -54,7 +57,8 @@ Feature: Verify Storellet APP Home page function
 
   @AC2.4
   Scenario Outline: Check Click Shops view in Home page and join the shops by need email address
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user select <ShopsName> shops in the Storellet main screen
     Then the user in the Storellet shops details screen
     And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
@@ -97,7 +101,8 @@ Feature: Verify Storellet APP Home page function
 
   @AC2.5
   Scenario Outline: Check update email and Verification sent function
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user select <ShopsName> shops in the Storellet main screen
     Then the user in the Verify email address partial modal screen
     And the user able to see email address field displayed <EmailAddress> in the Verify email address partial modal screen
@@ -126,7 +131,8 @@ Feature: Verify Storellet APP Home page function
 
   @AC2.6
   Scenario Outline: Check Verification sent function
-    Given the user in the Storellet main screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
     When the user click Search icon in the Storellet main screen
     Then the user in the Storellet main search screen
     When the user input <ShopsName> in the Storellet main search screen Search bar

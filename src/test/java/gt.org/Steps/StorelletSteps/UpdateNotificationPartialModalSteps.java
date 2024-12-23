@@ -17,7 +17,7 @@ public class UpdateNotificationPartialModalSteps {
     public void isUpdateNotificationPartialModalTitleDisplayed() {
         boolean expected = true;
         boolean actual = updateNotificationPartialModalFlow.isUpdateNotificationPartialModalTitleDisplayed();
-        String reason = "the user in the Update notification partial modal screen";
+        String reason = "the Update notification partial modal screen not displayed";
         Assert.assertEquals(actual,expected,reason);
     }
 

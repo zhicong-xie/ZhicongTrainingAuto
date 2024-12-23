@@ -13,7 +13,8 @@ Feature: Verify Storellet APP Login function
     And the user click Notice bubble in the Storellet navigation dialog fragment view
     Then the user able to not see the Storellet navigation dialog fragment view
     And the user in the Storellet main screen
-    When the user click Wallet button in the Storellet bottom navigation bar
+    When the user click Close button in the Promotion view partial modal screen if exist
+    And the user click Wallet button in the Storellet bottom navigation bar
     Then the user in the Storellet login screen
     And the International area code able displayed 852 in the Storellet login screen
 
