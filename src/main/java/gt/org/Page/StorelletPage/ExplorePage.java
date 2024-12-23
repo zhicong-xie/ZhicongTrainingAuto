@@ -20,6 +20,14 @@ public class ExplorePage {
     @FindBy(id = "fragment_membership_tab_all_search_view")
     public WebElement searchBar;
 
-    @FindBy(id = "search_close_btn")
-    public WebElement searchBarClearButton;
+    @FindBy(id = "item_recycler_view_retry_rv")
+    public WebElement newArrivalsView;
+
+    public String newArrivalsRestaurantName = "//*[contains(@resource-id, 'item_recycler_view_retry_rv')]//android.widget.TextView[contains(@text , '%s')]";
+
+    public String restaurantPointsXpath = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_value1_txt')]";
+
+    public String restaurantCouponsXpath = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_value2_txt')]";
+
+    public String restaurantBecomeMember = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_right_button')]";
 }

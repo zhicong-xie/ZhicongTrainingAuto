@@ -6,19 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShopsDetailsPage {
+public class RestaurantDetailsPage {
 
     private DriverManager driverManager;
     private AndroidDriver driver;
 
-    public ShopsDetailsPage() {
+    public RestaurantDetailsPage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(id = "merchant_header_name_tv")
-    public WebElement shopsName;
+    public WebElement restaurantName;
 
     @FindBy(id = "member_header_back_iv")
     public WebElement backButton;

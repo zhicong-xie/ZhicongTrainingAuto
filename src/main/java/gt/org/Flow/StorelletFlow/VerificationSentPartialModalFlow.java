@@ -1,7 +1,6 @@
 package gt.org.Flow.StorelletFlow;
 
 import gt.org.Base.AppiumHelpers;
-import gt.org.Page.StorelletPage.ShopsDetailsPage;
 import gt.org.Page.StorelletPage.VerificationSentPartialModalPage;
 
 public class VerificationSentPartialModalFlow extends AppiumHelpers {

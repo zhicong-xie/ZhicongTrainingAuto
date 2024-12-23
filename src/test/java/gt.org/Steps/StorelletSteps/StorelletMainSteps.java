@@ -45,8 +45,8 @@ public class StorelletMainSteps {
        storelletMainFlow.saveBigPromotionImageToLocalFolder();
     }
 
-    @When("^the user select (.*) shops in the Storellet main screen$")
-    public void selectShops(String info) {
-        storelletMainFlow.selectShops(info);
+    @When("^the user select (.*) restaurant in the Storellet main screen$")
+    public void selectrestaurant(String info) {
+        storelletMainFlow.selectrestaurant(info);
     }
 }

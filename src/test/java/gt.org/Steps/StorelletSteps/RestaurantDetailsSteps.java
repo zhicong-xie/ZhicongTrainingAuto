@@ -1,52 +1,51 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.NavigationDialogFragmentFlow;
-import gt.org.Flow.StorelletFlow.ShopsDetailsFlow;
+import gt.org.Flow.StorelletFlow.RestaurantDetailsFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class ShopsDetailsSteps {
+public class RestaurantDetailsSteps {
 
-    private ShopsDetailsFlow shopsDetailsFlow;
+    private RestaurantDetailsFlow restaurantDetailsFlow;
 
-    public ShopsDetailsSteps() {
-        shopsDetailsFlow = new ShopsDetailsFlow();
+    public RestaurantDetailsSteps() {
+        restaurantDetailsFlow = new RestaurantDetailsFlow();
     }
 
-    @Then("^the user in the Storellet shops details screen$")
-    public void isShopNameDisplayed() {
+    @Then("^the user in the Storellet restaurant details screen$")
+    public void isRestaurantNameDisplayed() {
         boolean expected = true;
-        boolean actual = shopsDetailsFlow.isShopNameDisplayed();
-        String reason = "the Storellet shops details screen is not displayed";
+        boolean actual = restaurantDetailsFlow.isRestaurantNameDisplayed();
+        String reason = "the Storellet restaurant details screen is not displayed";
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @Then("^the user able to see shops name displayed (.*) in the Storellet shops details screen$")
-    public void checkShopName(String expected) {
-        String actual = shopsDetailsFlow.getShopName();
-        String reason = String.format("the shops name displayed wrong; expected : %s; actual: %s", expected, actual);
+    @Then("^the user able to see restaurant name displayed (.*) in the Storellet restaurant details screen$")
+    public void checkRestaurantName(String expected) {
+        String actual = restaurantDetailsFlow.getRestaurantName();
+        String reason = String.format("the restaurant name displayed wrong; expected : %s; actual: %s", expected, actual);
         Assert.assertEquals(actual.contains(expected), true, reason);
     }
 
-    @When("^the user click (Back|New join|More details) button in the Storellet shops details screen$")
+    @When("^the user click (Back|New join|More details) button in the Storellet restaurant details screen$")
     public void clickButton(String buttonName) {
         switch (buttonName) {
             case "Back":
-                shopsDetailsFlow.clickBackButton();
+                restaurantDetailsFlow.clickBackButton();
                 break;
             case "New join":
-                shopsDetailsFlow.clickNewJointButton();
+                restaurantDetailsFlow.clickNewJointButton();
                 break;
             case "More details":
-                shopsDetailsFlow.clickMoreDetailsButton();
+                restaurantDetailsFlow.clickMoreDetailsButton();
                 break;
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
     }
 
-    @Then("^the user able to (see|not see) (New join|More details) button in the Storellet shops details screen$")
+    @Then("^the user able to (see|not see) (New join|More details) button in the Storellet restaurant details screen$")
     public void checkButton(String item, String buttonName) {
         boolean expected;
         boolean actual;
@@ -65,10 +64,10 @@ public class ShopsDetailsSteps {
         }
         switch (buttonName) {
             case "New join":
-                actual = shopsDetailsFlow.isNewJoinButtonDisplayed();
+                actual = restaurantDetailsFlow.isNewJoinButtonDisplayed();
                 break;
             case "More details":
-                actual = shopsDetailsFlow.isMoreDetailsButtonDisplayed();
+                actual = restaurantDetailsFlow.isMoreDetailsButtonDisplayed();
                 break;
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);

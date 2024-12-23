@@ -1,6 +1,5 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.ShopsDetailsFlow;
 import gt.org.Flow.StorelletFlow.UpdateEmailAddressPartialModalFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,7 +14,7 @@ public class UpdateEmailAddressPartialModalSteps {
     }
 
     @Then("^the user in the Update email address partial modal screen$")
-    public void isShopNameDisplayed() {
+    public void isrestaurantNameDisplayed() {
         boolean expected = true;
         boolean actual = updateEmailAddressPartialModalFlow.isUpdateEmailAddressPartialModalTitle();
         String reason = "the Update email address partial modal screen is not displayed";

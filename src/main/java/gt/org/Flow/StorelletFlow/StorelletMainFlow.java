@@ -72,12 +72,12 @@ public class StorelletMainFlow extends AppiumHelpers {
         }
     }
 
-    public void selectShops(String shopsInfo) {
+    public void selectrestaurant(String restaurantInfo) {
         while (true) {
-            if (!checkElementByXpath(shopsInfo, 2)) {
+            if (!checkElementByText(restaurantInfo, 2)) {
                 swipeFunction("up");
             } else {
-                WebElement webElement = driver.findElement(By.xpath(String.format("//*[contains(@text, '%s')]/../*[@resource-id = 'com.storellet:id/item_payload_action_row_action_container']", shopsInfo)));
+                WebElement webElement = driver.findElement(By.xpath(String.format("//*[contains(@text, '%s')]/../*[@resource-id = 'com.storellet:id/item_payload_action_row_action_container']", restaurantInfo)));
                 int pixel = webElement.getRect().getY() - waitForElement(storelletMainPage.bottomBar).getRect().getY();
                 if (pixel >= -100) {
                     swipeFunction("up");

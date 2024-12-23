@@ -57,10 +57,20 @@ public class AppiumHelpers {
         }
     }
 
+    protected boolean checkElementByText(String elementText, Integer timeInSeconds) {
+        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        try {
+            w.until(ExpectedConditions.visibilityOf(findElementByText(elementText)));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     protected boolean checkElementByXpath(String elementXpath, Integer timeInSeconds) {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
-            w.until(ExpectedConditions.visibilityOf(findElementByText(elementXpath)));
+            w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
             return true;
         } catch (Exception e) {
             return false;
@@ -184,7 +194,7 @@ public class AppiumHelpers {
     protected WebElement swipeToUpFindFinancialTimesWebElementXpath(
             String xpath, Integer existenceTime, Integer attempts) throws Exception {
         for (int i = 1; i <= attempts; i++) {
-            if (!checkElementByXpath(xpath, existenceTime)) {
+            if (!checkElementByText(xpath, existenceTime)) {
                 swipeFunction("up");
                 waitForSecond(1);
             } else if (!isViewNotInFinancialTimesFootBar(xpath)) {
