@@ -96,7 +96,7 @@ Feature: Verify Storellet APP Home page function
       | 富臨        | 123123.com              | AT@Test.com  |
 
   @AC2.5
-  Scenario Outline: Check update email & Verification sent function
+  Scenario Outline: Check update email and Verification sent function
     Given the user in the Storellet main screen
     When the user select <ShopsName> shops in the Storellet main screen
     Then the user in the Verify email address partial modal screen
@@ -119,8 +119,14 @@ Feature: Verify Storellet APP Home page function
     And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
     And the user able to not see New join button in the Storellet shops details screen
     And the user able to see More details button in the Storellet shops details screen
-    When the user click Back button in the Storellet shops details screen
-    Then the user in the Storellet main screen
+    When the user restart the APP
+    Examples:
+      | ShopsName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
+      | 富臨        | AT@Test.com  | 123123.com              | TestNG@Test.com    |
+
+  @AC2.6
+  Scenario Outline: Check Verification sent function
+    Given the user in the Storellet main screen
     When the user select <ShopsName> shops in the Storellet main screen
     Then the user in the Verify email address partial modal screen
     And the user able to see email address field displayed <UpdateEmailAddress> in the Verify email address partial modal screen
@@ -129,7 +135,10 @@ Feature: Verify Storellet APP Home page function
     And the user able to see email address field displayed <UpdateEmailAddress> in the Verification sent partial modal screen
     When the user click Done button in the Verification sent partial modal screen
     Then the user in the Storellet shops details screen
+    And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
+    And the user able to not see New join button in the Storellet shops details screen
+    And the user able to see More details button in the Storellet shops details screen
     When the user restart the APP
     Examples:
-      | ShopsName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
-      | 富臨        | AT@Test.com  | 123123.com              | TestNG@Test.com    |
+      | ShopsName | UpdateEmailAddress |
+      | 富臨        | TestNG@Test.com    |
