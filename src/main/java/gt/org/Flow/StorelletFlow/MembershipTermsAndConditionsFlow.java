@@ -47,4 +47,12 @@ public class MembershipTermsAndConditionsFlow extends AppiumHelpers {
             }
         }
     }
+
+    public boolean isIncorrectEmailFormatPartialModalTitleDisplayed(){
+        return checkElement(membershipTermsAndConditionsPage.incorrectEmailFormatPartialModalTitle,5);
+    }
+
+    public void clickIncorrectEmailFormatPartialModalConfirmButton(){
+        waitForElementToClickable(membershipTermsAndConditionsPage.incorrectEmailFormatPartialModalConfirmButton).click();
+    }
 }

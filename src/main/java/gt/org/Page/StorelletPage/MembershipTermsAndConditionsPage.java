@@ -28,4 +28,10 @@ public class MembershipTermsAndConditionsPage {
 
     @FindBy(id = "message_dialog_negative_btn")
     public WebElement disagreeButton;
+
+    @FindBy(xpath = "//*[@text = '電郵格式不正確']")
+    public WebElement incorrectEmailFormatPartialModalTitle;
+
+    @FindBy(id = "dialog_error_dialog_negative_btn")
+    public WebElement incorrectEmailFormatPartialModalConfirmButton;
 }

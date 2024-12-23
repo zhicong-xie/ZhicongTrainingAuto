@@ -85,4 +85,17 @@ public class MembershipTermsAndConditionsStep {
     public void swipeUntilAgreeButtonEnabled() {
         membershipTermsAndConditionsFlow.swipeUntilAgreeButtonEnabled();
     }
+
+    @Then("^the user in the Membership terms and conditions screen incorrect email format partial modal$")
+    public void isIncorrectEmailFormatPartialModalTitleDisplayed() {
+        boolean expected = true;
+        boolean actual = membershipTermsAndConditionsFlow.isIncorrectEmailFormatPartialModalTitleDisplayed();
+        String reason = "the Membership terms and conditions screen incorrect email format partial modal is not displayed";
+        Assert.assertEquals(actual, expected, reason);
+    }
+
+    @When("^the user click Confirm button in the Membership terms and conditions screen incorrect email format partial modal$")
+    public void clickIncorrectEmailFormatPartialModalConfirmButton() {
+        membershipTermsAndConditionsFlow.clickIncorrectEmailFormatPartialModalConfirmButton();
+    }
 }
