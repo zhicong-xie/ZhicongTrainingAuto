@@ -22,7 +22,6 @@ public class UpdateEmailAddressPartialModalFlow extends AppiumHelpers {
     public void inputEmailAddress(String emailAddress){
         waitForElement(updateEmailAddressPartialModalPage.emailAddressInputBox).click();
         waitForElement(updateEmailAddressPartialModalPage.emailAddressInputBox).sendKeys(emailAddress);
-        dismissKeyboard();
     }
 
     public boolean isUpdateButtonClickable(){

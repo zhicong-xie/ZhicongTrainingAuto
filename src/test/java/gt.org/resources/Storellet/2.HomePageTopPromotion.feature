@@ -94,3 +94,42 @@ Feature: Verify Storellet APP Home page function
     Examples:
       | ShopsName | WrongFormatEmailAddress | EmailAddress |
       | 富臨        | 123123.com              | AT@Test.com  |
+
+  @AC2.5
+  Scenario Outline: Check update email & Verification sent function
+    Given the user in the Storellet main screen
+    When the user select <ShopsName> shops in the Storellet main screen
+    Then the user in the Verify email address partial modal screen
+    And the user able to see email address field displayed <EmailAddress> in the Verify email address partial modal screen
+    When the user click Change email address button in the Verify email address partial modal screen
+    Then the user in the Update email address partial modal screen
+    And the user able to see email address field displayed <EmailAddress> in the Update email address partial modal screen
+    And the user able to see Update button is disabled in the Update email address partial modal screen
+    When the user input <WrongFormatEmailAddress> in the Update email address partial modal screen email address input box
+    Then the user able to see email address field displayed <WrongFormatEmailAddress> in the Update email address partial modal screen
+    And the user able to see Update button is disabled in the Update email address partial modal screen
+    When the user input <UpdateEmailAddress> in the Update email address partial modal screen email address input box
+    Then the user able to see email address field displayed <UpdateEmailAddress> in the Update email address partial modal screen
+    And the user able to see Update button is enabled in the Update email address partial modal screen
+    When the user click Update button in the Update email address partial modal screen email address input box
+    Then the user in the Verification sent partial modal screen
+    And the user able to see email address field displayed <UpdateEmailAddress> in the Verification sent partial modal screen
+    When the user click Done button in the Verification sent partial modal screen
+    Then the user in the Storellet shops details screen
+    And the user able to see shops name displayed <ShopsName> in the Storellet shops details screen
+    And the user able to not see New join button in the Storellet shops details screen
+    And the user able to see More details button in the Storellet shops details screen
+    When the user click Back button in the Storellet shops details screen
+    Then the user in the Storellet main screen
+    When the user select <ShopsName> shops in the Storellet main screen
+    Then the user in the Verify email address partial modal screen
+    And the user able to see email address field displayed <UpdateEmailAddress> in the Verify email address partial modal screen
+    When the user click Verification send button in the Verify email address partial modal screen
+    Then the user in the Verification sent partial modal screen
+    And the user able to see email address field displayed <UpdateEmailAddress> in the Verification sent partial modal screen
+    When the user click Done button in the Verification sent partial modal screen
+    Then the user in the Storellet shops details screen
+    When the user restart the APP
+    Examples:
+      | ShopsName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
+      | 富臨        | AT@Test.com  | 123123.com              | TestNG@Test.com    |
