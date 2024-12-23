@@ -27,4 +27,9 @@ public class BaseSteps {
         throw new IllegalArgumentException("Illegal Argument : " + item);
     }
   }
+
+  @When("^the user dismiss keyboard$")
+  public void dismissKeyboard() {
+    driver.hideKeyboard();
+  }
 }
