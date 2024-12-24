@@ -148,6 +148,7 @@ Feature: Verify Storellet APP Explore page function
     And the user able to see New join button in the Storellet restaurant details screen
     And the user able to not see More details button in the Storellet restaurant details screen
     And the user able to not see Restaurant points field in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to not see Main bar Wallet button is displayed in the Storellet restaurant details screen
     And the user able to not see Main bar Redeem button is displayed in the Storellet restaurant details screen
@@ -163,3 +164,31 @@ Feature: Verify Storellet APP Explore page function
     Examples:
       | RestaurantData |
       | 牛牛日式           |
+
+  @AC3.7
+  Scenario Outline: Check Explore page swipe up find VIP restaurant in Storellet explore screen all restaurant list view
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Explore button in the Storellet bottom navigation bar
+    Then the user in the Storellet explore screen
+    When the user swipe up to get <RestaurantData> member restaurant info and click in the Storellet explore screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed <RestaurantData> in the Storellet restaurant details screen
+    And the user able to not see New join button in the Storellet restaurant details screen
+    And the user able to see More details button in the Storellet restaurant details screen
+    And the user able to see restaurant points is align Explore page info in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is Unselected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
+    When the user click Main bar Wallet button in the Storellet restaurant details screen
+    Then the user able to see Main bar Summary button is Unselected in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
+    And the user able to see restaurant coupons list size is align Explore page info in the Storellet restaurant details screen
+    When the user click Back button in the Storellet restaurant details screen
+    Then the user in the Storellet explore screen
+    When the user restart the APP
+    Examples:
+      | RestaurantData |
+      | 貓抓烤肉           |

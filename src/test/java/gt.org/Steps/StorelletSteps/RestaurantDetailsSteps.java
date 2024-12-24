@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class RestaurantDetailsSteps {
 
-    private HashMap<String, String> restaurantInfo;
+    private HashMap<String, String> restaurantInfo = new HashMap<>();
 
     private ExploreFlow exploreFlow;
     private RestaurantDetailsFlow restaurantDetailsFlow;
@@ -141,9 +141,9 @@ public class RestaurantDetailsSteps {
     }
 
 
-    @When("^the user swipe up to get (.*) restaurant info in the Storellet explore screen$")
-    public void getRestaurantInfoInAllRestaurantList(String restaurantName) {
-        restaurantInfo = exploreFlow.getRestaurantInfoInAllRestaurantList(restaurantName);
+    @When("^the user swipe up to get (.*) member restaurant info and click in the Storellet explore screen$")
+    public void getMemberRestaurantInfoAndClick(String restaurantName) {
+        restaurantInfo = exploreFlow.getMemberRestaurantInfoAndClick(restaurantName);
     }
 
     @Then("^the user able to see restaurant points is align Explore page info in the Storellet restaurant details screen$")
@@ -151,7 +151,7 @@ public class RestaurantDetailsSteps {
         String expected = restaurantInfo.get("points");
         String actual = restaurantDetailsFlow.getRestaurantPoints();
         String reason = String.format("the restaurant points displayed wrong; expected : %s; actual: %s", expected, actual);
-        Assert.assertEquals(actual.contains(expected), true, reason);
+        Assert.assertEquals(actual,expected, reason);
     }
 
     @Then("^the user able to see restaurant coupons list size is align Explore page info in the Storellet restaurant details screen$")
@@ -159,7 +159,7 @@ public class RestaurantDetailsSteps {
         String expected = restaurantInfo.get("coupons");
         String actual = restaurantDetailsFlow.getRestaurantCouponsListInfo().size()+"";
         String reason = String.format("the restaurant coupons list size displayed wrong; expected : %s; actual: %s", expected, actual);
-        Assert.assertEquals(actual.contains(expected), true, reason);
+        Assert.assertEquals(actual,expected, reason);
     }
 }
 

@@ -40,7 +40,7 @@ public class ExploreFlow extends AppiumHelpers {
         }
     }
 
-    public HashMap<String,String> getRestaurantInfoInAllRestaurantList(String restaurantName){
+    public HashMap<String,String> getMemberRestaurantInfoAndClick(String restaurantName){
         HashMap<String ,String> restaurantInfo = new HashMap<>();
         while (true){
             if (!checkElementByXpath(String.format(explorePage.restaurantPointsXpath,restaurantName),3)){
@@ -48,9 +48,10 @@ public class ExploreFlow extends AppiumHelpers {
             }else {
                 WebElement restaurantPoint = driver.findElement(By.xpath(String.format(explorePage.restaurantPointsXpath,restaurantName)));
                 WebElement restaurantCoupons = driver.findElement(By.xpath(String.format(explorePage.restaurantCouponsXpath,restaurantName)));
-                restaurantInfo.put("point",restaurantPoint.getText().trim());
+                restaurantInfo.put("points",restaurantPoint.getText().trim());
                 restaurantInfo.put("coupons",restaurantCoupons.getText().trim());
                 System.out.println(String.format("%s info : %s",restaurantName,restaurantInfo));
+                restaurantPoint.click();
                 return restaurantInfo;
             }
         }
