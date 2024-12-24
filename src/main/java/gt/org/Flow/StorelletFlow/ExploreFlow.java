@@ -21,8 +21,8 @@ public class ExploreFlow extends AppiumHelpers {
         explorePage = new ExplorePage();
     }
 
-    public boolean isExploreSearchBarDisplayed(){
-        return checkElement(explorePage.searchBar);
+    public boolean isExploreRestaurantViewDisplayed(){
+        return checkElement(explorePage.restaurantView);
     }
 
     public void clickExploreSearchBarButton(){
@@ -48,14 +48,15 @@ public class ExploreFlow extends AppiumHelpers {
             }else {
                 WebElement restaurantPoint = driver.findElement(By.xpath(String.format(explorePage.restaurantPointsXpath,restaurantName)));
                 WebElement restaurantCoupons = driver.findElement(By.xpath(String.format(explorePage.restaurantCouponsXpath,restaurantName)));
-                restaurantInfo.put("Point",restaurantPoint.getText().trim());
-                restaurantInfo.put("Coupons",restaurantCoupons.getText().trim());
+                restaurantInfo.put("point",restaurantPoint.getText().trim());
+                restaurantInfo.put("coupons",restaurantCoupons.getText().trim());
+                System.out.println(String.format("%s info : %s",restaurantName,restaurantInfo));
                 return restaurantInfo;
             }
         }
     }
 
-    public void ClickRestaurantBecomeMemberInAllRestaurantList(String restaurantName){
+    public void clickRestaurantBecomeMemberInAllRestaurantList(String restaurantName){
         while (true){
             if (!checkElementByXpath(String.format(explorePage.restaurantBecomeMember,restaurantName),3)){
                 swipeFunction("up");

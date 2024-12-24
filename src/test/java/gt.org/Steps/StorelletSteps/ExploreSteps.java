@@ -11,7 +11,6 @@ import java.util.HashMap;
 public class ExploreSteps {
 
     private ExploreFlow exploreFlow;
-    private HashMap<String, String> restaurantInfo;
 
     public ExploreSteps() {
         exploreFlow = new ExploreFlow();
@@ -20,7 +19,7 @@ public class ExploreSteps {
     @Then("^the user in the Storellet explore screen$")
     public void isExploreSearchBarDisplayed() {
         boolean expected = true;
-        boolean actual = exploreFlow.isExploreSearchBarDisplayed();
+        boolean actual = exploreFlow.isExploreRestaurantViewDisplayed();
         String reason = "the Storellet explore screen is not displayed";
         Assert.assertEquals(actual, expected, reason);
     }
@@ -35,13 +34,8 @@ public class ExploreSteps {
         exploreFlow.swipeLeftClickRestaurantInNewArrivalsView(restaurantName);
     }
 
-    @When("^the user swipe up to get (.*) restaurant info in the Storellet explore screen$")
-    public void getRestaurantInfoInAllRestaurantList(String restaurantName) {
-        restaurantInfo = exploreFlow.getRestaurantInfoInAllRestaurantList(restaurantName);
-    }
-
     @When("^the user swipe up to click (.*) restaurant become member button in the Storellet explore screen$")
     public void ClickRestaurantBecomeMemberInAllRestaurantList(String restaurantName) {
-        exploreFlow.ClickRestaurantBecomeMemberInAllRestaurantList(restaurantName);
+        exploreFlow.clickRestaurantBecomeMemberInAllRestaurantList(restaurantName);
     }
 }

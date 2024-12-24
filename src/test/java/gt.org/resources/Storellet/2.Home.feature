@@ -33,6 +33,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to not see More details button in the Storellet restaurant details screen
     And the user able to not see Restaurant points field in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to not see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to not see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click New join button in the Storellet restaurant details screen
     Then the user in the Membership terms and conditions screen
     And the user able to not see email input box in the Membership terms and conditions screen
@@ -52,6 +55,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see More details button in the Storellet restaurant details screen
     And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Back button in the Storellet restaurant details screen
     Then the user in the Storellet main screen
     When the user restart the APP
@@ -70,6 +76,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to not see More details button in the Storellet restaurant details screen
     And the user able to not see Restaurant points field in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to not see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to not see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click New join button in the Storellet restaurant details screen
     Then the user in the Membership terms and conditions screen
     And the user able to see email input box in the Membership terms and conditions screen
@@ -100,6 +109,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see More details button in the Storellet restaurant details screen
     And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Back button in the Storellet restaurant details screen
     Then the user in the Storellet main screen
     When the user restart the APP
@@ -134,6 +146,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see More details button in the Storellet restaurant details screen
     And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user restart the APP
     Examples:
       | restaurantName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
@@ -160,6 +175,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see More details button in the Storellet restaurant details screen
     And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Back button in the Storellet restaurant details screen
     Then the user in the Storellet main search screen
     And the Search result is contain <restaurantName> data in the Storellet main search screen

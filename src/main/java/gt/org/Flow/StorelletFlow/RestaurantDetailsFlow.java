@@ -4,6 +4,7 @@ import gt.org.Base.AppiumHelpers;
 import gt.org.Page.StorelletPage.RestaurantDetailsPage;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantDetailsFlow extends AppiumHelpers {
@@ -50,8 +51,23 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
         return waitForElement(restaurantDetailsPage.restaurantPoints).getText().replace("積分", "").trim();
     }
 
-    public boolean isRestaurantPointsDisplayed(){
-        return checkElement(restaurantDetailsPage.restaurantPoints,5);
+    public boolean isRestaurantPointsDisplayed() {
+        return checkElement(restaurantDetailsPage.restaurantPoints, 5);
+    }
+
+    public boolean isMainBarButtonDisplayed(String buttonName) {
+        switch (buttonName.toLowerCase()) {
+            case "summary":
+                return checkElement(restaurantDetailsPage.summaryButton,2);
+            case "wallet":
+                return checkElement(restaurantDetailsPage.walletButton,2);
+            case "redeem":
+                return checkElement(restaurantDetailsPage.redeemButton,2);
+            case "welcome gift":
+                return checkElement(restaurantDetailsPage.welcomeGiftButton,2);
+            default:
+                throw new IllegalArgumentException("Illegal Argument : " + buttonName);
+        }
     }
 
     public void clickButtonInMainBar(String buttonName) {
@@ -64,6 +80,9 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
                 break;
             case "redeem":
                 waitForElementToClickable(restaurantDetailsPage.redeemButton).click();
+                break;
+            case "welcome gift":
+                waitForElementToClickable(restaurantDetailsPage.welcomeGiftButton).click();
                 break;
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
@@ -78,22 +97,25 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
                 return waitForElementToClickable(restaurantDetailsPage.walletButton).isSelected();
             case "redeem":
                 return waitForElementToClickable(restaurantDetailsPage.redeemButton).isSelected();
+            case "welcome gift":
+                return waitForElementToClickable(restaurantDetailsPage.welcomeGiftButton).isSelected();
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
     }
 
-    public String getRestaurantCouponsListSize() {
+    public List<String> getRestaurantCouponsListInfo() {
         List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
         List<WebElement> tipsList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponTipsListXpath);
 
+        List<String> restaurantCouponsInfo = new ArrayList<>();
+
         if (couponDescriptionList.size() == tipsList.size()) {
             for (int i = 0; i < couponDescriptionList.size(); i++) {
-                System.out.println(couponDescriptionList.get(i).getText() + " : " + tipsList.get(i).getText());
+                restaurantCouponsInfo.add(couponDescriptionList.get(i).getText().trim() + "__" + tipsList.get(i).getText().trim());
             }
-            return couponDescriptionList.size()+"";
-        } else {
-            return "-1";
         }
+        System.out.println("All Coupons info : " + restaurantCouponsInfo);
+        return restaurantCouponsInfo;
     }
 }

@@ -17,6 +17,9 @@ public class ExplorePage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(id = "item_merchant_row_container")
+    public WebElement restaurantView;
+
     @FindBy(id = "fragment_membership_tab_all_search_view")
     public WebElement searchBar;
 

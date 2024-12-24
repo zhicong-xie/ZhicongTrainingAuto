@@ -1,16 +1,23 @@
 package gt.org.Steps.StorelletSteps;
 
+import gt.org.Flow.StorelletFlow.ExploreFlow;
 import gt.org.Flow.StorelletFlow.RestaurantDetailsFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
+import java.util.HashMap;
+
 public class RestaurantDetailsSteps {
 
+    private HashMap<String, String> restaurantInfo;
+
+    private ExploreFlow exploreFlow;
     private RestaurantDetailsFlow restaurantDetailsFlow;
 
     public RestaurantDetailsSteps() {
         restaurantDetailsFlow = new RestaurantDetailsFlow();
+        exploreFlow = new ExploreFlow();
     }
 
     @Then("^the user in the Storellet restaurant details screen$")
@@ -81,12 +88,32 @@ public class RestaurantDetailsSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @When("^the user click Main bar (Summary|Wallet|Redeem) button in the Storellet restaurant details screen$")
+    @When("^the user click Main bar (Summary|Wallet|Redeem|Welcome gift) button in the Storellet restaurant details screen$")
     public void clickMainBarButton(String buttonName) {
         restaurantDetailsFlow.clickButtonInMainBar(buttonName);
     }
 
-    @Then("^the user able to see Main bar (Summary|Wallet|Redeem) button is (Selected|Unselected) in the Storellet restaurant details screen$")
+    @Then("^the user able to (see|not see) Main bar (Summary|Wallet|Redeem|Welcome gift) button is displayed in the Storellet restaurant details screen$")
+    public void checkMainButtonDisplayed(String item,String buttonName) {
+        boolean expected;
+        boolean actual = restaurantDetailsFlow.isMainBarButtonDisplayed(buttonName);
+        String reason;
+        switch (item) {
+            case "see":
+                expected = true;
+                reason = String.format("the %s button is not displayed", buttonName);
+                break;
+            case "not see":
+                expected = false;
+                reason = String.format("the %s button is displayed", buttonName);
+                break;
+            default:
+                throw new IllegalArgumentException("Illegal Argument : " + item);
+        }
+        Assert.assertEquals(actual, expected, reason);
+    }
+
+    @Then("^the user able to see Main bar (Summary|Wallet|Redeem|Welcome gift) button is (Selected|Unselected) in the Storellet restaurant details screen$")
     public void checkMainButton(String buttonName, String item) {
         boolean expected;
         boolean actual = restaurantDetailsFlow.getButtonStateInMainBar(buttonName);
@@ -110,6 +137,28 @@ public class RestaurantDetailsSteps {
     public void checkRestaurantPoints(String expected) {
         String actual = restaurantDetailsFlow.getRestaurantPoints();
         String reason = String.format("the restaurant points displayed wrong; expected : %s; actual: %s", expected, actual);
+        Assert.assertEquals(actual.contains(expected), true, reason);
+    }
+
+
+    @When("^the user swipe up to get (.*) restaurant info in the Storellet explore screen$")
+    public void getRestaurantInfoInAllRestaurantList(String restaurantName) {
+        restaurantInfo = exploreFlow.getRestaurantInfoInAllRestaurantList(restaurantName);
+    }
+
+    @Then("^the user able to see restaurant points is align Explore page info in the Storellet restaurant details screen$")
+    public void checkRestaurantPointsAlign() {
+        String expected = restaurantInfo.get("points");
+        String actual = restaurantDetailsFlow.getRestaurantPoints();
+        String reason = String.format("the restaurant points displayed wrong; expected : %s; actual: %s", expected, actual);
+        Assert.assertEquals(actual.contains(expected), true, reason);
+    }
+
+    @Then("^the user able to see restaurant coupons list size is align Explore page info in the Storellet restaurant details screen$")
+    public void checkCouponsSizeAlign() {
+        String expected = restaurantInfo.get("coupons");
+        String actual = restaurantDetailsFlow.getRestaurantCouponsListInfo().size()+"";
+        String reason = String.format("the restaurant coupons list size displayed wrong; expected : %s; actual: %s", expected, actual);
         Assert.assertEquals(actual.contains(expected), true, reason);
     }
 }

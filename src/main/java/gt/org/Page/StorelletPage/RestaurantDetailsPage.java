@@ -46,6 +46,9 @@ public class RestaurantDetailsPage {
     @FindBy(xpath = "//android.widget.LinearLayout[@content-desc=\"可兌換\"]")
     public WebElement redeemButton;
 
+    @FindBy(xpath = "//android.widget.LinearLayout[@content-desc=\"迎新禮物\"]")
+    public WebElement welcomeGiftButton;
+
     public String restaurantCouponDescriptionListXpath = "//*[contains(@resource-id , 'item_coupon_view_cardview')]//*[contains(@resource-id , 'item_coupon_view_description_tv')]";
 
     public String restaurantCouponTipsListXpath = "//*[contains(@resource-id , 'item_coupon_view_cardview')]//*[contains(@resource-id , 'item_coupon_view_tips_tv')]";

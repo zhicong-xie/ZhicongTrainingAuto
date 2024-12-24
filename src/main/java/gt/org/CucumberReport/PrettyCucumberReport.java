@@ -27,9 +27,4 @@ public class PrettyCucumberReport {
         System.out.println(
                 "The cucumber report generated! Save in 'ZhicongTrainingAuto/target/cucumberReport/cucumber-html-reports' folder");
     }
-
-  public static void main(String[] args) {
-    PrettyCucumberReport prettyCucumberReport = new PrettyCucumberReport();
-    prettyCucumberReport.generateReports();
-  }
 }
