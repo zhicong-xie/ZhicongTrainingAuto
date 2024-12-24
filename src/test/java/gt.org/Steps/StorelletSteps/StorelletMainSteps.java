@@ -18,8 +18,8 @@ public class StorelletMainSteps {
     @Then("^the user in the Storellet main screen$")
     public void isStorelletMainTitleDisplayed() {
         boolean expected = true;
-        boolean actual = storelletMainFlow.isStorelletMainTitleDisplayed();
-        String reason = "the Storellet introduction screen is not displayed";
+        boolean actual = storelletMainFlow.isStorelletMainSearchIconDisplayed();
+        String reason = "the Storellet main screen is not displayed";
         Assert.assertEquals(actual,expected,reason);
     }
 

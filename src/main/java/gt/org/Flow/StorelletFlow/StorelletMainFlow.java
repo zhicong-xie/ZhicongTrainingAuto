@@ -27,8 +27,8 @@ public class StorelletMainFlow extends AppiumHelpers {
         driver = driverManager.getDriver();
     }
 
-    public boolean isStorelletMainTitleDisplayed() {
-        return checkElement(storelletMainPage.mainTitle);
+    public boolean isStorelletMainSearchIconDisplayed() {
+        return checkElement(storelletMainPage.searchIcon);
     }
 
     public void clickRedemptionCenterButton() {

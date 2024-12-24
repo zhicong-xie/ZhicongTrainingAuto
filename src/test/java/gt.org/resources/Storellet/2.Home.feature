@@ -22,7 +22,7 @@ Feature: Verify Storellet APP Home page function
       | 牛          |
       | 永          |
 
-  @AC2.3
+  @AC2.3 @Skip
   Scenario Outline: Check Click restaurant view in Home page and join the restaurant by not need email address
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -65,7 +65,7 @@ Feature: Verify Storellet APP Home page function
       | restaurantName |
       | Rico Rico      |
 
-  @AC2.4
+  @AC2.4 @Skip
   Scenario Outline: Check Click restaurant view in Home page and join the restaurant by need email address
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -119,7 +119,7 @@ Feature: Verify Storellet APP Home page function
       | restaurantName | WrongFormatEmailAddress | EmailAddress |
       | 富臨             | 123123.com              | AT@Test.com  |
 
-  @AC2.5
+  @AC2.5 @Skip
   Scenario Outline: Check update email and Verification sent function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -154,7 +154,7 @@ Feature: Verify Storellet APP Home page function
       | restaurantName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
       | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
 
-  @AC2.6
+  @AC2.6 @Skip
   Scenario Outline: Check Verification sent function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen

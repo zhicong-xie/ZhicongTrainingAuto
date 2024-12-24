@@ -101,6 +101,11 @@ public class AppiumHelpers {
         return w.until(ExpectedConditions.visibilityOf(webElement));
     }
 
+    protected WebElement waitForElementByXpath(String xpath) {
+        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        return w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+    }
+
     protected List<WebElement> waitForElementsByXpath(String locator) {
         try {
             WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));

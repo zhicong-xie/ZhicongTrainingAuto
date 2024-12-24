@@ -24,9 +24,6 @@ public class StorelletMainPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@text ='兌換中心']")
-    public WebElement mainTitle;
-
     @FindBy(id = "redemption_center_btn")
     public WebElement redemptionCenterButton;
 

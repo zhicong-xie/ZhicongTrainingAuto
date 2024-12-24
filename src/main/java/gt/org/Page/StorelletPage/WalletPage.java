@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class WalletPage {
 
     private DriverManager driverManager;
@@ -24,5 +26,22 @@ public class WalletPage {
     public WebElement redemptionCenterButton;
 
     @FindBy(id = "item_section_header_action_btn")
-    public WebElement showAllButton;
+    public WebElement showAllRestaurantButton;
+
+    //我的会籍
+    @FindBy(id = "item_recycler_view_retry_rv")
+    public WebElement membershipRestaurantSwipeView;
+
+    public String membershipRestaurantNameXpath = "//*[contains(@resource-id , 'item_large_image_portrait_tv') and contains(@text ,'%s')]";
+
+    //优惠券
+    public String myCouponsViewOfRestaurantNameXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]";
+
+    public String allCouponsButtonXpath  = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_all_tv')]";
+
+//    public String couponsSwipeViewXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_rv')]";
+//
+//    public String couponsDescribeListXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body_tv')]";
+//
+//    public String couponsExpirationListXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body2_tv')]";
 }
