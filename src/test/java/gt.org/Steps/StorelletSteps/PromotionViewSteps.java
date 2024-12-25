@@ -14,7 +14,6 @@ public class PromotionViewSteps {
         promotionViewFlow = new PromotionViewFlow();
     }
 
-
     @Then("^the user in the Promotion view partial modal screen$")
     public void isPromotionViewDisplayed() {
         boolean expected = true;

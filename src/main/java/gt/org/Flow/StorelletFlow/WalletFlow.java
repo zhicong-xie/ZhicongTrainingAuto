@@ -19,8 +19,8 @@ public class WalletFlow extends AppiumHelpers {
         driver = driverManager.getDriver();
     }
 
-    public boolean isWalletTitlePageDisplayed() {
-        return checkElement(walletPage.walletTitle);
+    public boolean isWalletIdentificationDisplayed() {
+        return checkElement(walletPage.walletIdentification);
     }
 
     public void clickRedemptionCenterButton(){

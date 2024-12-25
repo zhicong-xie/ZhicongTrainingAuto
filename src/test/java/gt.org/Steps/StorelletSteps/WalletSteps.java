@@ -16,8 +16,8 @@ public class WalletSteps {
     @Then("^the user in the Storellet wallet screen$")
     public void isWalletTitlePageDisplayed() {
         boolean expected = true;
-        boolean actual = walletFlow.isWalletTitlePageDisplayed();
-        String reason = "the user in the Storellet wallet screen";
+        boolean actual = walletFlow.isWalletIdentificationDisplayed();
+        String reason = "the Storellet wallet screen not displayed";
         Assert.assertEquals(actual,expected,reason);
     }
 
