@@ -7,9 +7,6 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class WalletFlow extends AppiumHelpers {
 
     private WalletPage walletPage;
@@ -18,6 +15,7 @@ public class WalletFlow extends AppiumHelpers {
 
     public WalletFlow() {
         walletPage = new WalletPage();
+        driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
     }
 
@@ -72,5 +70,29 @@ public class WalletFlow extends AppiumHelpers {
     public void clickMyCouponsViewOfRestaurantAllCouponsButton(String restaurantName){
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
         waitForElementByXpath(String.format(walletPage.allCouponsButtonXpath,restaurantName)).click();
+    }
+
+    public void clickMyCouponsViewOfRestaurantCouponsDescribe(String restaurantName,String couponsDescribe){
+        swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
+        while (true){
+            if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe),1)){
+                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath)),1,1);
+            }else {
+                waitForElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe)).click();
+                break;
+            }
+        }
+    }
+
+    public void clickMyCouponsViewOfRestaurantCouponsExpiration(String restaurantName,String couponsExpiration){
+        swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
+        while (true){
+            if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration),1)){
+                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath)),1,1);
+            }else {
+                waitForElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration)).click();
+                break;
+            }
+        }
     }
 }

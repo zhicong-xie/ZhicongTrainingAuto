@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
     features = "src/test/java/gt.org/resources/Storellet",
     glue = {"gt.org.Steps"},
-        tags = "@AC3.7 and not @Skip",
+        tags = "@AC4.2 and not @Skip",
     plugin = {
       "pretty",
       "html:target/cucumber-report/report.html",

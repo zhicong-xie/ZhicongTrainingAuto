@@ -22,7 +22,7 @@ Feature: Verify Storellet APP Home page function
       | 牛          |
       | 永          |
 
-  @AC2.3 @Skip
+  @AC2.3
   Scenario Outline: Check Click restaurant view in Home page and join the restaurant by not need email address
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -64,6 +64,7 @@ Feature: Verify Storellet APP Home page function
     Examples:
       | restaurantName |
       | Rico Rico      |
+    # Need to change non join restaurantName & not need emails
 
   @AC2.4 @Skip
   Scenario Outline: Check Click restaurant view in Home page and join the restaurant by need email address
@@ -118,8 +119,9 @@ Feature: Verify Storellet APP Home page function
     Examples:
       | restaurantName | WrongFormatEmailAddress | EmailAddress |
       | 富臨             | 123123.com              | AT@Test.com  |
+    # Need to change non join restaurantName & need emails(Profile no such data)
 
-  @AC2.5 @Skip
+  @AC2.5
   Scenario Outline: Check update email and Verification sent function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -151,10 +153,12 @@ Feature: Verify Storellet APP Home page function
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user restart the APP
     Examples:
-      | restaurantName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
-      | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
+      | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
+#      | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
+      | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
+    #Need to change emails address
 
-  @AC2.6 @Skip
+  @AC2.6
   Scenario Outline: Check Verification sent function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -184,4 +188,6 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | UpdateEmailAddress |
-      | 富臨             | TestNG@Test.com    |
+#      | 富臨             | TestNG@Test.com    |
+      | 富臨             | AT@Test.com        |
+    #Need to change emails address
