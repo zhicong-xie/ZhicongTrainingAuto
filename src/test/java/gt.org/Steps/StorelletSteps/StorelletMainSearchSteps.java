@@ -22,16 +22,16 @@ public class StorelletMainSearchSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @When("^the user input (.*) in the Storellet main search screen Search bar$")
+    @When("^the user input \"([^\"]*)\" in the Storellet main search screen Search bar$")
     public void isMainSearchBarDisplayed(String data) {
         storelletMainSearchFlow.inputSearchBar(data);
     }
 
-    @Then("^the Search result is contain (.*) data in the Storellet main search screen$")
+    @Then("^the Search result is contain \"([^\"]*)\" data in the Storellet main search screen$")
     public void isResultContainSearchData(String data) {
         boolean expected = true;
         boolean actual = storelletMainSearchFlow.isResultContainSearchData(data);
-        String reason = String.format("the Search result is not contain (.*) data in the Storellet main search screen",data);
+        String reason = String.format("the Search result is not contain \"([^\"]*)\" data in the Storellet main search screen",data);
         Assert.assertEquals(actual, expected, reason);
     }
 

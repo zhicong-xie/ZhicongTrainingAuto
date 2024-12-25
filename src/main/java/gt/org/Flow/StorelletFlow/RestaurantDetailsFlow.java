@@ -118,4 +118,14 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
         System.out.println("All Coupons info : " + restaurantCouponsInfo);
         return restaurantCouponsInfo;
     }
+
+    public void clickRestaurantCouponsDescriptionOption (String couponsDescription){
+        List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
+        for (WebElement webElement : couponDescriptionList) {
+            if (webElement.getText().trim().contains(couponsDescription)) {
+                webElement.click();
+                break;
+            }
+        }
+    }
 }

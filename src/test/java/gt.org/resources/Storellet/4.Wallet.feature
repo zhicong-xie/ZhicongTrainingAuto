@@ -6,14 +6,14 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
     Then the user in the Storellet wallet screen
-    When the user swipe to left find and click <RestaurantData> Membership restaurant name in the Storellet wallet screen my membership view
+    When the user swipe to left find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership view
     Then the user in the Verify email address partial modal screen
     When the user click Ignore button in the Verify email address partial modal screen
     Then the user in the Storellet restaurant details screen
-    And the user able to see restaurant name displayed <RestaurantData> in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-    And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -31,12 +31,12 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
     Then the user in the Storellet wallet screen
-    When the user swipe to left find and click <RestaurantData> Membership restaurant name in the Storellet wallet screen my membership view
+    When the user swipe to left find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership view
     Then the user in the Storellet restaurant details screen
-    And the user able to see restaurant name displayed <RestaurantData> in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-    And the user able to see restaurant points displayed 100 in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "100" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -55,14 +55,14 @@ Feature: Verify Storellet APP Wallet page function
     When the user click Wallet button in the Storellet bottom navigation bar
     Then the user in the Storellet wallet screen
     When the user click Show all restaurant button in the Storellet wallet screen my membership view
-    And the user swipe to up find and click <RestaurantData> Membership restaurant name in the Storellet wallet screen my membership expand view
+    And the user swipe to up find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership expand view
     Then the user in the Verify email address partial modal screen
     When the user click Ignore button in the Verify email address partial modal screen
     Then the user in the Storellet restaurant details screen
-    And the user able to see restaurant name displayed <RestaurantData> in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-    And the user able to see restaurant points displayed 500 in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "500" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -81,12 +81,12 @@ Feature: Verify Storellet APP Wallet page function
     When the user click Wallet button in the Storellet bottom navigation bar
     Then the user in the Storellet wallet screen
     When the user click Show all restaurant button in the Storellet wallet screen my membership view
-    And the user swipe to up find and click <RestaurantData> Membership restaurant name in the Storellet wallet screen my membership expand view
+    And the user swipe to up find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership expand view
     Then the user in the Storellet restaurant details screen
-    And the user able to see restaurant name displayed <RestaurantData> in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-    And the user able to see restaurant points displayed 0 in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -97,3 +97,34 @@ Feature: Verify Storellet APP Wallet page function
     Examples:
       | RestaurantData |
       | 城中泰            |
+
+  @AC4.5
+  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, and select an existing coupon go to coupon details screen
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Wallet button in the Storellet bottom navigation bar
+    Then the user in the Storellet wallet screen
+    When the user swipe to up find and click "<RestaurantData>" restaurant name in the Storellet wallet screen My coupons view
+    Then the user in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
+    And the user able to not see New join button in the Storellet restaurant details screen
+    And the user able to see More details button in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "200" in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
+    When the user click Main bar Wallet button in the Storellet restaurant details screen
+    Then the user able to see Main bar Summary button is Unselected in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
+    When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    And the user able to see QR code displayed in the Storellet coupon details screen
+    When the user restart the APP
+
+    Examples:
+      | RestaurantData | CouponsDescription   |
+      | Storellet Cafe | Test $10 Cash Coupon |

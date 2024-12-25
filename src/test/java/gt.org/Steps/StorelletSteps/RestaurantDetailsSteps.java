@@ -28,7 +28,7 @@ public class RestaurantDetailsSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @Then("^the user able to see restaurant name displayed (.*) in the Storellet restaurant details screen$")
+    @Then("^the user able to see restaurant name displayed \"([^\"]*)\" in the Storellet restaurant details screen$")
     public void checkRestaurantName(String expected) {
         String actual = restaurantDetailsFlow.getRestaurantName();
         String reason = String.format("the restaurant name displayed wrong; expected : %s; actual: %s", expected, actual);
@@ -133,7 +133,7 @@ public class RestaurantDetailsSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @Then("^the user able to see restaurant points displayed (.*) in the Storellet restaurant details screen$")
+    @Then("^the user able to see restaurant points displayed \"([^\"]*)\" in the Storellet restaurant details screen$")
     public void checkRestaurantPoints(String expected) {
         String actual = restaurantDetailsFlow.getRestaurantPoints();
         String reason = String.format("the restaurant points displayed wrong; expected : %s; actual: %s", expected, actual);
@@ -141,7 +141,7 @@ public class RestaurantDetailsSteps {
     }
 
 
-    @When("^the user swipe up to get (.*) member restaurant info and click in the Storellet explore screen$")
+    @When("^the user swipe up to get \"([^\"]*)\" member restaurant info and click in the Storellet explore screen$")
     public void getMemberRestaurantInfoAndClick(String restaurantName) {
         restaurantInfo = exploreFlow.getMemberRestaurantInfoAndClick(restaurantName);
     }
@@ -160,6 +160,11 @@ public class RestaurantDetailsSteps {
         String actual = restaurantDetailsFlow.getRestaurantCouponsListInfo().size()+"";
         String reason = String.format("the restaurant coupons list size displayed wrong; expected : %s; actual: %s", expected, actual);
         Assert.assertEquals(actual,expected, reason);
+    }
+
+    @When("^the user select \"([^\"]*)\" Coupons description in the Storellet restaurant details screen$")
+    public void clickRestaurantCouponsDescriptionOption(String description) {
+        restaurantDetailsFlow.clickRestaurantCouponsDescriptionOption(description);
     }
 }
 

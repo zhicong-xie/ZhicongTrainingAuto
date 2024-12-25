@@ -21,14 +21,14 @@ public class UpdateEmailAddressPartialModalSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @Then("^the user able to see email address field displayed (.*) in the Update email address partial modal screen$")
+    @Then("^the user able to see email address field displayed \"([^\"]*)\" in the Update email address partial modal screen$")
     public void swipeToLeftClickNextButton(String expected) {
         String actual = updateEmailAddressPartialModalFlow.getEmailAddressField();
         String reason = String.format("the email address field displayed wrong; expected : %s; actual : %s", expected, actual);
         Assert.assertEquals(actual.toLowerCase(), expected.toLowerCase(), reason);
     }
 
-    @When("^the user input (.*) in the Update email address partial modal screen email address input box$")
+    @When("^the user input \"([^\"]*)\" in the Update email address partial modal screen email address input box$")
     public void inputEmailAddress(String emailAddress) {
         updateEmailAddressPartialModalFlow.inputEmailAddress(emailAddress);
     }

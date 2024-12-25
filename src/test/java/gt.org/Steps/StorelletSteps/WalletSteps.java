@@ -35,32 +35,32 @@ public class WalletSteps {
         }
     }
 
-    @When("^the user swipe to left find and click (.*) Membership restaurant name in the Storellet wallet screen my membership view$")
+    @When("^the user swipe to left find and click \"([^\"]*)\" Membership restaurant name in the Storellet wallet screen my membership view$")
     public void swipeLeftFindMembershipRestaurantAndClick(String membershipName) {
         walletFlow.swipeLeftFindMembershipRestaurantAndClick(membershipName);
     }
 
-    @When("^the user swipe to up find and click (.*) Membership restaurant name in the Storellet wallet screen my membership expand view$")
+    @When("^the user swipe to up find and click \"([^\"]*)\" Membership restaurant name in the Storellet wallet screen my membership expand view$")
     public void swipeUpFindMembershipRestaurantAndClick(String membershipName) {
         walletFlow.swipeUpFindMembershipRestaurantAndClick(membershipName);
     }
 
-    @When("^the user swipe to up find (.*) restaurant name in the Storellet wallet screen My coupons view$")
+    @When("^the user swipe to up find \"([^\"]*)\" restaurant name in the Storellet wallet screen My coupons view$")
     public void swipeUpToFindMyCouponsViewOfRestaurant(String membershipName) {
         walletFlow.swipeUpToFindMyCouponsViewOfRestaurant(membershipName);
     }
 
-    @When("^the user swipe to up find and click (.*) restaurant name in the Storellet wallet screen My coupons view$")
+    @When("^the user swipe to up find and click \"([^\"]*)\" restaurant name in the Storellet wallet screen My coupons view$")
     public void clickMyCouponsViewOfRestaurant(String membershipName) {
         walletFlow.clickMyCouponsViewOfRestaurant(membershipName);
     }
 
-    @When("^the user swipe to up find and click (.*) restaurant show all coupons button in the Storellet wallet screen My coupons view$")
+    @When("^the user swipe to up find and click \"([^\"]*)\" restaurant show all coupons button in the Storellet wallet screen My coupons view$")
     public void clickMyCouponsViewOfRestaurantAllCouponsButton(String membershipName) {
         walletFlow.clickMyCouponsViewOfRestaurantAllCouponsButton(membershipName);
     }
 
-    @When("^the user swipe to left find and click (.*) coupons (describe|expiration) button in the Storellet wallet screen My coupons (.*) restaurant view$")
+    @When("^the user swipe to left find and click \"([^\"]*)\" coupons (describe|expiration) button in the Storellet wallet screen My coupons \"([^\"]*)\" restaurant view$")
     public void clickMyCouponsViewOfRestaurantCoupons(String couponsData, String item , String restaurantName) {
         switch (item){
             case "describe":

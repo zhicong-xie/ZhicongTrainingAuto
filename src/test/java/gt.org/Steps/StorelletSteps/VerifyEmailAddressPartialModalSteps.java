@@ -21,7 +21,7 @@ public class VerifyEmailAddressPartialModalSteps {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @Then("^the user able to see email address field displayed (.*) in the Verify email address partial modal screen$")
+    @Then("^the user able to see email address field displayed \"([^\"]*)\" in the Verify email address partial modal screen$")
     public void checkEmailField(String expected) {
         String actual = verifyEmailAddressPartialModalFlow.getEmailField();
         String reason = String.format("the email address field displayed wrong; expected : %s;actual :%s",expected,actual);

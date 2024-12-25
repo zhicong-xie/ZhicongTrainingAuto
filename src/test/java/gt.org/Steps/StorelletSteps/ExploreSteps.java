@@ -29,12 +29,12 @@ public class ExploreSteps {
         exploreFlow.clickExploreSearchBarButton();
     }
 
-    @When("^the user swipe left to click (.*) restaurant name in the Storellet explore screen new arrivals view$")
+    @When("^the user swipe left to click \"([^\"]*)\" restaurant name in the Storellet explore screen new arrivals view$")
     public void swipeLeftClickRestaurantInNewArrivalsView(String restaurantName) {
         exploreFlow.swipeLeftClickRestaurantInNewArrivalsView(restaurantName);
     }
 
-    @When("^the user swipe up to click (.*) restaurant become member button in the Storellet explore screen$")
+    @When("^the user swipe up to click \"([^\"]*)\" restaurant become member button in the Storellet explore screen$")
     public void ClickRestaurantBecomeMemberInAllRestaurantList(String restaurantName) {
         exploreFlow.clickRestaurantBecomeMemberInAllRestaurantList(restaurantName);
     }

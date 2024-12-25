@@ -253,6 +253,18 @@ public class AppiumHelpers {
         return webElement;
     }
 
+    protected boolean elementIsDisplayedWhenSwipe(String direction, WebElement webElement, Integer existenceTime, Integer attempts) {
+        for (int i = 1; i <= attempts; i++) {
+            if (!checkElement(webElement, existenceTime)) {
+                swipeFunction(direction);
+                waitForSecond(1);
+            }else {
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException {
         BufferedImage bufferedImage;
         try {

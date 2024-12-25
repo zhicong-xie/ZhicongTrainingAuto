@@ -53,12 +53,12 @@ public class LoginSteps {
   }
 
   @When(
-      "^the user select (.*) International area code in the Storellet login screen area code partial modal$")
+      "^the user select \"([^\"]*)\" International area code in the Storellet login screen area code partial modal$")
   public void selectAreaCode(String areaCode) {
     loginFlow.selectInternationalAreaCode(areaCode);
   }
 
-  @When("^the user input (.*) in the Storellet login screen (Phone number|Password) input box$")
+  @When("^the user input \"([^\"]*)\" in the Storellet login screen (Phone number|Password) input box$")
   public void inputData(String data, String item) {
     switch (item) {
       case "Phone number":
@@ -72,7 +72,7 @@ public class LoginSteps {
     }
   }
 
-    @Then("^the International area code able displayed (.*) in the Storellet login screen$")
+    @Then("^the International area code able displayed \"([^\"]*)\" in the Storellet login screen$")
     public void verifyAreaCode(String expected) {
         String actual = loginFlow.getInternationalAreaCode();
         String reason = String.format("the Area code displayed wrong; expected : %s, actual : %s",expected,actual);

@@ -62,7 +62,7 @@ public class MembershipTermsAndConditionsStep {
         Assert.assertEquals(actual, expected, reason);
     }
 
-    @When("^the user input (.*) in the Membership terms and conditions screen email address input box$")
+    @When("^the user input \"([^\"]*)\" in the Membership terms and conditions screen email address input box$")
     public void swipeToLeftClickNextButton(String emailAddress) {
         membershipTermsAndConditionsFlow.inputEmailAddress(emailAddress);
     }
