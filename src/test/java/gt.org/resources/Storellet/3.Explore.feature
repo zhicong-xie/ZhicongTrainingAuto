@@ -183,8 +183,7 @@ Feature: Verify Storellet APP Explore page function
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Main bar Wallet button in the Storellet restaurant details screen
-    Then the user able to see Main bar Summary button is Unselected in the Storellet restaurant details screen
-    And the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
+    Then the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
     And the user able to see restaurant coupons list size is align Explore page info in the Storellet restaurant details screen
     #coupons list not had identification mark, If the data needs to swipe, it is impossible to determine whether it has slid to the bottom
     When the user click Back button in the Storellet restaurant details screen

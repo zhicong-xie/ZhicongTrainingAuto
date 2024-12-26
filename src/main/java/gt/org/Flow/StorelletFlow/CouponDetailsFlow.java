@@ -16,6 +16,10 @@ public class CouponDetailsFlow extends AppiumHelpers {
         return checkElement(couponDetailsPage.couponDetailsView);
     }
 
+    public void clickCloseButton(){
+        waitForElementToClickable(couponDetailsPage.closeButton).click();
+    }
+
     public String getCouponTitle(){
         return waitForElement(couponDetailsPage.couponTitle).getText().trim();
     }

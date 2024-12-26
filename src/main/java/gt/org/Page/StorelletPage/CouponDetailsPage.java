@@ -20,6 +20,9 @@ public class CouponDetailsPage {
     @AndroidFindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_rv")
     public WebElement couponDetailsView;
 
+    @AndroidFindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_close_iv")
+    public WebElement closeButton;
+
     @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_title_tv")
     public WebElement couponTitle;
 
@@ -54,7 +57,7 @@ public class CouponDetailsPage {
     })
     public WebElement redemptionFailedPartialModalTitle;
 
-    @AndroidBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
+    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
     public WebElement redemptionFailedPartialModalConfirmButton;
 
     @AndroidFindBys({
@@ -63,7 +66,7 @@ public class CouponDetailsPage {
     })
     public WebElement redemptionSuccessPartialModalTitle;
 
-    @AndroidBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
+    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
     public WebElement redemptionSuccessPartialModalConfirmButton;
 
 }

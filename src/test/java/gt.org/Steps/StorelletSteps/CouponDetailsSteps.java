@@ -55,9 +55,12 @@ public class CouponDetailsSteps {
         Assert.assertEquals(actual.contains(expected),true, reason);
     }
 
-    @When("^the user click (Reminder|Redeem) button in the Storellet coupon details screen$")
+    @When("^the user click (Close|Reminder|Redeem) button in the Storellet coupon details screen$")
     public void clickButton(String item) {
         switch (item) {
+            case "Close":
+                couponDetailsFlow.clickCloseButton();
+                break;
             case "Reminder":
                 couponDetailsFlow.clickCouponReminderButton();
                 break;

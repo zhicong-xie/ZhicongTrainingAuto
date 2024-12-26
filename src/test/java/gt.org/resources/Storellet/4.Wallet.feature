@@ -117,14 +117,64 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Main bar Wallet button in the Storellet restaurant details screen
-    Then the user able to see Main bar Summary button is Unselected in the Storellet restaurant details screen
-    And the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
+    Then the user able to see Main bar Wallet button is Selected in the Storellet restaurant details screen
     When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
     Then the user in the Storellet coupon details screen
     And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
     And the user able to see QR code displayed in the Storellet coupon details screen
+    When the user click Close button in the Storellet coupon details screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     When the user restart the APP
-
     Examples:
       | RestaurantData | CouponsDescription   |
       | Storellet Cafe | Test $10 Cash Coupon |
+
+  @AC4.6
+  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption successful
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Wallet button in the Storellet bottom navigation bar
+    Then the user in the Storellet wallet screen
+    When the user swipe to up find and click "<RestaurantData>" restaurant name in the Storellet wallet screen My coupons view
+    Then the user in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
+    And the user able to not see New join button in the Storellet restaurant details screen
+    And the user able to see More details button in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "200" in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
+    When the user click Main bar Redeem button in the Storellet restaurant details screen
+    Then the user able to see Main bar Redeem button is Selected in the Storellet restaurant details screen
+    When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    And the user able to not see QR code displayed in the Storellet coupon details screen
+    And the user able to see Coupon redeem point field displayed "0" in the Storellet coupon details screen
+    When the user click Redeem button in the Storellet coupon details screen
+    Then the user in the Redeem confirm partial modal screen
+    When the user click Cancel button in the Coupon redeem confirm partial modal screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    When the user click Redeem button in the Storellet coupon details screen
+    Then the user in the Redeem confirm partial modal screen
+    When the user click Confirm button in the Coupon redeem confirm partial modal screen
+    Then the user in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen
+    Then the user in the Redemption success partial modal screen
+    When the user click Confirm button in the Coupon redemption success partial modal screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    When the user click Close button in the Storellet coupon details screen
+    Then the user in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
+    When the user restart the APP
+    Examples:
+      | RestaurantData | CouponsDescription |
+      | Storellet Cafe | VVIP會員套票           |

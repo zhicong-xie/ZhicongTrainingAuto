@@ -56,14 +56,14 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     }
 
     public boolean isMainBarButtonDisplayed(String buttonName) {
-        switch (buttonName.toLowerCase()) {
-            case "summary":
+        switch (buttonName) {
+            case "Summary":
                 return checkElement(restaurantDetailsPage.summaryButton,2);
-            case "wallet":
+            case "Wallet":
                 return checkElement(restaurantDetailsPage.walletButton,2);
-            case "redeem":
+            case "Redeem":
                 return checkElement(restaurantDetailsPage.redeemButton,2);
-            case "welcome gift":
+            case "Welcome gift":
                 return checkElement(restaurantDetailsPage.welcomeGiftButton,2);
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
@@ -71,17 +71,17 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     }
 
     public void clickButtonInMainBar(String buttonName) {
-        switch (buttonName.toLowerCase()) {
-            case "summary":
+        switch (buttonName) {
+            case "Summary":
                 waitForElementToClickable(restaurantDetailsPage.summaryButton).click();
                 break;
-            case "wallet":
+            case "Wallet":
                 waitForElementToClickable(restaurantDetailsPage.walletButton).click();
                 break;
-            case "redeem":
+            case "Redeem":
                 waitForElementToClickable(restaurantDetailsPage.redeemButton).click();
                 break;
-            case "welcome gift":
+            case "Welcome gift":
                 waitForElementToClickable(restaurantDetailsPage.welcomeGiftButton).click();
                 break;
             default:
@@ -90,15 +90,15 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     }
 
     public boolean getButtonStateInMainBar(String buttonName) {
-        switch (buttonName.toLowerCase()) {
-            case "summary":
-                return waitForElementToClickable(restaurantDetailsPage.summaryButton).isSelected();
-            case "wallet":
-                return waitForElementToClickable(restaurantDetailsPage.walletButton).isSelected();
-            case "redeem":
-                return waitForElementToClickable(restaurantDetailsPage.redeemButton).isSelected();
-            case "welcome gift":
-                return waitForElementToClickable(restaurantDetailsPage.welcomeGiftButton).isSelected();
+        switch (buttonName) {
+            case "Summary":
+                return waitForElement(restaurantDetailsPage.summaryButton).isSelected();
+            case "Wallet":
+                return waitForElement(restaurantDetailsPage.walletButton).isSelected();
+            case "Redeem":
+                return waitForElement(restaurantDetailsPage.redeemButton).isSelected();
+            case "Welcome gift":
+                return waitForElement(restaurantDetailsPage.welcomeGiftButton).isSelected();
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
@@ -123,6 +123,7 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
         List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
         for (WebElement webElement : couponDescriptionList) {
             if (webElement.getText().trim().contains(couponsDescription)) {
+                waitForSecond(2);
                 webElement.click();
                 break;
             }

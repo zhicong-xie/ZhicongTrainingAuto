@@ -1,7 +1,8 @@
 Feature: Verify Storellet APP Login function
 
   Scenario: the user first open Storellet APP and go to Login page
-    Given the user click Close button in the Update notification partial modal screen if exist
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    When the user click Close button in the Update notification partial modal screen if exist
     Then the user in the Storellet introduction screen
     When the user swipe to left click next button in the Storellet introduction screen
     Then the user able to see the Storellet navigation dialog fragment view
