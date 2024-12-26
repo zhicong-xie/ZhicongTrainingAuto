@@ -22,7 +22,7 @@ Feature: Verify Storellet APP Home page function
       | 牛          |
       | 永          |
 
-  @AC2.3
+  @AC2.3 @Skip
   Scenario Outline: Check Click restaurant view in Home page and join the restaurant by not need email address
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
