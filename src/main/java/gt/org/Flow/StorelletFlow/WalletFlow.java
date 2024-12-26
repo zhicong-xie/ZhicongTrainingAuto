@@ -77,7 +77,7 @@ public class WalletFlow extends AppiumHelpers {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
         while (true){
             if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe),1)){
-                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath)),1,1);
+                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath,restaurantName)),1,1);
             }else {
                 waitForElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe)).click();
                 break;
@@ -89,7 +89,7 @@ public class WalletFlow extends AppiumHelpers {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
         while (true){
             if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration),1)){
-                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath)),1,1);
+                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath,restaurantName)),1,1);
             }else {
                 waitForElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration)).click();
                 break;

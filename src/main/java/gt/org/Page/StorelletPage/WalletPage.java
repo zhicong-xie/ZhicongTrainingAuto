@@ -45,7 +45,7 @@ public class WalletPage {
 
     public String couponsSwipeViewXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_rv')]";
 
-    public String couponsDescribeXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body_tv') and contains(@text ,'%s')]]";
+    public String couponsDescribeXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body_tv') and contains(@text ,'%s')]";
 
-    public String couponsExpirationXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body2_tv') and contains(@text ,'%s')]]";
+    public String couponsExpirationXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body2_tv') and contains(@text ,'%s')]";
 }

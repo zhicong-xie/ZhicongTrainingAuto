@@ -131,7 +131,7 @@ Feature: Verify Storellet APP Wallet page function
       | Storellet Cafe | Test $10 Cash Coupon |
 
   @AC4.6
-  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption successful
+  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption successful function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -178,3 +178,72 @@ Feature: Verify Storellet APP Wallet page function
     Examples:
       | RestaurantData | CouponsDescription |
       | Storellet Cafe | VVIP會員套票           |
+
+  @AC4.7
+  Scenario Outline: Select Non-Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption failed function
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Wallet button in the Storellet bottom navigation bar
+    Then the user in the Storellet wallet screen
+    When the user swipe to up find and click "<RestaurantData>" restaurant name in the Storellet wallet screen My coupons view
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
+    And the user able to not see New join button in the Storellet restaurant details screen
+    And the user able to see More details button in the Storellet restaurant details screen
+#    And the user able to see restaurant points displayed "100" in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
+    When the user click Main bar Redeem button in the Storellet restaurant details screen
+    Then the user able to see Main bar Redeem button is Selected in the Storellet restaurant details screen
+    When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    And the user able to not see QR code displayed in the Storellet coupon details screen
+    And the user able to see Coupon redeem point field displayed "1000" in the Storellet coupon details screen
+    When the user click Redeem button in the Storellet coupon details screen
+    Then the user in the Redemption failed partial modal screen
+    When the user click Confirm button in the Coupon redemption failed partial modal screen
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    When the user click Close button in the Storellet coupon details screen
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
+    When the user restart the APP
+    Examples:
+      | RestaurantData | CouponsDescription |
+      | 貓抓烤肉           | 照燒雞腿肉一客            |
+
+  @AC4.8
+  Scenario Outline: Select Non-Storellet Cafe Coupon in the Storellet wallet screen My coupons view
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Wallet button in the Storellet bottom navigation bar
+    Then the user in the Storellet wallet screen
+    When the user swipe to left find and click "<CouponsDescription>" coupons describe button in the Storellet wallet screen My coupons "<RestaurantData>" restaurant view
+    Then the user in the Storellet coupon details screen
+    And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
+    And the user able to see QR code displayed in the Storellet coupon details screen
+    When the user click Close button in the Storellet coupon details screen
+    Then the user in the Storellet wallet screen
+    When the user restart the APP
+    Examples:
+      | RestaurantData | CouponsDescription |
+      | 爆爆鍋            | 迎新優惠：「懷念鹽酥雞」一份     |
+
+  @AC4.9
+  Scenario Outline: Select Storellet Cafe show all coupons button in the Storellet wallet screen My coupons view
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Wallet button in the Storellet bottom navigation bar
+    Then the user in the Storellet wallet screen
+    When the user swipe to up find and click "<RestaurantData>" restaurant show all coupons button in the Storellet wallet screen My coupons view
+    Then the user in the Storellet coupon details screen
+    And the user able to see QR code displayed in the Storellet coupon details screen
+    When the user click Close button in the Storellet coupon details screen
+    Then the user in the Storellet wallet screen
+    When the user restart the APP
+    Examples:
+      | RestaurantData |
+      | Storellet Cafe |
