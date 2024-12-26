@@ -1,7 +1,8 @@
-Feature: Verify Storellet APP Logout function
+@AC5
+Feature: Verify Storellet APP Profile page function
 
-  @AC5
-  Scenario: Verify Storellet APP Logout function
+  @AC5.1
+  Scenario: Verify profile page - setting screen Logout function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Profile button in the Storellet bottom navigation bar

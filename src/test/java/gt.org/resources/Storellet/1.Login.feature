@@ -1,7 +1,7 @@
 @AC1
 Feature: Verify Storellet APP Login function
 
-  Scenario: the user first open Storellet APP and go to Login page
+  Scenario: Verify the logic of click Wallet button when the app is not logged in
     Given the user click Close button in the Promotion view partial modal screen if exist
     When the user click Close button in the Update notification partial modal screen if exist
     Then the user in the Storellet introduction screen
@@ -20,7 +20,7 @@ Feature: Verify Storellet APP Login function
     Then the user in the Storellet login screen
     And the International area code able displayed "852" in the Storellet login screen
 
-  Scenario Outline: Login failed By using wrong data
+  Scenario Outline: Verify login failed By using wrong data
     Given the user in the Storellet login screen
     When the user click International area code button in the Storellet login screen
     Then the user in the Select area code partial modal
@@ -38,7 +38,7 @@ Feature: Verify Storellet APP Login function
       | 852      | 99998039    | Testing!2345 |
       | 853      | 99998039    | Testing!234  |
 
-  Scenario: Login successfully with correct data
+  Scenario: Verify login successfully with correct data
     Given the user in the Storellet login screen
     When the user click International area code button in the Storellet login screen
     Then the user in the Select area code partial modal

@@ -2,14 +2,14 @@
 Feature: Verify Storellet APP Home page function
 
   @AC2.1
-  Scenario: Check Home page top promotion image is not null and save to local folder
+  Scenario: Verify Home page top promotion image is not null and save in local
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user save the Storellet main screen big promotion image to local folder
     And the user restart the APP
 
   @AC2.2
-  Scenario Outline: Check Home page search button function
+  Scenario Outline: Verify home page search function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Search icon in the Storellet main screen
@@ -24,7 +24,7 @@ Feature: Verify Storellet APP Home page function
       | 永          |
 
   @AC2.3 @Skip
-  Scenario Outline: Check Click restaurant view in Home page and join the restaurant by not need email address
+  Scenario Outline: Verify Home page become restaurant member function - Not need email
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user select "<restaurantName>" restaurant in the Storellet main screen
@@ -68,7 +68,7 @@ Feature: Verify Storellet APP Home page function
     # Need to change non join restaurantName & not need emails
 
   @AC2.4 @Skip
-  Scenario Outline: Check Click restaurant view in Home page and join the restaurant by need email address
+  Scenario Outline: Verify Home page become restaurant member function - need email
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user select "<restaurantName>" restaurant in the Storellet main screen
@@ -123,7 +123,7 @@ Feature: Verify Storellet APP Home page function
     # Need to change non join restaurantName & need emails(Profile no such data)
 
   @AC2.5
-  Scenario Outline: Check update email and Verification sent function
+  Scenario Outline: Verify Home page Change member email function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user select "<restaurantName>" restaurant in the Storellet main screen
@@ -143,6 +143,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Verification sent partial modal screen
     And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verification sent partial modal screen
     When the user click Done button in the Verification sent partial modal screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
@@ -155,12 +156,12 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
-#      | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
-      | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
+      | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
+#      | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
     #Need to change emails address
 
   @AC2.6
-  Scenario Outline: Check Verification sent function
+  Scenario Outline: Verify Home page Member email verification function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Search icon in the Storellet main screen
@@ -174,6 +175,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Verification sent partial modal screen
     And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verification sent partial modal screen
     When the user click Done button in the Verification sent partial modal screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
@@ -189,6 +191,6 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | UpdateEmailAddress |
-#      | 富臨             | TestNG@Test.com    |
-      | 富臨             | AT@Test.com        |
+      | 富臨             | TestNG@Test.com    |
+#      | 富臨             | AT@Test.com        |
     #Need to change emails address

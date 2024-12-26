@@ -2,7 +2,7 @@
 Feature: Verify Storellet APP Wallet page function
 
   @AC4.1
-  Scenario Outline: Select need emails address Restaurant in the Storellet wallet screen my membership view function
+  Scenario Outline: Verify select wallet page my membership view - Need email restaurant
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -27,7 +27,7 @@ Feature: Verify Storellet APP Wallet page function
       | 莆田             |
 
   @AC4.2
-  Scenario Outline: Select non need emails address Restaurant in the Storellet wallet screen my membership view function
+  Scenario Outline: Verify select wallet page my membership view - Non-need email restaurant
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -50,7 +50,7 @@ Feature: Verify Storellet APP Wallet page function
       | 貓抓烤肉           |
 
   @AC4.3
-  Scenario Outline: Select need emails address Restaurant in the Storellet wallet screen my membership expand view function
+  Scenario Outline: Verify select wallet page my membership expand view - need email restaurant
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -76,7 +76,7 @@ Feature: Verify Storellet APP Wallet page function
       | 富臨             |
 
   @AC4.4
-  Scenario Outline: Select non need emails address Restaurant in the Storellet wallet screen my membership expand view function
+  Scenario Outline: Verify select wallet page my membership expand view - Non-need email restaurant
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -100,7 +100,7 @@ Feature: Verify Storellet APP Wallet page function
       | 城中泰            |
 
   @AC4.5
-  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, and select an existing coupon go to coupon details screen
+  Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant and Verify existing coupon details function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -132,7 +132,7 @@ Feature: Verify Storellet APP Wallet page function
       | Storellet Cafe | Test $10 Cash Coupon |
 
   @AC4.6
-  Scenario Outline: Select Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption successful function
+  Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant and Verify redemption successful function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -150,6 +150,7 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Main bar Redeem button in the Storellet restaurant details screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user able to see Main bar Redeem button is Selected in the Storellet restaurant details screen
     When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
     Then the user in the Storellet coupon details screen
@@ -181,7 +182,7 @@ Feature: Verify Storellet APP Wallet page function
       | Storellet Cafe | VVIP會員套票           |
 
   @AC4.7
-  Scenario Outline: Select Non-Storellet Cafe Restaurant name in the Storellet wallet screen My coupons view, Redemption failed function
+  Scenario Outline: Verify select wallet page my coupons view's Non-Storellet Cafe restaurant and Verify redemption failed function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -197,6 +198,7 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user click Main bar Redeem button in the Storellet restaurant details screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user able to see Main bar Redeem button is Selected in the Storellet restaurant details screen
     When the user select "<CouponsDescription>" Coupons description in the Storellet restaurant details screen
     Then the user in the Storellet coupon details screen
@@ -217,7 +219,7 @@ Feature: Verify Storellet APP Wallet page function
       | 貓抓烤肉           | 照燒雞腿肉一客            |
 
   @AC4.8
-  Scenario Outline: Select Non-Storellet Cafe Coupon in the Storellet wallet screen My coupons view
+  Scenario Outline: Verify select wallet page my coupons view's Non-Storellet Cafe restaurant's coupons view function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -234,7 +236,7 @@ Feature: Verify Storellet APP Wallet page function
       | 爆爆鍋            | 迎新優惠：「懷念鹽酥雞」一份     |
 
   @AC4.9
-  Scenario Outline: Select Storellet Cafe show all coupons button in the Storellet wallet screen My coupons view
+  Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant's show all coupons button function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar

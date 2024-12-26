@@ -32,4 +32,9 @@ public class BaseSteps {
   public void dismissKeyboard() {
     driver.hideKeyboard();
   }
+
+  @When("^the user click navigate back button$")
+  public void navigateBack() {
+    driver.navigate().back();
+  }
 }

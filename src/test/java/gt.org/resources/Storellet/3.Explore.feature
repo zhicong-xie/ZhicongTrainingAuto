@@ -2,7 +2,7 @@
 Feature: Verify Storellet APP Explore page function
 
   @AC3.1
-  Scenario Outline: Check Explore page search function
+  Scenario Outline: Verify explore page search function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -13,7 +13,7 @@ Feature: Verify Storellet APP Explore page function
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
     When the user click Search bar clear button in the Storellet main search screen
     Then the user in the Storellet main search screen
-    When the user dismiss keyboard
+    When the user click navigate back button
     Then the user in the Storellet explore screen
     When the user restart the APP
     Examples:
@@ -22,7 +22,7 @@ Feature: Verify Storellet APP Explore page function
       | 子          |
 
   @AC3.2
-  Scenario Outline: Check Explore page select search result function is Non-VIP
+  Scenario Outline: Verify select explore page search result - Non-VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -56,7 +56,7 @@ Feature: Verify Storellet APP Explore page function
       | 哆啦         |
 
   @AC3.3
-  Scenario Outline: Check Explore page select search result function is VIP
+  Scenario Outline: Verify select explore page search result - VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -84,7 +84,7 @@ Feature: Verify Storellet APP Explore page function
       | Rico       |
 
   @AC3.4
-  Scenario Outline: Check Explore page swipe left find non-VIP restaurant in Storellet explore screen new arrivals view
+  Scenario Outline: Verify select explore page new arrivals view - Non-VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -113,7 +113,7 @@ Feature: Verify Storellet APP Explore page function
       | 日之超市           |
 
   @AC3.5
-  Scenario Outline: Check Explore page swipe left find VIP restaurant in Storellet explore screen new arrivals view
+  Scenario Outline: Verify select explore page new arrivals view - VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -138,7 +138,7 @@ Feature: Verify Storellet APP Explore page function
       | 莆田             |
 
   @AC3.6
-  Scenario Outline: Check Explore page swipe up find non-VIP restaurant in Storellet explore screen all restaurant list view
+  Scenario Outline: Verify select explore page all restaurant list view - non-VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
@@ -167,7 +167,7 @@ Feature: Verify Storellet APP Explore page function
       | 牛牛日式           |
 
   @AC3.7
-  Scenario Outline: Check Explore page swipe up find VIP restaurant in Storellet explore screen all restaurant list view
+  Scenario Outline: Verify select explore page all restaurant list view - VIP restaurant name
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
