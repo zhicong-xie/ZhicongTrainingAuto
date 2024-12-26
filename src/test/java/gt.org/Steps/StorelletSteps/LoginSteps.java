@@ -5,6 +5,8 @@ import io.cucumber.java.en.When;
 import gt.org.Flow.StorelletFlow.LoginFlow;
 import org.testng.Assert;
 
+import java.util.Map;
+
 public class LoginSteps {
 
     private LoginFlow loginFlow;
@@ -89,5 +91,13 @@ public class LoginSteps {
     @When("^the user click Confirm button in the Incorrect information partial modal$")
     public void clickIncorrectInformationConfirmButton() {
         loginFlow.clickIncorrectInformationConfirmButton();
+    }
+
+    @When("^the user input information to login Storellet$")
+    public void inputInformationToLogin(Map<String, String> data) {
+        String phoneNum = data.get("phone num");
+        String password = data.get("password");
+        loginFlow.inputPhoneNumber(phoneNum);
+        loginFlow.inputPassword(password);
     }
 }

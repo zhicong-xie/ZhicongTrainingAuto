@@ -1,3 +1,4 @@
+@AC3
 Feature: Verify Storellet APP Explore page function
 
   @AC3.1

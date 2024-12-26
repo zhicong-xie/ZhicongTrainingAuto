@@ -1,3 +1,4 @@
+@AC4
 Feature: Verify Storellet APP Wallet page function
 
   @AC4.1

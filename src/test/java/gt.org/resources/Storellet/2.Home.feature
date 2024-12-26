@@ -1,3 +1,4 @@
+@AC2
 Feature: Verify Storellet APP Home page function
 
   @AC2.1
