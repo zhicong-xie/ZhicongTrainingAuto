@@ -31,12 +31,12 @@ public class StorelletMainSearchFlow extends AppiumHelpers {
         List<WebElement> bodyElementList = waitForElementsById(storelletMainSearchPage.searchResultBodyListId);
 
         if (headerElementList.size() != bodyElementList.size()) {
-            System.out.println("The lengths of the header list and body list are inconsistent");
+            System.out.println("The lengths of the header list and body list are inconsistent\n");
         } else {
             for (int i = 0; i < headerElementList.size(); i++) {
                 searchResult.add(headerElementList.get(i).getText().trim() + bodyElementList.get(i).getText().trim());
             }
-            System.out.println("\nAll search result data : " + searchResult + "\n");
+            System.out.println("All search result data : " + searchResult + "\n");
         }
 
         return searchResult;

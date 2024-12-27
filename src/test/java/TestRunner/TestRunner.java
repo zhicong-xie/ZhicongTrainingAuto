@@ -8,7 +8,7 @@ import org.testng.annotations.AfterSuite;
 @CucumberOptions(
         features = "src/test/java/gt.org/resources/Storellet",
         glue = {"gt.org.Steps"},
-//        tags = "@AC2.1 and not @Skip",
+//        tags = "@AC1 and not @Skip",
         tags = "not @Skip",
         plugin = {
                 "pretty",

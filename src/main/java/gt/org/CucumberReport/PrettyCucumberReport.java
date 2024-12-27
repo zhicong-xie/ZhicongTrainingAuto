@@ -12,7 +12,7 @@ import java.util.List;
 public class PrettyCucumberReport {
 
     public void generateReports() {
-        System.out.println("The cucumber report is being generated. . .");
+        System.out.println("The cucumber report is being generated. . .\n");
         File reportOutputDirectory = new File("target/cucumberReport");
         List<String> jsonFiles = new ArrayList();
         jsonFiles.add("target/cucumber-report/cucumber.json");

@@ -115,12 +115,12 @@ public class SearchResultSteps {
         boolean actual = true;
         String reason = "";
         LinkedHashMap<String, String> result = searchResultFlow.getSearchResultData();
-        System.out.println("actual result : " + result);
+        System.out.println("actual result : " + result + "\n");
         for (String key : result.keySet()) {
             if (!(key.toLowerCase().contains(searchData.toLowerCase())
                     || result.get(key).toLowerCase().contains(searchData.toLowerCase()))) {
-                System.out.println("incorrect describe : " + key);
-                System.out.println("incorrect details : " + result.get(key));
+                System.out.println("incorrect describe : " + key + "\n");
+                System.out.println("incorrect details : " + result.get(key) + "\n");
                 actual = false;
                 reason =
                         String.format(

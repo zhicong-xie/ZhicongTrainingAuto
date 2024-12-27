@@ -3,10 +3,18 @@ package gt.org.utils;
 import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
 
+import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 
 public class DriverManager {
 
@@ -58,6 +66,42 @@ public class DriverManager {
         if (driver != null) {
             driver.quit();
             driver = null;
+        }
+    }
+
+    public void startRecording(String scenarioName) {
+        try {
+            System.out.println("Start recording scenario: " + scenarioName + "\n");
+            AndroidStartScreenRecordingOptions options = AndroidStartScreenRecordingOptions.startScreenRecordingOptions()
+                    .withVideoSize("1280x720")
+                    .withBitRate(2000000)
+                    .withTimeLimit(Duration.ofMinutes(3));
+            driver.startRecordingScreen(options);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopScreenRecording(String scenarioName) {
+        try {
+            String base64Video = driver.stopRecordingScreen();
+            byte[] decodedVideo = Base64.getDecoder().decode(base64Video);
+
+            File parentDir = new File("target");
+            File recordingDir = new File(parentDir, "recording");
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = now.format(formatter);
+
+            if (!recordingDir.exists()) {
+                recordingDir.mkdir();
+            }
+
+            Files.write(Paths.get(String.format("target/recording/%s_%s.mov", scenarioName, formattedDate)), decodedVideo);
+            System.out.println(scenarioName + " scenario Screen recording stopped.\n");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

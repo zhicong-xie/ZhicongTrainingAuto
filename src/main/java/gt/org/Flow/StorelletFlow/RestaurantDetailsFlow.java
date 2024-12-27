@@ -16,6 +16,7 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     }
 
     public boolean isRestaurantNameDisplayed() {
+        waitForSecond(5);
         return checkElement(restaurantDetailsPage.restaurantName);
     }
 
@@ -115,7 +116,7 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
                 restaurantCouponsInfo.add(couponDescriptionList.get(i).getText().trim() + "__" + tipsList.get(i).getText().trim());
             }
         }
-        System.out.println("All Coupons info : " + restaurantCouponsInfo);
+        System.out.println("All Coupons info : " + restaurantCouponsInfo + "\n");
         return restaurantCouponsInfo;
     }
 

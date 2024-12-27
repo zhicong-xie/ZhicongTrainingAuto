@@ -22,6 +22,7 @@ public class ExploreFlow extends AppiumHelpers {
     }
 
     public boolean isExploreRestaurantViewDisplayed() {
+        waitForSecond(2);
         return checkElement(explorePage.restaurantView);
     }
 
@@ -50,7 +51,7 @@ public class ExploreFlow extends AppiumHelpers {
                 WebElement restaurantCoupons = driver.findElement(By.xpath(String.format(explorePage.restaurantCouponsXpath, restaurantName)));
                 restaurantInfo.put("points", restaurantPoint.getText().trim());
                 restaurantInfo.put("coupons", restaurantCoupons.getText().trim());
-                System.out.println(String.format("%s info : %s", restaurantName, restaurantInfo));
+                System.out.println(String.format("%s info : %s", restaurantName, restaurantInfo) + "\n");
                 restaurantPoint.click();
                 return restaurantInfo;
             }

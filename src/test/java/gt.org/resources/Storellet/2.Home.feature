@@ -156,7 +156,7 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
-#      | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
+#      | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
       | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
     #Need to change emails address
 
