@@ -20,7 +20,7 @@ public class WalletFlow extends AppiumHelpers {
     }
 
     public boolean isWalletIdentificationDisplayed() {
-        waitForSecond(5);
+        waitForSecond(8);
         return checkElement(walletPage.walletIdentification, 60);
     }
 
