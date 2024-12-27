@@ -1,6 +1,5 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.StorelletIntroductionFlow;
 import gt.org.Flow.StorelletFlow.StorelletMainSearchFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,7 +30,7 @@ public class StorelletMainSearchSteps {
     public void isResultContainSearchData(String data) {
         boolean expected = true;
         boolean actual = storelletMainSearchFlow.isResultContainSearchData(data);
-        String reason = String.format("the Search result is not contain \"([^\"]*)\" data in the Storellet main search screen",data);
+        String reason = String.format("the Search result is not contain \"([^\"]*)\" data in the Storellet main search screen", data);
         Assert.assertEquals(actual, expected, reason);
     }
 

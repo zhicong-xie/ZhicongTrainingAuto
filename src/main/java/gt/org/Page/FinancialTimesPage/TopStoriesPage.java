@@ -8,15 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TopStoriesPage {
 
-  private DriverManager driverManager;
-  private AndroidDriver driver;
+    private DriverManager driverManager;
+    private AndroidDriver driver;
 
-  public TopStoriesPage() {
-    driverManager = DriverManager.getInstance();
-    driver = driverManager.getDriver();
-    PageFactory.initElements(driver, this);
-  }
+    public TopStoriesPage() {
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
 
-  @FindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Front page\"]")
-  public WebElement menuNavigationButton;
+    @FindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Front page\"]")
+    public WebElement menuNavigationButton;
 }

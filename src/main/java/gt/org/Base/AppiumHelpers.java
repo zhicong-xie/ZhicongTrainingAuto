@@ -4,17 +4,17 @@ import gt.org.utils.DriverManager;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.ByteArrayInputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
@@ -258,7 +258,7 @@ public class AppiumHelpers {
             if (!checkElement(webElement, existenceTime)) {
                 swipeFunction(direction);
                 waitForSecond(1);
-            }else {
+            } else {
                 return true;
             }
         }
@@ -267,25 +267,14 @@ public class AppiumHelpers {
 
     protected BufferedImage getElementScreenshot(WebElement webElement) throws IOException {
         BufferedImage bufferedImage;
-        try {
-            File elementScreenshot = webElement.getScreenshotAs(OutputType.FILE);
-            bufferedImage = ImageIO.read(elementScreenshot);
-            return bufferedImage;
-        } catch (IllegalArgumentException e) {
-            File fullScreenshot = ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.FILE);
-            BufferedImage fullImage = ImageIO.read(fullScreenshot);
-
-            Point point = webElement.getLocation();
-            Dimension size = webElement.getSize();
-
-            bufferedImage = fullImage.getSubimage(
-                    point.getX(), point.getY(),
-                    size.getWidth(), size.getHeight());
-            return bufferedImage;
-        }
+        String base64 = webElement.getScreenshotAs(OutputType.BASE64);
+        base64 = base64.replaceAll("[\n\r]", "");
+        byte[] elementScreenshot = Base64.getDecoder().decode(base64);
+        bufferedImage = ImageIO.read(new ByteArrayInputStream(elementScreenshot));
+        return bufferedImage;
     }
 
-    protected boolean isImageViewNotNull(BufferedImage bufferedImage) throws IOException {
+    protected boolean isImageViewNotNull(BufferedImage bufferedImage) {
         for (int x = 0; x < bufferedImage.getWidth(); x++) {
             for (int y = 0; y < bufferedImage.getHeight(); y++) {
                 int rgb = bufferedImage.getRGB(x, y);
@@ -301,10 +290,13 @@ public class AppiumHelpers {
     protected void saveElementScreenshot(BufferedImage bufferedImage, String imageName) throws IOException {
         File parentDir = new File("target");
         File screenshotDir = new File(parentDir, "screenshot");
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = now.format(formatter);
         if (!screenshotDir.exists()) {
             screenshotDir.mkdir();
         }
-        File outputFile = new File(String.format("target/screenshot/%s.png", imageName + System.currentTimeMillis()));
+        File outputFile = new File(String.format("target/screenshot/%s.png", imageName + formattedDate));
         ImageIO.write(bufferedImage, "png", outputFile);
     }
 
@@ -361,21 +353,21 @@ public class AppiumHelpers {
                 break;
             case "down":
                 startX = x + (width / 2);
-                startY = y + (height  / 5);
+                startY = y + (height / 5);
                 endX = x + (width / 2);
                 endY = y + (height * 4 / 5);
                 break;
             case "left":
-                startX = x + (width* 5 / 6);
-                startY = y +  (height/ 2);
+                startX = x + (width * 5 / 6);
+                startY = y + (height / 2);
                 endX = x + (width / 6);
-                endY = y +  (height/ 2);
+                endY = y + (height / 2);
                 break;
             case "right":
-                startX =  x + (width / 6);
-                startY = y +  (height/ 2);
-                endX =  x + (width* 5 / 6);
-                endY = y +  (height/ 2);
+                startX = x + (width / 6);
+                startY = y + (height / 2);
+                endX = x + (width * 5 / 6);
+                endY = y + (height / 2);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
@@ -391,7 +383,7 @@ public class AppiumHelpers {
     }
 
     protected byte[] takeFailScreenshot() {
-        return ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.BYTES);
+        return androidDriver.getScreenshotAs(OutputType.BYTES);
     }
 
     protected void swipeCoordinateFunction(Integer startX, Integer startY, Integer endX, Integer endY) {

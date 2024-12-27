@@ -11,12 +11,12 @@ public class StorelletIntroductionFlow extends AppiumHelpers {
         storelletIntroductionPage = new StorelletIntroductionPage();
     }
 
-    public boolean isStorelletIntroductionFootBarDisplayed(){
-       return checkElement(storelletIntroductionPage.introductionFootBar);
+    public boolean isStorelletIntroductionFootBarDisplayed() {
+        return checkElement(storelletIntroductionPage.introductionFootBar);
     }
 
-    public void swipeToLeftClickNextButton(){
-        swipeToFindElement("left",storelletIntroductionPage.nextButton,1,4).click();
+    public void swipeToLeftClickNextButton() {
+        swipeToFindElement("left", storelletIntroductionPage.nextButton, 1, 4).click();
     }
 
 }

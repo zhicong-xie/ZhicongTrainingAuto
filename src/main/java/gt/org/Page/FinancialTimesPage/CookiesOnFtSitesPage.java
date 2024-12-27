@@ -8,21 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CookiesOnFtSitesPage {
 
-  private DriverManager driverManager;
-  private AndroidDriver driver;
+    private DriverManager driverManager;
+    private AndroidDriver driver;
 
-  public CookiesOnFtSitesPage() {
-    driverManager = DriverManager.getInstance();
-    driver = driverManager.getDriver();
-    PageFactory.initElements(driver, this);
-  }
+    public CookiesOnFtSitesPage() {
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
 
-  @FindBy(xpath = "//*[@text = 'Cookies on FT Sites']")
-  public WebElement currentPageTitle;
+    @FindBy(xpath = "//*[@text = 'Cookies on FT Sites']")
+    public WebElement currentPageTitle;
 
-  @FindBy(xpath = "//*[@text = 'Manage Cookies']")
-  public WebElement manageCookiesButton;
+    @FindBy(xpath = "//*[@text = 'Manage Cookies']")
+    public WebElement manageCookiesButton;
 
-  @FindBy(xpath = "//*[@text = 'Accept Cookies']")
-  public WebElement acceptCookiesButton;
+    @FindBy(xpath = "//*[@text = 'Accept Cookies']")
+    public WebElement acceptCookiesButton;
 }

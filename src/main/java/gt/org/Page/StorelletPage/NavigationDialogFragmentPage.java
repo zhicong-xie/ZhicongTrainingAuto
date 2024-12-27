@@ -11,7 +11,7 @@ public class NavigationDialogFragmentPage {
     private DriverManager driverManager;
     private AndroidDriver driver;
 
-    public NavigationDialogFragmentPage(){
+    public NavigationDialogFragmentPage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);
@@ -20,14 +20,14 @@ public class NavigationDialogFragmentPage {
     @FindBy(id = "view_navigation_tutor_container")
     public WebElement navigationDialogFragmentView;
 
-    @FindBy(id ="view_navigation_tutor_explore_bubble")//view_navigation_tutor_explore_icon
+    @FindBy(id = "view_navigation_tutor_explore_bubble")//view_navigation_tutor_explore_icon
     public WebElement navigationDialogFragmentExploreBubble;
 
     @FindBy(id = "view_navigation_tutor_membership_bubble")
     public WebElement navigationDialogFragmentMembershipBubble;
 
     @FindBy(id = "view_navigation_tutor_wallet_bubble")
-    public WebElement  navigationDialogFragmentWalletBubble;
+    public WebElement navigationDialogFragmentWalletBubble;
 
     @FindBy(id = "view_navigation_tutor_me_bubble")
     public WebElement navigationDialogFragmentProfileBubble;
@@ -35,6 +35,6 @@ public class NavigationDialogFragmentPage {
     @FindBy(id = "view_navigation_tutor_scanner_bubble")
     public WebElement navigationDialogFragmentScannerBubble;
 
-    @FindBy(id =  "view_navigation_tutor_notice_bubble")
+    @FindBy(id = "view_navigation_tutor_notice_bubble")
     public WebElement navigationDialogFragmentNoticeBubble;
 }

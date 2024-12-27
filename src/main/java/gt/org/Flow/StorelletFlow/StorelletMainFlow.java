@@ -1,7 +1,6 @@
 package gt.org.Flow.StorelletFlow;
 
 import gt.org.Base.AppiumHelpers;
-import gt.org.Page.StorelletPage.NavigationDialogFragmentPage;
 import gt.org.Page.StorelletPage.StorelletMainPage;
 import gt.org.utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
@@ -9,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,13 +47,15 @@ public class StorelletMainFlow extends AppiumHelpers {
         List<BufferedImage> screenshotBufferedImage = new ArrayList<>();
         Rectangle rect = waitForElement(storelletMainPage.bigPromotionView).getRect();
         int swipePixel = 100;
+        int num = 1;
         while (true) {
             int elementNum = 0;
             for (int i = 0; i < imageViewElements.size(); i++) {
                 BufferedImage bufferedImage = getElementScreenshot(imageViewElements.get(i));
                 if (imageViewElements.get(i).getRect().getWidth() == firstImageWidth && isImageViewNotNull(bufferedImage) && !compareImages(bufferedImage, screenshotBufferedImage)) {
                     screenshotBufferedImage.add(bufferedImage);
-                    saveElementScreenshot(bufferedImage, "Big Promotion Image");
+                    saveElementScreenshot(bufferedImage, "Big Promotion Image_" + num + "_");
+                    num++;
                     swipePixel = imageViewElements.get(i).getRect().getX() + imageViewElements.get(i).getRect().getWidth();
                 } else {
                     elementNum++;
@@ -72,7 +72,7 @@ public class StorelletMainFlow extends AppiumHelpers {
         }
     }
 
-    public void selectrestaurant(String restaurantInfo) {
+    public void selectRestaurant(String restaurantInfo) {
         while (true) {
             if (!checkElementByText(restaurantInfo, 2)) {
                 swipeFunction("up");

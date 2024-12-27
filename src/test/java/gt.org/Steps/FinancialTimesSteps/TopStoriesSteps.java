@@ -7,27 +7,27 @@ import org.testng.Assert;
 
 public class TopStoriesSteps {
 
-  private TopStoriesFlow topStoriesFlow;
+    private TopStoriesFlow topStoriesFlow;
 
-  public TopStoriesSteps() {
-    topStoriesFlow = new TopStoriesFlow();
-  }
+    public TopStoriesSteps() {
+        topStoriesFlow = new TopStoriesFlow();
+    }
 
-  @Then("^the user in the FT Top Stories screen$")
-  public void inCookiesFtSites() {
-    boolean expected = true;
-    boolean actual = topStoriesFlow.isTopStoriesScreenDisplayed();
-    String reason = "the FT Top Stories screen is not displayed";
-    Assert.assertEquals(actual,expected,reason);
-  }
+    @Then("^the user in the FT Top Stories screen$")
+    public void inCookiesFtSites() {
+        boolean expected = true;
+        boolean actual = topStoriesFlow.isTopStoriesScreenDisplayed();
+        String reason = "the FT Top Stories screen is not displayed";
+        Assert.assertEquals(actual, expected, reason);
+    }
 
-  @When("^the user select (.*) stories in the FT Top Stories screen$")
-  public void selectStories(String storiesName) throws Exception {
-    topStoriesFlow.selectStories(storiesName);
-  }
+    @When("^the user select (.*) stories in the FT Top Stories screen$")
+    public void selectStories(String storiesName) throws Exception {
+        topStoriesFlow.selectStories(storiesName);
+    }
 
-  @When("^the user click Menu navigation button in the FT Top Stories screen$")
-  public void selectStories() {
-    topStoriesFlow.clickMenuNavigationButton();
-  }
+    @When("^the user click Menu navigation button in the FT Top Stories screen$")
+    public void selectStories() {
+        topStoriesFlow.clickMenuNavigationButton();
+    }
 }

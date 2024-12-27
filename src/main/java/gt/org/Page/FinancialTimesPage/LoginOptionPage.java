@@ -8,24 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginOptionPage {
 
-  private DriverManager driverManager;
-  private AndroidDriver driver;
+    private DriverManager driverManager;
+    private AndroidDriver driver;
 
-  public LoginOptionPage() {
-    driverManager = DriverManager.getInstance();
-    driver = driverManager.getDriver();
-    PageFactory.initElements(driver, this);
-  }
+    public LoginOptionPage() {
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
 
-  @FindBy(xpath = "//*[@text = 'Not now']/..")
-  public WebElement loginOptionView;
+    @FindBy(xpath = "//*[@text = 'Not now']/..")
+    public WebElement loginOptionView;
 
-  @FindBy(xpath = "//*[@text = 'Subscribe today']")
-  public WebElement subscribeTodayButton;
+    @FindBy(xpath = "//*[@text = 'Subscribe today']")
+    public WebElement subscribeTodayButton;
 
-  @FindBy(xpath = "//*[@text = 'Sign in']")
-  public WebElement signInButton;
+    @FindBy(xpath = "//*[@text = 'Sign in']")
+    public WebElement signInButton;
 
-  @FindBy(xpath = "//*[@text = 'Not now']")
-  public WebElement notNowButton;
+    @FindBy(xpath = "//*[@text = 'Not now']")
+    public WebElement notNowButton;
 }

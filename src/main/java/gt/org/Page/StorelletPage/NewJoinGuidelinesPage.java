@@ -11,7 +11,7 @@ public class NewJoinGuidelinesPage {
     private DriverManager driverManager;
     private AndroidDriver driver;
 
-    public NewJoinGuidelinesPage(){
+    public NewJoinGuidelinesPage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);

@@ -41,7 +41,7 @@ public class WalletPage {
     //优惠券
     public String myCouponsViewOfRestaurantNameXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]";
 
-    public String allCouponsButtonXpath  = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_all_tv')]";
+    public String allCouponsButtonXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_all_tv')]";
 
     public String couponsSwipeViewXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/../*[contains(@resource-id, 'item_brand_coupon_rv_scroll_rv')]";
 

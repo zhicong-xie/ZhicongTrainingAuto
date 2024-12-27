@@ -11,15 +11,15 @@ public class VerificationSentPartialModalFlow extends AppiumHelpers {
         verificationSentPartialModalPage = new VerificationSentPartialModalPage();
     }
 
-    public boolean isVerificationSentPartialModalTitleDisplayed(){
+    public boolean isVerificationSentPartialModalTitleDisplayed() {
         return checkElement(verificationSentPartialModalPage.verificationSentPartialModalTitle);
     }
 
-    public String getVerificationSentPartialModalEmailAddressField(){
+    public String getVerificationSentPartialModalEmailAddressField() {
         return waitForElement(verificationSentPartialModalPage.verificationSentPartialModalEmailAddressField).getText().trim();
     }
 
-    public void clickVerificationSentPartialModalDoneButton(){
+    public void clickVerificationSentPartialModalDoneButton() {
         waitForElementToClickable(verificationSentPartialModalPage.verificationSentPartialModalDoneButton).click();
     }
 }

@@ -94,7 +94,7 @@ public class RestaurantDetailsSteps {
     }
 
     @Then("^the user able to (see|not see) Main bar (Summary|Wallet|Redeem|Welcome gift) button is displayed in the Storellet restaurant details screen$")
-    public void checkMainButtonDisplayed(String item,String buttonName) {
+    public void checkMainButtonDisplayed(String item, String buttonName) {
         boolean expected;
         boolean actual = restaurantDetailsFlow.isMainBarButtonDisplayed(buttonName);
         String reason;
@@ -151,15 +151,15 @@ public class RestaurantDetailsSteps {
         String expected = restaurantInfo.get("points");
         String actual = restaurantDetailsFlow.getRestaurantPoints();
         String reason = String.format("the restaurant points displayed wrong; expected : %s; actual: %s", expected, actual);
-        Assert.assertEquals(actual,expected, reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @Then("^the user able to see restaurant coupons list size is align Explore page info in the Storellet restaurant details screen$")
     public void checkCouponsSizeAlign() {
         String expected = restaurantInfo.get("coupons");
-        String actual = restaurantDetailsFlow.getRestaurantCouponsListInfo().size()+"";
+        String actual = restaurantDetailsFlow.getRestaurantCouponsListInfo().size() + "";
         String reason = String.format("the restaurant coupons list size displayed wrong; expected : %s; actual: %s", expected, actual);
-        Assert.assertEquals(actual,expected, reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user select \"([^\"]*)\" Coupons description in the Storellet restaurant details screen$")

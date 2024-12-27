@@ -1,7 +1,6 @@
 package gt.org.Steps.Hook;
 
 import gt.org.Base.AppiumHelpers;
-import gt.org.CucumberReport.PrettyCucumberReport;
 import gt.org.utils.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
@@ -12,7 +11,7 @@ public class Hooks extends AppiumHelpers {
     private String currentStepName;
     private static DriverManager driverManager;
 
-    public Hooks(){
+    public Hooks() {
         driverManager = DriverManager.getInstance();
     }
 

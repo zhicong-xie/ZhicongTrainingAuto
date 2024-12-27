@@ -21,77 +21,77 @@ public class WalletFlow extends AppiumHelpers {
 
     public boolean isWalletIdentificationDisplayed() {
         waitForSecond(5);
-        return checkElement(walletPage.walletIdentification,60);
+        return checkElement(walletPage.walletIdentification, 60);
     }
 
-    public void clickRedemptionCenterButton(){
+    public void clickRedemptionCenterButton() {
         waitForElementToClickable(walletPage.redemptionCenterButton).click();
     }
 
-    public void clickShowAllRestaurantButton(){
+    public void clickShowAllRestaurantButton() {
         waitForElementToClickable(walletPage.showAllRestaurantButton).click();
     }
 
-    public void swipeLeftFindMembershipRestaurantAndClick(String restaurantName){
-        while (true){
-          if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath,restaurantName),1)){
-              swipeElementFunction("left",walletPage.membershipRestaurantSwipeView,1,1);
-          }else {
-              driver.findElement(By.xpath(String.format(walletPage.membershipRestaurantNameXpath,restaurantName))).click();
-              break;
-          }
-        }
-    }
-
-    public void swipeUpFindMembershipRestaurantAndClick(String restaurantName){
-        while (true){
-            if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath,restaurantName),1)){
-                swipeFunction("up");
-            }else {
-                driver.findElement(By.xpath(String.format(walletPage.membershipRestaurantNameXpath,restaurantName))).click();
+    public void swipeLeftFindMembershipRestaurantAndClick(String restaurantName) {
+        while (true) {
+            if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName), 1)) {
+                swipeElementFunction("left", walletPage.membershipRestaurantSwipeView, 1, 1);
+            } else {
+                driver.findElement(By.xpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName))).click();
                 break;
             }
         }
     }
 
-    public WebElement swipeUpToFindMyCouponsViewOfRestaurant(String restaurantName){
-        while (true){
-            if (!checkElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath,restaurantName),1)){
+    public void swipeUpFindMembershipRestaurantAndClick(String restaurantName) {
+        while (true) {
+            if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName), 1)) {
                 swipeFunction("up");
-            }else {
-                return waitForElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath,restaurantName));
+            } else {
+                driver.findElement(By.xpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName))).click();
+                break;
             }
         }
     }
 
-    public void clickMyCouponsViewOfRestaurant(String restaurantName){
+    public WebElement swipeUpToFindMyCouponsViewOfRestaurant(String restaurantName) {
+        while (true) {
+            if (!checkElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName), 1)) {
+                swipeFunction("up");
+            } else {
+                return waitForElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName));
+            }
+        }
+    }
+
+    public void clickMyCouponsViewOfRestaurant(String restaurantName) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName).click();
     }
 
-    public void clickMyCouponsViewOfRestaurantAllCouponsButton(String restaurantName){
+    public void clickMyCouponsViewOfRestaurantAllCouponsButton(String restaurantName) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
-        waitForElementByXpath(String.format(walletPage.allCouponsButtonXpath,restaurantName)).click();
+        waitForElementByXpath(String.format(walletPage.allCouponsButtonXpath, restaurantName)).click();
     }
 
-    public void clickMyCouponsViewOfRestaurantCouponsDescribe(String restaurantName,String couponsDescribe){
+    public void clickMyCouponsViewOfRestaurantCouponsDescribe(String restaurantName, String couponsDescribe) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
-        while (true){
-            if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe),1)){
-                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath,restaurantName)),1,1);
-            }else {
-                waitForElementByXpath(String.format(walletPage.couponsDescribeXpath,restaurantName,couponsDescribe)).click();
+        while (true) {
+            if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe), 1)) {
+                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+            } else {
+                waitForElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe)).click();
                 break;
             }
         }
     }
 
-    public void clickMyCouponsViewOfRestaurantCouponsExpiration(String restaurantName,String couponsExpiration){
+    public void clickMyCouponsViewOfRestaurantCouponsExpiration(String restaurantName, String couponsExpiration) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
-        while (true){
-            if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration),1)){
-                swipeElementFunction("left",waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath,restaurantName)),1,1);
-            }else {
-                waitForElementByXpath(String.format(walletPage.couponsExpirationXpath,restaurantName,couponsExpiration)).click();
+        while (true) {
+            if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration), 1)) {
+                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+            } else {
+                waitForElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration)).click();
                 break;
             }
         }

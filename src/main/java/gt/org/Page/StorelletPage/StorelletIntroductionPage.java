@@ -11,7 +11,7 @@ public class StorelletIntroductionPage {
     private DriverManager driverManager;
     private AndroidDriver driver;
 
-    public StorelletIntroductionPage(){
+    public StorelletIntroductionPage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);

@@ -7,18 +7,18 @@ import org.testng.Assert;
 
 public class StorelletIntroductionSteps {
 
-  private StorelletIntroductionFlow storelletIntroductionFlow;
+    private StorelletIntroductionFlow storelletIntroductionFlow;
 
-  public StorelletIntroductionSteps() {
-    storelletIntroductionFlow = new StorelletIntroductionFlow();
-  }
+    public StorelletIntroductionSteps() {
+        storelletIntroductionFlow = new StorelletIntroductionFlow();
+    }
 
     @Then("^the user in the Storellet introduction screen$")
     public void isStorelletIntroductionFootBarDisplayed() {
         boolean expected = true;
         boolean actual = storelletIntroductionFlow.isStorelletIntroductionFootBarDisplayed();
         String reason = "the Storellet introduction screen is not displayed";
-        Assert.assertEquals(actual,expected,reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user swipe to left click next button in the Storellet introduction screen$")

@@ -5,29 +5,29 @@ import gt.org.Page.FinancialTimesPage.StoriesDetailsPage;
 
 public class StoriesDetailsFlow extends AppiumHelpers {
 
-  private StoriesDetailsPage storiesDetailsPage;
+    private StoriesDetailsPage storiesDetailsPage;
 
-  public StoriesDetailsFlow() {
-    storiesDetailsPage = new StoriesDetailsPage();
-  }
+    public StoriesDetailsFlow() {
+        storiesDetailsPage = new StoriesDetailsPage();
+    }
 
-  public boolean isStoriesDetailsScreenDisplayed() {
-    return checkElement(storiesDetailsPage.storiesDetailsTitle, 40);
-  }
+    public boolean isStoriesDetailsScreenDisplayed() {
+        return checkElement(storiesDetailsPage.storiesDetailsTitle, 40);
+    }
 
-  public void clickBackButton() {
-    waitForElementToClickable(storiesDetailsPage.backButton).click();
-  }
+    public void clickBackButton() {
+        waitForElementToClickable(storiesDetailsPage.backButton).click();
+    }
 
-  public void clickCollectionButton() {
-    waitForElementToClickable(storiesDetailsPage.collectionButton).click();
-  }
+    public void clickCollectionButton() {
+        waitForElementToClickable(storiesDetailsPage.collectionButton).click();
+    }
 
-  public void clickShareButton() {
-    waitForElementToClickable(storiesDetailsPage.shareButton).click();
-  }
+    public void clickShareButton() {
+        waitForElementToClickable(storiesDetailsPage.shareButton).click();
+    }
 
-  public boolean checkTextContent(String textContent) {
-    return checkElementByText(textContent, 2);
-  }
+    public boolean checkTextContent(String textContent) {
+        return checkElementByText(textContent, 2);
+    }
 }

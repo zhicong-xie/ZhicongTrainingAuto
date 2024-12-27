@@ -5,21 +5,21 @@ import gt.org.Page.FinancialTimesPage.TopStoriesPage;
 
 public class TopStoriesFlow extends AppiumHelpers {
 
-  private TopStoriesPage topStoriesPage;
+    private TopStoriesPage topStoriesPage;
 
-  public TopStoriesFlow() {
-    topStoriesPage = new TopStoriesPage();
-  }
+    public TopStoriesFlow() {
+        topStoriesPage = new TopStoriesPage();
+    }
 
-  public boolean isTopStoriesScreenDisplayed() {
-    return checkElement(topStoriesPage.menuNavigationButton, 300);
-  }
+    public boolean isTopStoriesScreenDisplayed() {
+        return checkElement(topStoriesPage.menuNavigationButton, 300);
+    }
 
-  public void selectStories(String storiesName) throws Exception {
-    swipeToUpFindFinancialTimesWebElementXpath(storiesName, 8, 15).click();
-  }
+    public void selectStories(String storiesName) throws Exception {
+        swipeToUpFindFinancialTimesWebElementXpath(storiesName, 8, 15).click();
+    }
 
-  public void clickMenuNavigationButton() {
-    waitForElementToClickable(topStoriesPage.menuNavigationButton).click();
-  }
+    public void clickMenuNavigationButton() {
+        waitForElementToClickable(topStoriesPage.menuNavigationButton).click();
+    }
 }

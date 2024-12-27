@@ -24,13 +24,13 @@ public class VerifyEmailAddressPartialModalSteps {
     @Then("^the user able to see email address field displayed \"([^\"]*)\" in the Verify email address partial modal screen$")
     public void checkEmailField(String expected) {
         String actual = verifyEmailAddressPartialModalFlow.getEmailField();
-        String reason = String.format("the email address field displayed wrong; expected : %s;actual :%s",expected,actual);
+        String reason = String.format("the email address field displayed wrong; expected : %s;actual :%s", expected, actual);
         Assert.assertEquals(actual.toLowerCase(), expected.toLowerCase(), reason);
     }
 
     @When("^the user click (Verification send|Change email address|Ignore) button in the Verify email address partial modal screen$")
     public void clickButton(String item) {
-        switch (item){
+        switch (item) {
             case "Verification send":
                 verifyEmailAddressPartialModalFlow.clickVerificationSendButton();
                 break;

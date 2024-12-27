@@ -16,7 +16,7 @@ public class ProfilePartialModalFlow extends AppiumHelpers {
     }
 
     public String getProfilePartialModalName() {
-        return waitForElement(profilePartialModalPage.profileNameField).getText().replaceAll("您好，我是","").trim();
+        return waitForElement(profilePartialModalPage.profileNameField).getText().replaceAll("您好，我是", "").trim();
     }
 
     public void clickSettingButton() {

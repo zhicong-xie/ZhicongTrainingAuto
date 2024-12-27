@@ -23,7 +23,7 @@ public class SettingFlow extends AppiumHelpers {
         waitForElementToClickable(settingPage.logoutButton).click();
     }
 
-    public boolean isConfirmLogoutPartialModalTitleDisplayed(){
+    public boolean isConfirmLogoutPartialModalTitleDisplayed() {
         return checkElement(settingPage.confirmLogoutPartialModalTitle);
     }
 

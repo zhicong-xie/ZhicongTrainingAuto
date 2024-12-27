@@ -20,12 +20,12 @@ public class StorelletMainSteps {
         boolean expected = true;
         boolean actual = storelletMainFlow.isStorelletMainSearchIconDisplayed();
         String reason = "the Storellet main screen is not displayed";
-        Assert.assertEquals(actual,expected,reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user click (Redemption center button|Search icon|Notice icon) in the Storellet main screen$")
     public void clickButton(String item) {
-        switch (item){
+        switch (item) {
             case "Redemption center button":
                 storelletMainFlow.clickRedemptionCenterButton();
                 break;
@@ -42,11 +42,11 @@ public class StorelletMainSteps {
 
     @When("^the user save the Storellet main screen big promotion image to local folder$")
     public void saveBigPromotionImageToLocalFolder() throws IOException {
-       storelletMainFlow.saveBigPromotionImageToLocalFolder();
+        storelletMainFlow.saveBigPromotionImageToLocalFolder();
     }
 
     @When("^the user select \"([^\"]*)\" restaurant in the Storellet main screen$")
     public void selectrestaurant(String info) {
-        storelletMainFlow.selectrestaurant(info);
+        storelletMainFlow.selectRestaurant(info);
     }
 }

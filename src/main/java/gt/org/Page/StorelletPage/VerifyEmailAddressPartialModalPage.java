@@ -33,5 +33,4 @@ public class VerifyEmailAddressPartialModalPage {
     public WebElement ignoreButton;
 
 
-
 }

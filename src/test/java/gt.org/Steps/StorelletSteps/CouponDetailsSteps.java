@@ -1,7 +1,6 @@
 package gt.org.Steps.StorelletSteps;
 
 import gt.org.Flow.StorelletFlow.CouponDetailsFlow;
-import gt.org.Flow.StorelletFlow.ExploreFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
@@ -52,7 +51,7 @@ public class CouponDetailsSteps {
                 throw new IllegalArgumentException("Illegal Argument : " + item);
         }
         String reason = String.format("the %s field displayed wrong; expected : %s, actual : %s", item, expected, actual);
-        Assert.assertEquals(actual.contains(expected),true, reason);
+        Assert.assertEquals(actual.contains(expected), true, reason);
     }
 
     @When("^the user click (Close|Reminder|Redeem) button in the Storellet coupon details screen$")
@@ -77,7 +76,7 @@ public class CouponDetailsSteps {
         boolean expected;
         boolean actual = couponDetailsFlow.isCouponQrCodeDisplayed();
         String reason;
-        switch (item){
+        switch (item) {
             case "see":
                 expected = true;
                 reason = String.format("the %s QR code is not displayed", item);
@@ -96,7 +95,7 @@ public class CouponDetailsSteps {
     public void checkCouponRedeemPoint(String expected) {
         String actual = couponDetailsFlow.getCouponRedeemPointField();
         String reason = String.format("the Coupon redeem point field displayed wrong; expected : %s, actual : %s", expected, actual);
-        Assert.assertEquals(actual,expected,reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user click (Cancel|Confirm) button in the Coupon redeem confirm partial modal screen$")

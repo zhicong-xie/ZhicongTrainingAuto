@@ -11,15 +11,15 @@ public class PromotionViewFlow extends AppiumHelpers {
         promotionViewPage = new PromotionViewPage();
     }
 
-    public boolean isPromotionViewDisplayed(){
-        return checkElement(promotionViewPage.promotionViewCloseButton,20);
+    public boolean isPromotionViewDisplayed() {
+        return checkElement(promotionViewPage.promotionViewCloseButton, 20);
     }
 
-    public void clickCloseButton(){
+    public void clickCloseButton() {
         waitForElementToClickable(promotionViewPage.promotionViewCloseButton).click();
     }
 
-    public void clickCheckDetailsButton(){
+    public void clickCheckDetailsButton() {
         waitForElementToClickable(promotionViewPage.promotionViewCheckDetailsButton).click();
     }
 }

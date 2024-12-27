@@ -11,31 +11,31 @@ public class NavigationDialogFragmentFlow extends AppiumHelpers {
         navigationDialogFragmentPage = new NavigationDialogFragmentPage();
     }
 
-    public boolean isNavigationDialogFragmentViewDisplayed(Integer time){
-        return checkElement(navigationDialogFragmentPage.navigationDialogFragmentView,time);
+    public boolean isNavigationDialogFragmentViewDisplayed(Integer time) {
+        return checkElement(navigationDialogFragmentPage.navigationDialogFragmentView, time);
     }
 
-    public void clickExploreBubble(){
+    public void clickExploreBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentExploreBubble).click();
     }
 
-    public void clickMembershipBubble(){
+    public void clickMembershipBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentMembershipBubble).click();
     }
 
-    public void clickWalletBubble(){
+    public void clickWalletBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentWalletBubble).click();
     }
 
-    public void clickProfileBubble(){
+    public void clickProfileBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentProfileBubble).click();
     }
 
-    public void clickScannerBubble(){
+    public void clickScannerBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentScannerBubble).click();
     }
 
-    public void clickNoticeBubble(){
+    public void clickNoticeBubble() {
         waitForElementToClickable(navigationDialogFragmentPage.navigationDialogFragmentNoticeBubble).click();
     }
 }

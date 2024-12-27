@@ -1,7 +1,6 @@
 package gt.org.Flow.StorelletFlow;
 
 import gt.org.Base.AppiumHelpers;
-import gt.org.Page.StorelletPage.NavigationDialogFragmentPage;
 import gt.org.Page.StorelletPage.VerifyEmailAddressPartialModalPage;
 
 public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
@@ -12,23 +11,23 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
         verifyEmailAddressPartialModalPage = new VerifyEmailAddressPartialModalPage();
     }
 
-    public boolean isVerifyEmailAddressPartialModalTitleDisplayed(){
+    public boolean isVerifyEmailAddressPartialModalTitleDisplayed() {
         return checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle);
     }
 
-    public String getEmailField(){
+    public String getEmailField() {
         return waitForElement(verifyEmailAddressPartialModalPage.emailAddressField).getText().trim();
     }
 
-    public void clickVerificationSendButton(){
+    public void clickVerificationSendButton() {
         waitForElementToClickable(verifyEmailAddressPartialModalPage.verificationSendButton).click();
     }
 
-    public void clickChangeEmailAddressButton(){
+    public void clickChangeEmailAddressButton() {
         waitForElementToClickable(verifyEmailAddressPartialModalPage.changeEmailButton).click();
     }
 
-    public void clickIgnoreButton(){
+    public void clickIgnoreButton() {
         waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
     }
 }

@@ -18,12 +18,12 @@ public class WalletSteps {
         boolean expected = true;
         boolean actual = walletFlow.isWalletIdentificationDisplayed();
         String reason = "the Storellet wallet screen not displayed";
-        Assert.assertEquals(actual,expected,reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user click (Redemption center|Show all restaurant) button in the Storellet wallet screen my membership view$")
     public void clickButton(String item) {
-        switch (item){
+        switch (item) {
             case "Redemption center":
                 walletFlow.clickRedemptionCenterButton();
                 break;
@@ -61,8 +61,8 @@ public class WalletSteps {
     }
 
     @When("^the user swipe to left find and click \"([^\"]*)\" coupons (describe|expiration) button in the Storellet wallet screen My coupons \"([^\"]*)\" restaurant view$")
-    public void clickMyCouponsViewOfRestaurantCoupons(String couponsData, String item , String restaurantName) {
-        switch (item){
+    public void clickMyCouponsViewOfRestaurantCoupons(String couponsData, String item, String restaurantName) {
+        switch (item) {
             case "describe":
                 walletFlow.clickMyCouponsViewOfRestaurantCouponsDescribe(restaurantName, couponsData);
                 break;

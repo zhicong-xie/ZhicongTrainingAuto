@@ -12,55 +12,55 @@ public class LoginFlow extends AppiumHelpers {
         loginPage = new LoginPage();
     }
 
-    public boolean isLoginTitleDisplayed(){
+    public boolean isLoginTitleDisplayed() {
         return checkElement(loginPage.loginTitle);
     }
 
-    public void clickSettingButton(){
+    public void clickSettingButton() {
         waitForElementToClickable(loginPage.settingButton).click();
     }
 
-    public void clickInternationalAreaCodeButton(){
+    public void clickInternationalAreaCodeButton() {
         waitForElementToClickable(loginPage.internationalAreaCodeButton).click();
     }
 
-    public void selectInternationalAreaCode (String internationalAreaCode){
+    public void selectInternationalAreaCode(String internationalAreaCode) {
         findElementByText(internationalAreaCode).click();
     }
 
-    public boolean isSelectAreaCodeTitleDisplayed(){
+    public boolean isSelectAreaCodeTitleDisplayed() {
         return checkElement(loginPage.selectAreaCodeTitle);
     }
 
-    public void inputPhoneNumber (String phoneNumber){
+    public void inputPhoneNumber(String phoneNumber) {
         waitForElement(loginPage.phoneNumberInputBox).sendKeys(phoneNumber);
     }
 
-    public void inputPassword (String password){
+    public void inputPassword(String password) {
         waitForElement(loginPage.passwordInputBox).sendKeys(password);
     }
 
-    public void clickForgetPasswordButton(){
+    public void clickForgetPasswordButton() {
         waitForElementToClickable(loginPage.forgetPasswordButton).click();
     }
 
-    public void clickConfirmButton(){
+    public void clickConfirmButton() {
         waitForElementToClickable(loginPage.confirmButton).click();
     }
 
-    public void clickCreateProfileButton(){
+    public void clickCreateProfileButton() {
         waitForElementToClickable(loginPage.createProfileButton).click();
     }
 
-    public String getInternationalAreaCode(){
+    public String getInternationalAreaCode() {
         return waitForElement(loginPage.internationalAreaCodeButton).getText().trim();
     }
 
-    public boolean isIncorrectInformationTitleDisplayed(){
+    public boolean isIncorrectInformationTitleDisplayed() {
         return checkElement(loginPage.incorrectInformationTitle);
     }
 
-    public void clickIncorrectInformationConfirmButton(){
+    public void clickIncorrectInformationConfirmButton() {
         waitForElementToClickable(loginPage.incorrectInformationConfirmButton).click();
     }
 }

@@ -1,12 +1,9 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.BottomNavigationBarFlow;
 import gt.org.Flow.StorelletFlow.ExploreFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
-import java.util.HashMap;
 
 public class ExploreSteps {
 

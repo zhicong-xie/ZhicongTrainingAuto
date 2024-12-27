@@ -8,33 +8,33 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MenuNavigationViewPage {
 
-  private DriverManager driverManager;
-  private AndroidDriver driver;
+    private DriverManager driverManager;
+    private AndroidDriver driver;
 
-  public MenuNavigationViewPage() {
-    driverManager = DriverManager.getInstance();
-    driver = driverManager.getDriver();
-    PageFactory.initElements(driver, this);
-  }
+    public MenuNavigationViewPage() {
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
 
-  @FindBy(id = "search_card_view")
-  public WebElement searchButton;
+    @FindBy(id = "search_card_view")
+    public WebElement searchButton;
 
-  @FindBy(id = "menu_login")
-  public WebElement loginButton;
+    @FindBy(id = "menu_login")
+    public WebElement loginButton;
 
-  @FindBy(id = "menu_subscribe")
-  public WebElement subscribeAccessButton;
+    @FindBy(id = "menu_subscribe")
+    public WebElement subscribeAccessButton;
 
-  @FindBy(id = "menu_myft")
-  public WebElement myFtButton;
+    @FindBy(id = "menu_myft")
+    public WebElement myFtButton;
 
-  @FindBy(id = "menu_notifications")
-  public WebElement notificationsButton;
+    @FindBy(id = "menu_notifications")
+    public WebElement notificationsButton;
 
-  @FindBy(id = "menu_newsletters")
-  public WebElement newslettersButton;
+    @FindBy(id = "menu_newsletters")
+    public WebElement newslettersButton;
 
-  @FindBy(id = "menu_newsfeed")
-  public WebElement newsfeedButton;
+    @FindBy(id = "menu_newsfeed")
+    public WebElement newsfeedButton;
 }

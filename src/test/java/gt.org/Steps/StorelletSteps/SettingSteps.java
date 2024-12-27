@@ -23,7 +23,7 @@ public class SettingSteps {
 
     @When("^the user click (Back|Logout) button in the Profile setting screen$")
     public void clickButton(String item) {
-        switch (item){
+        switch (item) {
             case "Back":
                 settingFlow.clickBackButton();
                 break;
@@ -38,14 +38,14 @@ public class SettingSteps {
     @Then("^the user in the Confirm logout partial modal screen$")
     public void isConfirmLogoutPartialModalTitleDisplayed() {
         boolean expected = true;
-        boolean actual = settingFlow. isConfirmLogoutPartialModalTitleDisplayed();
+        boolean actual = settingFlow.isConfirmLogoutPartialModalTitleDisplayed();
         String reason = "the Confirm logout partial modal screen is not displayed";
         Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user click (Cancel|Logout) button in the Confirm logout partial modal screen$")
     public void clickButton2(String item) {
-        switch (item){
+        switch (item) {
             case "Cancel":
                 settingFlow.clickConfirmLogoutPartialModalCancelButton();
                 break;

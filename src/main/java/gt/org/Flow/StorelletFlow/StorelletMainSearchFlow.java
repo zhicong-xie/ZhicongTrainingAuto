@@ -36,7 +36,7 @@ public class StorelletMainSearchFlow extends AppiumHelpers {
             for (int i = 0; i < headerElementList.size(); i++) {
                 searchResult.add(headerElementList.get(i).getText().trim() + bodyElementList.get(i).getText().trim());
             }
-            System.out.println("\nAll search result data : " + searchResult+"\n");
+            System.out.println("\nAll search result data : " + searchResult + "\n");
         }
 
         return searchResult;
@@ -52,12 +52,12 @@ public class StorelletMainSearchFlow extends AppiumHelpers {
         return true;
     }
 
-    public void clickSearchBarClearButton(){
+    public void clickSearchBarClearButton() {
         waitForElement(storelletMainSearchPage.searchBarClearButton).click();
         dismissKeyboard();
     }
 
-    public void selectFirstSearchResultView(){
+    public void selectFirstSearchResultView() {
         waitForElement(storelletMainSearchPage.firstSearchResultView).click();
     }
 }

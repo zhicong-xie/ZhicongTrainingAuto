@@ -58,13 +58,13 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     public boolean isMainBarButtonDisplayed(String buttonName) {
         switch (buttonName) {
             case "Summary":
-                return checkElement(restaurantDetailsPage.summaryButton,2);
+                return checkElement(restaurantDetailsPage.summaryButton, 2);
             case "Wallet":
-                return checkElement(restaurantDetailsPage.walletButton,2);
+                return checkElement(restaurantDetailsPage.walletButton, 2);
             case "Redeem":
-                return checkElement(restaurantDetailsPage.redeemButton,2);
+                return checkElement(restaurantDetailsPage.redeemButton, 2);
             case "Welcome gift":
-                return checkElement(restaurantDetailsPage.welcomeGiftButton,2);
+                return checkElement(restaurantDetailsPage.welcomeGiftButton, 2);
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
@@ -119,7 +119,7 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
         return restaurantCouponsInfo;
     }
 
-    public void clickRestaurantCouponsDescriptionOption (String couponsDescription){
+    public void clickRestaurantCouponsDescriptionOption(String couponsDescription) {
         List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
         for (WebElement webElement : couponDescriptionList) {
             if (webElement.getText().trim().contains(couponsDescription)) {

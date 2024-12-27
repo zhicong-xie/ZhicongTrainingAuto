@@ -1,6 +1,5 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.MembershipTermsAndConditionsFlow;
 import gt.org.Flow.StorelletFlow.NewJoinGuidelinesFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

@@ -18,13 +18,13 @@ public class UpdateNotificationPartialModalSteps {
         boolean expected = true;
         boolean actual = updateNotificationPartialModalFlow.isUpdateNotificationPartialModalTitleDisplayed();
         String reason = "the Update notification partial modal screen not displayed";
-        Assert.assertEquals(actual,expected,reason);
+        Assert.assertEquals(actual, expected, reason);
     }
 
     @When("^the user click (Close|Update now) button in the Update notification partial modal screen if exist$")
     public void clickButton(String buttonName) {
-        if (updateNotificationPartialModalFlow.isUpdateNotificationPartialModalTitleDisplayed()){
-            switch (buttonName){
+        if (updateNotificationPartialModalFlow.isUpdateNotificationPartialModalTitleDisplayed()) {
+            switch (buttonName) {
                 case "Close":
                     updateNotificationPartialModalFlow.clickCloseButton();
                     break;

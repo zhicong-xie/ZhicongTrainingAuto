@@ -1,6 +1,5 @@
 package gt.org.Steps.StorelletSteps;
 
-import gt.org.Flow.StorelletFlow.StorelletMainSearchFlow;
 import gt.org.Flow.StorelletFlow.VerificationSentPartialModalFlow;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,7 +24,7 @@ public class VerificationSentPartialModalSteps {
     @Then("^the user able to see email address field displayed \"([^\"]*)\" in the Verification sent partial modal screen$")
     public void checkVerificationSentPartialModalEmailAddressField(String expected) {
         String actual = verificationSentPartialModalFlow.getVerificationSentPartialModalEmailAddressField();
-        String reason = String.format("the email address displayed wrong; expected : %s;actual : %s",expected,actual);
+        String reason = String.format("the email address displayed wrong; expected : %s;actual : %s", expected, actual);
         Assert.assertEquals(actual.toLowerCase(), expected.toLowerCase(), reason);
     }
 
