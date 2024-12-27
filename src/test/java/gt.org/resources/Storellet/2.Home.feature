@@ -155,9 +155,9 @@ Feature: Verify Storellet APP Home page function
     And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
     When the user restart the APP
     Examples:
-      | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
-#      | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
-      | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
+      | restaurantName | EmailAddress | WrongFormatEmailAddress | UpdateEmailAddress |
+      | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
+#      | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
     #Need to change emails address
 
   @AC2.6
@@ -191,6 +191,6 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | UpdateEmailAddress |
-#      | 富臨             | TestNG@Test.com    |
-      | 富臨             | AT@Test.com        |
+      | 富臨             | TestNG@Test.com    |
+#      | 富臨             | AT@Test.com        |
     #Need to change emails address

@@ -71,7 +71,7 @@ public class DriverManager {
 
     public void startRecording(String scenarioName) {
         try {
-            System.out.println("Start recording scenario: " + scenarioName + "\n");
+            System.out.println("Start recording scenario: " + scenarioName + "...\n");
             AndroidStartScreenRecordingOptions options = AndroidStartScreenRecordingOptions.startScreenRecordingOptions()
                     .withVideoSize("1280x720")
                     .withBitRate(2000000)
@@ -97,9 +97,8 @@ public class DriverManager {
             if (!recordingDir.exists()) {
                 recordingDir.mkdir();
             }
-
-            Files.write(Paths.get(String.format("target/recording/%s_%s.mov", scenarioName, formattedDate)), decodedVideo);
-            System.out.println(scenarioName + " scenario Screen recording stopped.\n");
+            Files.write(Paths.get(String.format("target/recording/%s_%s.mov", formattedDate, scenarioName)), decodedVideo);
+            System.out.println(scenarioName + " scenario screen recording stopped...\n");
         } catch (Exception e) {
             e.printStackTrace();
         }
