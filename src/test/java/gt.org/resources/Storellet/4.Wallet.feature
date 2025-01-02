@@ -45,7 +45,7 @@ Feature: Verify Storellet APP Wallet page function
     And the user restart the APP
     Examples:
       | RestaurantData |
-      | 貓抓烤肉           |
+      | 京城鴨子           |
 
   @AC4.3
   Scenario Outline: Verify select wallet page my membership expand view - need email restaurant
@@ -123,8 +123,8 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     When the user restart the APP
     Examples:
-      | RestaurantData | CouponsDescription   |
-      | Storellet Cafe | Test $10 Cash Coupon |
+      | RestaurantData | CouponsDescription |
+      | Storellet Cafe | $20                |
 
   @AC4.6
   Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant and Verify redemption successful function
@@ -197,7 +197,7 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet coupon details screen
     And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
     And the user able to not see QR code displayed in the Storellet coupon details screen
-    And the user able to see Coupon redeem point field displayed "1000" in the Storellet coupon details screen
+    And the user able to see Coupon redeem point field displayed "700" in the Storellet coupon details screen
     When the user click Redeem button in the Storellet coupon details screen
     Then the user in the Redemption failed partial modal screen
     When the user click Confirm button in the Coupon redemption failed partial modal screen
@@ -209,7 +209,7 @@ Feature: Verify Storellet APP Wallet page function
     When the user restart the APP
     Examples:
       | RestaurantData | CouponsDescription |
-      | 貓抓烤肉           | 照燒雞腿肉一客            |
+      | 京城鴨子           | 甘香烤鴨               |
 
   @AC4.8
   Scenario Outline: Verify select wallet page my coupons view's Non-Storellet Cafe restaurant's coupons view function
@@ -226,7 +226,7 @@ Feature: Verify Storellet APP Wallet page function
     When the user restart the APP
     Examples:
       | RestaurantData | CouponsDescription |
-      | 爆爆鍋            | 迎新優惠：「懷念鹽酥雞」一份     |
+      | Rico Rico      | 迎新優惠：全單9折優惠        |
 
   @AC4.9
   Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant's show all coupons button function

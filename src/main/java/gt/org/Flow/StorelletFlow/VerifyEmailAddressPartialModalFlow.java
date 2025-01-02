@@ -12,6 +12,7 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
     }
 
     public boolean isVerifyEmailAddressPartialModalTitleDisplayed() {
+        waitForSecond(3);
         return checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle);
     }
 
@@ -28,6 +29,7 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
     }
 
     public void clickIgnoreButton() {
+        waitForSecond(3);
         waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class RestaurantDetailsFlow extends AppiumHelpers {
 
@@ -122,12 +123,17 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
 
     public void clickRestaurantCouponsDescriptionOption(String couponsDescription) {
         List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
+        boolean isClicked = false;
         for (WebElement webElement : couponDescriptionList) {
             if (webElement.getText().trim().contains(couponsDescription)) {
                 waitForSecond(2);
                 webElement.click();
+                isClicked = true;
                 break;
             }
+        }
+        if (!isClicked) {
+            throw new NoSuchElementException("No coupon description found matching: " + couponsDescription);
         }
     }
 }

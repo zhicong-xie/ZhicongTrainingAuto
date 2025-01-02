@@ -11,7 +11,8 @@ Feature: Verify Storellet APP Explore page function
     Then the user in the Storellet main search screen
     When the user input "<SearchData>" in the Storellet main search screen Search bar
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
-    When the user click navigate back button
+    When the user click Search bar clear button in the Storellet main search screen
+    And the user click navigate back button
     Then the user in the Storellet explore screen
     When the user restart the APP
     Examples:
@@ -188,4 +189,4 @@ Feature: Verify Storellet APP Explore page function
     When the user restart the APP
     Examples:
       | RestaurantData |
-      | 貓抓烤肉           |
+      | 京城鴨子           |
