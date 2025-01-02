@@ -14,7 +14,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -37,7 +36,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "100" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -63,7 +61,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "500" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -87,7 +84,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -112,7 +108,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "200" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -144,7 +139,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "200" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -192,7 +186,6 @@ Feature: Verify Storellet APP Wallet page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "100" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen

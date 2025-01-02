@@ -11,8 +11,6 @@ Feature: Verify Storellet APP Explore page function
     Then the user in the Storellet main search screen
     When the user input "<SearchData>" in the Storellet main search screen Search bar
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
-    When the user click Search bar clear button in the Storellet main search screen
-    Then the user in the Storellet main search screen
     When the user click navigate back button
     Then the user in the Storellet explore screen
     When the user restart the APP
@@ -70,7 +68,6 @@ Feature: Verify Storellet APP Explore page function
     And the user able to see restaurant name displayed "<SearchData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -125,7 +122,6 @@ Feature: Verify Storellet APP Explore page function
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen

@@ -16,8 +16,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Storellet main search screen
     When the user input "<SearchData>" in the Storellet main search screen Search bar
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
-    When the user click Search bar clear button in the Storellet main search screen
-    And the user restart the APP
+    When the user restart the APP
     Examples:
       | SearchData |
       | 牛          |
@@ -123,6 +122,38 @@ Feature: Verify Storellet APP Home page function
     # Need to change non join restaurantName & need emails(Profile no such data)
 
   @AC2.5
+  Scenario Outline: Verify Home page Member email verification function
+    Given the user click Close button in the Promotion view partial modal screen if exist
+    Then the user in the Storellet main screen
+    When the user click Search icon in the Storellet main screen
+    Then the user in the Storellet main search screen
+    When the user input "<restaurantName>" in the Storellet main search screen Search bar
+    Then the Search result is contain "<restaurantName>" data in the Storellet main search screen
+    When the user select first search result view in the Storellet main search screen
+    Then the user in the Verify email address partial modal screen
+    And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verify email address partial modal screen
+    When the user click Verification send button in the Verify email address partial modal screen
+    Then the user in the Verification sent partial modal screen
+    And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verification sent partial modal screen
+    When the user click Done button in the Verification sent partial modal screen
+    And the user click Skip button in the New join guidelines screen if exist
+    Then the user in the Storellet restaurant details screen
+    And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
+    And the user able to not see New join button in the Storellet restaurant details screen
+    And the user able to see More details button in the Storellet restaurant details screen
+    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
+    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
+    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
+    When the user click Back button in the Storellet restaurant details screen
+    Then the user in the Storellet main search screen
+    And the Search result is contain "<restaurantName>" data in the Storellet main search screen
+    When the user restart the APP
+    Examples:
+      | restaurantName | UpdateEmailAddress |
+      | 富臨             | AT@Test.com        |
+
+  @AC2.6
   Scenario Outline: Verify Home page Change member email function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -148,7 +179,6 @@ Feature: Verify Storellet APP Home page function
     And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
     And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
     And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
     And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
@@ -156,41 +186,5 @@ Feature: Verify Storellet APP Home page function
     When the user restart the APP
     Examples:
       | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
-#      | 富臨             | AT@Test.com  | 123123.com              | TestNG@Test.com    |
+      | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
       | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
-    #Need to change emails address
-
-  @AC2.6
-  Scenario Outline: Verify Home page Member email verification function
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
-    When the user click Search icon in the Storellet main screen
-    Then the user in the Storellet main search screen
-    When the user input "<restaurantName>" in the Storellet main search screen Search bar
-    Then the Search result is contain "<restaurantName>" data in the Storellet main search screen
-    When the user select first search result view in the Storellet main search screen
-    Then the user in the Verify email address partial modal screen
-    And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verify email address partial modal screen
-    When the user click Verification send button in the Verify email address partial modal screen
-    Then the user in the Verification sent partial modal screen
-    And the user able to see email address field displayed "<UpdateEmailAddress>" in the Verification sent partial modal screen
-    When the user click Done button in the Verification sent partial modal screen
-    And the user click Skip button in the New join guidelines screen if exist
-    Then the user in the Storellet restaurant details screen
-    And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
-    And the user able to not see New join button in the Storellet restaurant details screen
-    And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
-    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
-    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
-    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
-    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
-    When the user click Back button in the Storellet restaurant details screen
-    Then the user in the Storellet main search screen
-    And the Search result is contain "<restaurantName>" data in the Storellet main search screen
-    When the user restart the APP
-    Examples:
-      | restaurantName | UpdateEmailAddress |
-#      | 富臨             | TestNG@Test.com    |
-      | 富臨             | AT@Test.com        |
-    #Need to change emails address
