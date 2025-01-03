@@ -104,6 +104,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Verify email address partial modal screen
     And the user able to see email address field displayed "<EmailAddress>" in the Verify email address partial modal screen
     When the user click Ignore button in the Verify email address partial modal screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user able to not see the New join guidelines screen
     And the user in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen

@@ -120,6 +120,7 @@ Feature: Verify Storellet APP Explore page function
     When the user swipe left to click "<RestaurantData>" restaurant name in the Storellet explore screen new arrivals view
     Then the user in the Verify email address partial modal screen
     When the user click Ignore button in the Verify email address partial modal screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen

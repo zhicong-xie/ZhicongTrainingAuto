@@ -22,6 +22,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 public class AppiumHelpers {
 
@@ -109,7 +110,7 @@ public class AppiumHelpers {
             WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
         } catch (TimeoutException e) {
-            return Collections.emptyList();
+            throw new NoSuchElementException("No element found");
         }
     }
 
@@ -117,8 +118,8 @@ public class AppiumHelpers {
         try {
             WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id(locator)));
-        } catch (TimeoutException e) {
-            return Collections.emptyList();
+        } catch (Exception e) {
+            throw new NoSuchElementException("No element found");
         }
     }
 

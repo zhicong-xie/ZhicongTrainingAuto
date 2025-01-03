@@ -122,7 +122,6 @@ public class RestaurantDetailsFlow extends AppiumHelpers {
     }
 
     public void clickRestaurantCouponsDescriptionOption(String couponsDescription) {
-        swipeFunction("up");
         List<WebElement> couponDescriptionList = waitForElementsByXpath(restaurantDetailsPage.restaurantCouponDescriptionListXpath);
         boolean isClicked = false;
         for (WebElement webElement : couponDescriptionList) {

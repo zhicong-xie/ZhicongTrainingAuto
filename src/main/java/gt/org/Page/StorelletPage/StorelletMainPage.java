@@ -33,4 +33,6 @@ public class StorelletMainPage {
 
     @FindBy(id = "view_main_navibar_v4_container")
     public WebElement bottomBar;
+
+    public String restaurantNameId = "com.storellet:id/item_payload_action_row_subheader_tv";
 }

@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class StorelletMainFlow extends AppiumHelpers {
 
@@ -73,9 +74,18 @@ public class StorelletMainFlow extends AppiumHelpers {
     }
 
     public void selectRestaurant(String restaurantInfo) {
+        List<WebElement> restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
+        String lastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
         while (true) {
             if (!checkElementByText(restaurantInfo, 2)) {
                 swipeFunction("up");
+                restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
+                String swipeUpLastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                if (lastName.equals(swipeUpLastName)) {
+                    throw new NoSuchElementException("Restaurant not found: " + restaurantInfo);
+                } else {
+                    lastName = swipeUpLastName;
+                }
             } else {
                 WebElement webElement = driver.findElement(By.xpath(String.format("//*[contains(@text, '%s')]/../*[@resource-id = 'com.storellet:id/item_payload_action_row_action_container']", restaurantInfo)));
                 int pixel = webElement.getRect().getY() - waitForElement(storelletMainPage.bottomBar).getRect().getY();
