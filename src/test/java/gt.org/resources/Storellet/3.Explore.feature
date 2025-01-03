@@ -65,6 +65,7 @@ Feature: Verify Storellet APP Explore page function
     When the user input "<SearchData>" in the Storellet main search screen Search bar
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
     When the user select first search result view in the Storellet main search screen
+    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<SearchData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen

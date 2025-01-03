@@ -121,7 +121,7 @@ Feature: Verify Storellet APP Home page function
       | 富臨             | 123123.com              | AT@Test.com  |
     # Need to change non join restaurantName & need emails(Profile no such data)
 
-  @AC2.5
+  @AC2.5 @email
   Scenario Outline: Verify Home page Member email verification function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -153,7 +153,7 @@ Feature: Verify Storellet APP Home page function
       | restaurantName | UpdateEmailAddress |
       | 富臨             | AT@Test.com        |
 
-  @AC2.6
+  @AC2.6 @email
   Scenario Outline: Verify Home page Change member email function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen

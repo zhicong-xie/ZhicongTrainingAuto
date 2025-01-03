@@ -9,7 +9,7 @@ import org.testng.annotations.AfterSuite;
         features = "src/test/java/gt.org/resources/Storellet",
         glue = {"gt.org.Steps"},
 //        tags = "@AC1 and not @Skip",
-        tags = "not @Skip",
+        tags = "not @Skip and not @email",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",

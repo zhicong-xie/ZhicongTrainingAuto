@@ -1,14 +1,12 @@
 package gt.org.Base;
 
 import gt.org.utils.DriverManager;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -184,16 +182,17 @@ public class AppiumHelpers {
                 endY = height / 2;
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
+                throw new IllegalArgumentException("Invalid swipe direction: " + direction);
         }
 
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
-        touchAction
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-                .moveTo(PointOption.point(endX, endY))
-                .release()
-                .perform();
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        androidDriver.perform(Collections.singletonList(swipe));
     }
 
     protected WebElement swipeToUpFindFinancialTimesWebElementXpath(
@@ -217,16 +216,18 @@ public class AppiumHelpers {
     }
 
     protected void dismissKeyboard() {
-//        KeyEvent key = new KeyEvent();
-//        key.withKey(AndroidKey.SEARCH);
-//        androidDriver.pressKey(key);
         androidDriver.hideKeyboard();
     }
 
     protected void coordinateClick(Integer x, Integer y) {
-        PointOption pointConcat = PointOption.point(x, y);
-        TouchAction touchAction = new TouchAction(androidDriver);
-        touchAction.tap(pointConcat).perform();
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence click = new Sequence(finger, 0);
+
+        click.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+        click.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        click.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        androidDriver.perform(Collections.singletonList(click));
     }
 
     protected boolean isViewNotInFinancialTimesFootBar(String xpath) {
@@ -373,13 +374,14 @@ public class AppiumHelpers {
                 throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
         }
 
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
-        touchAction
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-                .moveTo(PointOption.point(endX, endY))
-                .release()
-                .perform();
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        androidDriver.perform(Collections.singletonList(swipe));
     }
 
     protected byte[] takeFailScreenshot() {
@@ -387,12 +389,13 @@ public class AppiumHelpers {
     }
 
     protected void swipeCoordinateFunction(Integer startX, Integer startY, Integer endX, Integer endY) {
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) androidDriver);
-        touchAction
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-                .moveTo(PointOption.point(endX, endY))
-                .release()
-                .perform();
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        androidDriver.perform(Collections.singletonList(swipe));
     }
 }

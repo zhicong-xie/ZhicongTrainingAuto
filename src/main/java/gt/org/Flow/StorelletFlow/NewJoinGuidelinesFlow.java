@@ -18,6 +18,7 @@ public class NewJoinGuidelinesFlow extends AppiumHelpers {
 
     public void clickSkipButton() {
         if (isNewJoinGuidelinesTitleDisplayed()) {
+            waitForSecond(2);
             waitForElement(newJoinGuidelinesPage.skipButton).click();
         }
     }
