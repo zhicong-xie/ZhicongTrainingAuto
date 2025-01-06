@@ -3,6 +3,8 @@ package gt.org.Flow.StorelletFlow;
 import gt.org.Base.AppiumHelpers;
 import gt.org.Page.StorelletPage.MembershipTermsAndConditionsPage;
 
+import java.util.NoSuchElementException;
+
 public class MembershipTermsAndConditionsFlow extends AppiumHelpers {
 
     private MembershipTermsAndConditionsPage membershipTermsAndConditionsPage;
@@ -46,11 +48,16 @@ public class MembershipTermsAndConditionsFlow extends AppiumHelpers {
     }
 
     public void swipeUntilAgreeButtonEnabled() {
+        int num = 0;
         while (true) {
             if (!isAgreeButtonClickable()) {
                 swipeFunction("up");
+                num++;
             } else {
                 break;
+            }
+            if (num > 50) {
+                throw new NoSuchElementException("the Agree button is not enabled");
             }
         }
     }

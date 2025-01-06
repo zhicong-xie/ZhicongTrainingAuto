@@ -33,8 +33,8 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
         waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
     }
 
-    public void clickIgnoreButtonIfExist(){
-        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle,20)){
+    public void clickIgnoreButtonIfExist() {
+        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle, 20)) {
             clickIgnoreButton();
         }
     }

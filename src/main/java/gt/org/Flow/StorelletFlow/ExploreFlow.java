@@ -78,7 +78,7 @@ public class ExploreFlow extends AppiumHelpers {
         }
     }
 
-    public void clickBecomeMemberButton(){
+    public void clickBecomeMemberButton() {
         List<WebElement> restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
         String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
         while (true) {

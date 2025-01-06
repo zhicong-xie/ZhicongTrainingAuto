@@ -9,7 +9,7 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet wallet screen
     When the user swipe to left find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership view
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
@@ -57,7 +57,7 @@ Feature: Verify Storellet APP Wallet page function
     When the user click Show all restaurant button in the Storellet wallet screen my membership view
     And the user swipe to up find and click "<RestaurantData>" Membership restaurant name in the Storellet wallet screen my membership expand view
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
@@ -105,7 +105,7 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet wallet screen
     When the user swipe to up find and click "<RestaurantData>" restaurant name in the Storellet wallet screen My coupons view
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
@@ -137,7 +137,7 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Storellet wallet screen
     When the user swipe to up find and click "<RestaurantData>" restaurant name in the Storellet wallet screen My coupons view
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
@@ -164,14 +164,14 @@ Feature: Verify Storellet APP Wallet page function
     Then the user in the Redeem confirm partial modal screen
     When the user click Confirm button in the Coupon redeem confirm partial modal screen
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     Then the user in the Redemption success partial modal screen
     When the user click Confirm button in the Coupon redemption success partial modal screen
     Then the user in the Storellet coupon details screen
     And the user able to see Coupon title field displayed "<CouponsDescription>" in the Storellet coupon details screen
     When the user click Close button in the Storellet coupon details screen
     Then the user in the Verify email address partial modal screen
-    When the user click Ignore button in the Verify email address partial modal screen
+    When the user click Ignore button in the Verify email address partial modal screen if exist
     And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen

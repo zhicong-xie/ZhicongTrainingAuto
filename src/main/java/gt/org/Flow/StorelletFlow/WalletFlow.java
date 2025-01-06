@@ -93,7 +93,12 @@ public class WalletFlow extends AppiumHelpers {
                     lastRestaurantName = lastRestaurantNameAfterSwipe;
                 }
             } else {
-                return waitForElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName));
+                WebElement webElement = waitForElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName));
+                int pixel = webElement.getRect().getY() - waitForElement(walletPage.bottomBar).getRect().getY();
+                if (pixel >= -100) {
+                    swipeFunction("up");
+                }
+                return webElement;
             }
         }
     }
@@ -109,24 +114,34 @@ public class WalletFlow extends AppiumHelpers {
 
     public void clickMyCouponsViewOfRestaurantCouponsDescribe(String restaurantName, String couponsDescribe) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
+        int num = 0;
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe), 1)) {
                 swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+                num++;
             } else {
                 waitForElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe)).click();
                 break;
+            }
+            if (num > 50) {
+                throw new NoSuchElementException(String.format("the %s restaurant's coupons describe not found: %s", restaurantName, couponsDescribe));
             }
         }
     }
 
     public void clickMyCouponsViewOfRestaurantCouponsExpiration(String restaurantName, String couponsExpiration) {
         swipeUpToFindMyCouponsViewOfRestaurant(restaurantName);
+        int num = 0;
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration), 1)) {
                 swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+                num++;
             } else {
                 waitForElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration)).click();
                 break;
+            }
+            if (num > 50) {
+                throw new NoSuchElementException(String.format("the %s restaurant's coupons expiration not found: %s", restaurantName, couponsExpiration));
             }
         }
     }

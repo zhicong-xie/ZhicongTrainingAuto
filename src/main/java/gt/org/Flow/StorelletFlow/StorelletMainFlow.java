@@ -27,7 +27,7 @@ public class StorelletMainFlow extends AppiumHelpers {
     }
 
     public boolean isStorelletMainSearchIconDisplayed() {
-        return checkElement(storelletMainPage.searchIcon);
+        return checkElement(storelletMainPage.mainPageIdentification);
     }
 
     public void clickRedemptionCenterButton() {

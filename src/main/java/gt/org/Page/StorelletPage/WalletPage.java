@@ -6,6 +6,7 @@ import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
@@ -52,4 +53,7 @@ public class WalletPage {
     public String couponsExpirationXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body2_tv') and contains(@text ,'%s')]";
 
     public String myCouponsViewOfRestaurantNameId = "com.storellet:id/item_brand_coupon_rv_scroll_title_tv";
+
+    @AndroidFindBy(id = "view_main_navibar_v4_container")
+    public WebElement bottomBar;
 }
