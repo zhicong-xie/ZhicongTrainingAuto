@@ -44,4 +44,9 @@ public class VerifyEmailAddressPartialModalSteps {
                 throw new IllegalArgumentException("Illegal Argument : " + item);
         }
     }
+
+    @When("^the user click Ignore button in the Verify email address partial modal screen if exist$")
+    public void clickIgnoreButtonIfExist() {
+        verifyEmailAddressPartialModalFlow.clickIgnoreButtonIfExist();
+    }
 }

@@ -25,6 +25,14 @@ public class MembershipTermsAndConditionsFlow extends AppiumHelpers {
         dismissKeyboard();
     }
 
+    public void inputEmailAddressIfExist(String email) {
+        if (isEmailInputBoxDisplayed()) {
+            waitForElement(membershipTermsAndConditionsPage.emailInputBox).click();
+            waitForElement(membershipTermsAndConditionsPage.emailInputBox).sendKeys(email);
+            dismissKeyboard();
+        }
+    }
+
     public boolean isAgreeButtonClickable() {
         return checkElementClickable(membershipTermsAndConditionsPage.agreeButton, 3);
     }

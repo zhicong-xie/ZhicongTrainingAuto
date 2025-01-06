@@ -13,12 +13,11 @@ public class NewJoinGuidelinesFlow extends AppiumHelpers {
 
 
     public boolean isNewJoinGuidelinesTitleDisplayed() {
-        return checkElement(newJoinGuidelinesPage.newJoinGuidelinesTitle, 2);
+        return checkElement(newJoinGuidelinesPage.newJoinGuidelinesTitle);
     }
 
     public void clickSkipButton() {
         if (isNewJoinGuidelinesTitleDisplayed()) {
-            waitForSecond(5);
             waitForElement(newJoinGuidelinesPage.skipButton).click();
         }
     }

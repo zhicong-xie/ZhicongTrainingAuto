@@ -49,4 +49,9 @@ public class StorelletMainSteps {
     public void selectrestaurant(String info) {
         storelletMainFlow.selectRestaurant(info);
     }
+
+    @When("^the user click Join button in the Storellet main screen$")
+    public void clickJoinButton() {
+        storelletMainFlow.clickJoinButton();
+    }
 }

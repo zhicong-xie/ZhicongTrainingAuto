@@ -62,8 +62,13 @@ public class MembershipTermsAndConditionsStep {
     }
 
     @When("^the user input \"([^\"]*)\" in the Membership terms and conditions screen email address input box$")
-    public void swipeToLeftClickNextButton(String emailAddress) {
+    public void inputEmailAddress(String emailAddress) {
         membershipTermsAndConditionsFlow.inputEmailAddress(emailAddress);
+    }
+
+    @When("^the user input \"([^\"]*)\" in the Membership terms and conditions screen email address input box if exist$")
+    public void inputEmailAddressIfExist(String emailAddress) {
+        membershipTermsAndConditionsFlow.inputEmailAddressIfExist(emailAddress);
     }
 
     @When("^the user click (Agree|Disagree) button in the Membership terms and conditions screen$")

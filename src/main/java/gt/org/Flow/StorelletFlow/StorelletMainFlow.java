@@ -97,4 +97,29 @@ public class StorelletMainFlow extends AppiumHelpers {
             }
         }
     }
+
+    public void clickJoinButton() {
+        List<WebElement> restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
+        String lastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+
+        while (true) {
+            if (!checkElement(storelletMainPage.jointButton, 2)) {
+                swipeFunction("up");
+                restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
+                String swipeUpLastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                if (lastName.equals(swipeUpLastName)) {
+                    throw new NoSuchElementException("Join button not found");
+                } else {
+                    lastName = swipeUpLastName;
+                }
+            } else {
+                int pixel = storelletMainPage.jointButton.getRect().getY() - waitForElement(storelletMainPage.bottomBar).getRect().getY();
+                if (pixel >= -100) {
+                    swipeFunction("up");
+                }
+                storelletMainPage.jointButton.click();
+                break;
+            }
+        }
+    }
 }

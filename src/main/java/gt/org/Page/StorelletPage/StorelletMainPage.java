@@ -34,5 +34,8 @@ public class StorelletMainPage {
     @FindBy(id = "view_main_navibar_v4_container")
     public WebElement bottomBar;
 
+    @FindBy(xpath = "//*[@resource-id = 'com.storellet:id/item_payload_action_row_right_button_txt' and @text = '加入']")
+    public WebElement jointButton;
+
     public String restaurantNameId = "com.storellet:id/item_payload_action_row_subheader_tv";
 }
