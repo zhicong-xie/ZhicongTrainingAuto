@@ -78,24 +78,25 @@ public class ExploreFlow extends AppiumHelpers {
         }
     }
 
-    public void clickRestaurantBecomeMemberInAllRestaurantList(String restaurantName) {
+    public void clickBecomeMemberButton(){
         List<WebElement> restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
         String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
         while (true) {
-            if (!checkElementByXpath(String.format(explorePage.restaurantBecomeMember, restaurantName), 3)) {
+            if (!checkElement(explorePage.becomeMemberButton, 3)) {
                 swipeFunction("up");
                 restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
                 String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
 
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
-                    throw new NoSuchElementException("Restaurant not found: " + restaurantName);
+                    throw new NoSuchElementException("Become member button not found");
                 } else {
                     lastRestaurantName = lastRestaurantNameAfterSwipe;
                 }
             } else {
-                driver.findElement(By.xpath(String.format(explorePage.restaurantBecomeMember, restaurantName))).click();
+                explorePage.becomeMemberButton.click();
                 break;
             }
         }
+
     }
 }

@@ -22,7 +22,7 @@ Feature: Verify Storellet APP Home page function
       | 牛          |
       | 永          |
 
-  @AC2.3 @Test
+  @AC2.3
   Scenario: Verify Home page become restaurant member function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -60,62 +60,7 @@ Feature: Verify Storellet APP Home page function
     Then the user in the Storellet main screen
     When the user restart the APP
 
-#  @AC2.4 @Skip
-#  Scenario Outline: Verify Home page become restaurant member function - need email
-#    Given the user click Close button in the Promotion view partial modal screen if exist
-#    Then the user in the Storellet main screen
-#    When the user select "<restaurantName>" restaurant in the Storellet main screen
-#    Then the user in the Storellet restaurant details screen
-#    And the user able to see restaurant name displayed "<restaurantName>" in the Storellet restaurant details screen
-#    And the user able to see New join button in the Storellet restaurant details screen
-#    And the user able to not see More details button in the Storellet restaurant details screen
-#    And the user able to not see Restaurant points field in the Storellet restaurant details screen
-#    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
-#    And the user able to see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
-#    And the user able to not see Main bar Wallet button is displayed in the Storellet restaurant details screen
-#    And the user able to not see Main bar Redeem button is displayed in the Storellet restaurant details screen
-#    When the user click New join button in the Storellet restaurant details screen
-#    Then the user in the Membership terms and conditions screen
-#    And the user able to see email input box in the Membership terms and conditions screen
-#    And the user able to see Agree button is disabled in the Membership terms and conditions screen
-#    When the user input "<WrongFormatEmailAddress>" in the Membership terms and conditions screen email address input box
-#    And the user swipe up until Agree button is enabled in the Membership terms and conditions screen
-#    Then the user able to see Agree button is enabled in the Membership terms and conditions screen
-#    When the user click Agree button in the Membership terms and conditions screen
-#    Then the user in the Membership terms and conditions screen incorrect email format partial modal
-#    When the user click Confirm button in the Membership terms and conditions screen incorrect email format partial modal
-#    Then the user in the Membership terms and conditions screen
-#    And the user able to see Agree button is enabled in the Membership terms and conditions screen
-#    When the user click Disagree button in the Membership terms and conditions screen
-#    Then the user in the Storellet restaurant details screen
-#    When the user click New join button in the Storellet restaurant details screen
-#    Then the user in the Membership terms and conditions screen
-#    When the user input "<EmailAddress>" in the Membership terms and conditions screen email address input box
-#    And the user swipe up until Agree button is enabled in the Membership terms and conditions screen
-#    Then the user able to see Agree button is enabled in the Membership terms and conditions screen
-#    When the user click Agree button in the Membership terms and conditions screen
-#    And the user click Skip button in the New join guidelines screen if exist
-#    Then the user in the Verify email address partial modal screen
-#    And the user able to see email address field displayed "<EmailAddress>" in the Verify email address partial modal screen
-#    When the user click Ignore button in the Verify email address partial modal screen
-#    And the user click Skip button in the New join guidelines screen if exist
-#    Then the user able to not see the New join guidelines screen
-#    And the user in the Storellet restaurant details screen
-#    And the user able to not see New join button in the Storellet restaurant details screen
-#    And the user able to see More details button in the Storellet restaurant details screen
-#    And the user able to see restaurant points displayed "0" in the Storellet restaurant details screen
-#    And the user able to see Main bar Summary button is Selected in the Storellet restaurant details screen
-#    And the user able to not see Main bar Welcome gift button is displayed in the Storellet restaurant details screen
-#    And the user able to see Main bar Wallet button is displayed in the Storellet restaurant details screen
-#    And the user able to see Main bar Redeem button is displayed in the Storellet restaurant details screen
-#    When the user click Back button in the Storellet restaurant details screen
-#    Then the user in the Storellet main screen
-#    When the user restart the APP
-#    Examples:
-#      | restaurantName | WrongFormatEmailAddress | EmailAddress |
-#      | 富臨             | 123123.com              | AT@Test.com  |
-
-  @AC2.5 @email
+  @AC2.4 @email
   Scenario Outline: Verify Home page Member email verification function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen
@@ -147,7 +92,7 @@ Feature: Verify Storellet APP Home page function
       | restaurantName | UpdateEmailAddress |
       | 富臨             | AT@Test.com        |
 
-  @AC2.6 @email
+  @AC2.5 @email
   Scenario Outline: Verify Home page Change member email function
     Given the user click Close button in the Promotion view partial modal screen if exist
     Then the user in the Storellet main screen

@@ -29,14 +29,13 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
     }
 
     public void clickIgnoreButton() {
-        waitForSecond(5);
+        waitForSecond(10);
         waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
     }
 
     public void clickIgnoreButtonIfExist(){
-        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle,15)){
-            waitForSecond(5);
-            waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
+        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle,20)){
+            clickIgnoreButton();
         }
     }
 }

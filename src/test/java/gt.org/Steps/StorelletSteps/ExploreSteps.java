@@ -31,8 +31,8 @@ public class ExploreSteps {
         exploreFlow.swipeLeftClickRestaurantInNewArrivalsView(restaurantName);
     }
 
-    @When("^the user swipe up to click \"([^\"]*)\" restaurant become member button in the Storellet explore screen$")
-    public void ClickRestaurantBecomeMemberInAllRestaurantList(String restaurantName) {
-        exploreFlow.clickRestaurantBecomeMemberInAllRestaurantList(restaurantName);
+    @When("^the user click Become Member button in the Storellet explore screen$")
+    public void clickBecomeMemberButton() {
+        exploreFlow.clickBecomeMemberButton();
     }
 }

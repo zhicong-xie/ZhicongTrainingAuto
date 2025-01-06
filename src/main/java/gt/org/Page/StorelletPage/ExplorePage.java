@@ -34,7 +34,8 @@ public class ExplorePage {
 
     public String restaurantCouponsXpath = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_value2_txt')]";
 
-    public String restaurantBecomeMember = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_right_button')]";
-
     public String allRestaurantNameId = "com.storellet:id/item_merchant_row_title_tv";
+
+    @FindBy(id = "com.storellet:id/item_merchant_row_right_button")
+    public WebElement becomeMemberButton;
 }

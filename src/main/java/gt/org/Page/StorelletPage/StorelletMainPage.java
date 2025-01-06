@@ -17,6 +17,9 @@ public class StorelletMainPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "//*[@resource-id = 'com.storellet:id/fragment_child_discover_feature_toolbar_search_iv' or @resource-id = 'com.storellet:id/item_payload_action_row_subheader_tv']")
+    public WebElement mainPageIdentification;
+
     @FindBy(id = "redemption_center_btn")
     public WebElement redemptionCenterButton;
 
