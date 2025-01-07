@@ -73,6 +73,13 @@
             <artifactId>cucumber-html</artifactId>
             <version>0.2.7</version>
         </dependency>
+
+        <!-- Tesseract依赖 -->
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>5.13.0</version>
+        </dependency>
     </dependencies>
 
     <build>

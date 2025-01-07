@@ -14,7 +14,7 @@ public class BaseSteps {
         driver = driverManager.getDriver();
     }
 
-    @When("^the user (restart|quit) the APP$")
+    @When("^the user (restart|quit|reinstall) the APP$")
     public void driverAction(String item) {
         switch (item) {
             case "restart":
@@ -22,6 +22,9 @@ public class BaseSteps {
                 break;
             case "quit":
                 driverManager.quitApp();
+                break;
+            case "reinstall":
+                driverManager.reinstallApp();
                 break;
             default:
                 throw new IllegalArgumentException("Illegal Argument : " + item);

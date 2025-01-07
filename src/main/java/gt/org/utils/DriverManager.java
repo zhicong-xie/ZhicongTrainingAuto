@@ -34,6 +34,7 @@ public class DriverManager {
         desiredCapabilities.setCapability("appium:fullReset", false);
         desiredCapabilities.setCapability("appium:platformName", "Android");
 
+        /*financial-times app*/
 //    desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_29");
 //    desiredCapabilities.setCapability("appium:platformVersion", "10.0");
 //    desiredCapabilities.setCapability(
@@ -41,11 +42,20 @@ public class DriverManager {
 //    desiredCapabilities.setCapability("appium:appPackage", "com.ft.news");
 //    desiredCapabilities.setCapability(
 //        "appium:appActivity", "com.ft.news.presentation.main.MainActivity");
+
+        /*storellet app*/
+//        desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");
+//        desiredCapabilities.setCapability("appium:platformVersion", "11.0");
+//        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/Storellet_4023303.apk");
+//        desiredCapabilities.setCapability("appium:appPackage", "com.storellet");
+//        desiredCapabilities.setCapability("appium:appActivity", "com.storellet.v3.basement.activity.SplashActivity");
+
+        /*hk gov new app*/
         desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");
         desiredCapabilities.setCapability("appium:platformVersion", "11.0");
-        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/Storellet_4023303.apk");
-        desiredCapabilities.setCapability("appium:appPackage", "com.storellet");
-        desiredCapabilities.setCapability("appium:appActivity", "com.storellet.v3.basement.activity.SplashActivity");
+        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/news_gov_hk_2_4.apk");
+        desiredCapabilities.setCapability("appium:appPackage", "com.igpsd.govnews_2_1");
+        desiredCapabilities.setCapability("appium:appActivity", "com.igpsd.govnews_2_1.ISDSplashScreen");
 
         desiredCapabilities.setCapability("appium:autoGrantPermissions", true);
         desiredCapabilities.setCapability("appium:automationName", "UiAutomator2");
@@ -69,7 +79,19 @@ public class DriverManager {
         }
     }
 
+    public void reinstallApp() {
+        driver.removeApp((String) driver.getCapabilities().getCapability("appium:appPackage"));
+        driver.installApp((String) driver.getCapabilities().getCapability("appium:app"));
+        driver.activateApp((String) driver.getCapabilities().getCapability("appium:appPackage"));
+    }
+
     public void startRecording(String scenarioName) {
+        /*
+         *  .withVideoSize("分辨率")         设置录制视频的分辨率 (1080P: 1920x1080; 640p: 640x360; 360p: 480x360)
+         *  .withBitRate(比率特)             设置录制视频的比特率
+         *  .withTimeLimit(录制屏幕最大时长)   默认为180s,Appium的最大支持时长
+         *
+         * */
         try {
             System.out.println("Start recording scenario: " + scenarioName + "...\n");
             AndroidStartScreenRecordingOptions options = AndroidStartScreenRecordingOptions.startScreenRecordingOptions()
