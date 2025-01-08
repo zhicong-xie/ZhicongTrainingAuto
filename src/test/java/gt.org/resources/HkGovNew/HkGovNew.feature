@@ -1,6 +1,7 @@
 @AC1 @HkGoVNewHome
 Feature: Verify HK Gov APP Top bar image contains correct text function
 
+  @AC1.1
   Scenario Outline: Verify HK Gov APP Top bar image contains correct text function
     Given the user in the HK Gov New Select language partial modal screen
     When the user click <LanguageOption> button in the HK Gov New Select language partial modal screen
@@ -12,3 +13,11 @@ Feature: Verify HK Gov APP Top bar image contains correct text function
       | English             | Home      |
       | Traditional chinese | 主頁        |
       | Simplified chinese  | 主页        |
+
+  @AC1.2
+  Scenario: Verify HK Gov APP Top bar image contains correct text function
+    Given the user in the HK Gov New Select language partial modal screen
+    When the user click Simplified chinese button in the HK Gov New Select language partial modal screen
+    Then the user in the HK Gov New Home screen
+    And the user able to see Top bar view Home button Image is consistent with local images in the HK Gov New Home screen
+    When the user restart the APP

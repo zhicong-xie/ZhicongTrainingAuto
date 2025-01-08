@@ -82,6 +82,11 @@ public class DriverManager {
     public void reinstallApp() {
         driver.removeApp((String) driver.getCapabilities().getCapability("appium:appPackage"));
         driver.installApp((String) driver.getCapabilities().getCapability("appium:app"));
+        try {
+            Thread.sleep(3000l);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.activateApp((String) driver.getCapabilities().getCapability("appium:appPackage"));
     }
 

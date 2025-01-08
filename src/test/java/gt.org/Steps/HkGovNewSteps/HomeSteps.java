@@ -18,7 +18,7 @@ public class HomeSteps {
     @Then("^the user in the HK Gov New Home screen$")
     public void isHomePageTopBarDisplayed() {
         boolean expected = true;
-        boolean actual = homeFlow.isHomePageTopBarDisplayed();
+        boolean actual = homeFlow.isHomePageIdentificationDisplayed();
         String reason = "the HK Gov New Home screen is not displayed";
         Assert.assertEquals(actual, expected, reason);
     }
@@ -28,5 +28,13 @@ public class HomeSteps {
         String actual = homeFlow.getTopBarHomeButtonImageText();
         String reason = String.format("the Tor bar view Home button image actual text is %s, but expected text is %s", actual, expected);
         Assert.assertEquals(actual.contains(expected), true, reason);
+    }
+
+    @Then("^the user able to see Top bar view Home button Image is consistent with local images in the HK Gov New Home screen$")
+    public void isTopBarViewHomeButtonConsistentWithLocalImages() throws IOException {
+        boolean expected = true;
+        boolean actual = homeFlow.isTopBarViewHomeButtonConsistentWithLocalImages();
+        String reason = String.format("the Tor bar view Home button image actual text is %s, but expected text is %s", actual, expected);
+        Assert.assertEquals(actual, expected, reason);
     }
 }

@@ -21,6 +21,9 @@ public class HomePage {
     @AndroidFindBy(id = "com.igpsd.govnews_2_1:id/horizontalScrollView1")
     public WebElement topBarView;
 
+    @AndroidFindBy(id = "com.igpsd.govnews_2_1:id/listView1")
+    public WebElement newListView;
+
     @AndroidFindBy(id = "com.igpsd.govnews_2_1:id/item1")
     public WebElement topBarViewHomeOptionImage;
 }
