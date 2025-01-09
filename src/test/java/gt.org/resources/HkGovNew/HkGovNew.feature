@@ -1,8 +1,8 @@
 @AC1 @HkGoVNewHome
-Feature: Verify HK Gov APP Top bar image contains correct text function
+Feature: Verify HK Gov New APP Home page function
 
   @AC1.1
-  Scenario Outline: Verify HK Gov APP Top bar image contains correct text function
+  Scenario Outline: Verify HK Gov New APP Top bar Home button image contains correct text function
     Given the user in the HK Gov New Select language partial modal screen
     When the user click <LanguageOption> button in the HK Gov New Select language partial modal screen
     Then the user in the HK Gov New Home screen
@@ -15,7 +15,7 @@ Feature: Verify HK Gov APP Top bar image contains correct text function
       | Simplified chinese  | 主页        |
 
   @AC1.2
-  Scenario Outline: Verify HK Gov APP Top bar image contains correct text function
+  Scenario Outline: Verify HK Gov APP Top bar Home button image consistent with local images
     Given the user in the HK Gov New Select language partial modal screen
     When the user click <LanguageOption> button in the HK Gov New Select language partial modal screen
     Then the user in the HK Gov New Home screen

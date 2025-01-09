@@ -11,7 +11,6 @@ import org.opencv.features2d.Features2d;
 import org.opencv.features2d.FlannBasedMatcher;
 import org.opencv.features2d.SIFT;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Rectangle;
