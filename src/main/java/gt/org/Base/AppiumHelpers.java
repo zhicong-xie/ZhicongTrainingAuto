@@ -431,21 +431,6 @@ public class AppiumHelpers {
         return iTesseract.doOCR(bufferedImage);
     }
 
-    /*将本地文件转为Opencv Mat类型*/
-    protected Mat loadImageAsMat(String path) {
-        return Imgcodecs.imread(path);
-    }
-
-    /*将字节数据转为Opencv Mat类型*/
-    protected Mat loadImageAsMat(byte[] imageBytes) {
-        return Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_COLOR);
-    }
-
-    protected void extractSIFTFeatures(Mat image, MatOfKeyPoint keypoints, Mat descriptors) {
-        SIFT sift = SIFT.create();// 创建 SIFT 特征提取器
-        sift.detectAndCompute(image, new Mat(), keypoints, descriptors);// SIFT特征提取
-    }
-
     protected void createDirectoryIfNotExists(String path) {
         Pattern pattern = Pattern.compile("(.*/)(.*)$");
         Matcher matcher = pattern.matcher(path);
@@ -467,6 +452,21 @@ public class AppiumHelpers {
         } else {
             System.out.println("Invalid path format: " + path);
         }
+    }
+
+    /*将本地文件转为Opencv Mat类型*/
+    protected Mat loadImageAsMat(String path) {
+        return Imgcodecs.imread(path);
+    }
+
+    /*将字节数据转为Opencv Mat类型*/
+    protected Mat loadImageAsMat(byte[] imageBytes) {
+        return Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_COLOR);
+    }
+
+    protected void extractSIFTFeatures(Mat image, MatOfKeyPoint keypoints, Mat descriptors) {
+        SIFT sift = SIFT.create();// 创建 SIFT 特征提取器
+        sift.detectAndCompute(image, new Mat(), keypoints, descriptors);// SIFT特征提取
     }
 
     protected boolean matchImagesAndDraw(Mat largeImage, Mat smallImage, String outputPath, int matchesCount) {
