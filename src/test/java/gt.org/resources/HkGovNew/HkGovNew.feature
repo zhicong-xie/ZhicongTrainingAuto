@@ -23,6 +23,6 @@ Feature: Verify HK Gov APP Top bar image contains correct text function
     When the user reinstall the APP
     Examples:
       | LanguageOption      | Expected |
-      | English             | see      |
+      | English             | not see  |
       | Traditional chinese | not see  |
       | Simplified chinese  | see      |
