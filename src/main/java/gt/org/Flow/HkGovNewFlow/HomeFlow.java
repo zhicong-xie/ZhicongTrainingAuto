@@ -38,7 +38,7 @@ public class HomeFlow extends AppiumHelpers {
         String formattedDate = now.format(formatter);
         String outputPath = String.format("LocalImage/CompareResult/matched_result_%s.png", formattedDate);
 
-        actualResult = matchImagesAndDraw(actualMat, expectedMat, outputPath,35);
+        actualResult = matchImagesAndDraw(actualMat, expectedMat, outputPath, 35);
 
         System.out.println("Home page Top bar Home button compare image saved successfully at: " + outputPath);
         return actualResult;

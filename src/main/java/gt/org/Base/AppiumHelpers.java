@@ -32,6 +32,8 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AppiumHelpers {
 
@@ -306,14 +308,10 @@ public class AppiumHelpers {
     }
 
     protected void saveElementScreenshot(BufferedImage bufferedImage, String imageName) throws IOException {
-        File parentDir = new File("target");
-        File screenshotDir = new File(parentDir, "screenshot");
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = now.format(formatter);
-        if (!screenshotDir.exists()) {
-            screenshotDir.mkdir();
-        }
+        createDirectoryIfNotExists("target/screenshot/");
         File outputFile = new File(String.format("target/screenshot/%s.png", imageName + formattedDate));
         ImageIO.write(bufferedImage, "png", outputFile);
     }
@@ -448,7 +446,30 @@ public class AppiumHelpers {
         sift.detectAndCompute(image, new Mat(), keypoints, descriptors);// SIFT特征提取
     }
 
-    protected boolean matchImagesAndDraw(Mat largeImage, Mat smallImage, String outputPath,int matchesCount) {
+    protected void createDirectoryIfNotExists(String path) {
+        Pattern pattern = Pattern.compile("(.*/)(.*)$");
+        Matcher matcher = pattern.matcher(path);
+
+        if (matcher.matches()) {
+            String directoryPath = matcher.group(1);
+            File dir = new File(directoryPath);
+
+            if (!dir.exists()) {
+                boolean created = dir.mkdirs();
+                if (created) {
+                    System.out.println("Directories created successfully: " + directoryPath);
+                } else {
+                    System.out.println("Failed to create directories: " + directoryPath);
+                }
+            } else {
+                System.out.println("Directories already exist: " + directoryPath);
+            }
+        } else {
+            System.out.println("Invalid path format: " + path);
+        }
+    }
+
+    protected boolean matchImagesAndDraw(Mat largeImage, Mat smallImage, String outputPath, int matchesCount) {
         // 1. 提取关键点和描述符
         MatOfKeyPoint largeImageKeypoints = new MatOfKeyPoint();
         Mat largeImageDescriptors = new Mat();
@@ -476,7 +497,9 @@ public class AppiumHelpers {
         }
         boolean isPresent = goodMatchesCount > matchesCount; // 阈值可以根据需要调整
 
-        System.out.println("Matches Count : "+goodMatchesCount);
+        System.out.println("Matches Count : " + goodMatchesCount);
+
+        createDirectoryIfNotExists(outputPath);
 
         //绘制结果
         Mat resultImage = new Mat();
