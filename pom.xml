@@ -80,7 +80,7 @@
             <artifactId>tess4j</artifactId>
             <version>5.13.0</version>
         </dependency>
-        <!-- Opencv(图像匹配)-->
+<!--         Opencv(图像匹配)-->
 <!--        <dependency>-->
 <!--            <groupId>org.opencv</groupId>-->
 <!--            <artifactId>opencv</artifactId>-->

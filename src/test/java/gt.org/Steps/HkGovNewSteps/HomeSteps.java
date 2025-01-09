@@ -30,11 +30,23 @@ public class HomeSteps {
         Assert.assertEquals(actual.contains(expected), true, reason);
     }
 
-    @Then("^the user able to see Top bar view Home button Image is consistent with local images in the HK Gov New Home screen$")
-    public void isTopBarViewHomeButtonConsistentWithLocalImages() throws IOException {
-        boolean expected = true;
+    @Then("^the user able to (not see|see) Top bar view Home button Image is consistent with local images in the HK Gov New Home screen$")
+    public void isTopBarViewHomeButtonConsistentWithLocalImages(String item) throws IOException {
+        boolean expected;
         boolean actual = homeFlow.isTopBarViewHomeButtonConsistentWithLocalImages();
-        String reason = String.format("the Tor bar view Home button image actual text is %s, but expected text is %s", actual, expected);
+        String reason;
+        switch (item) {
+            case "see":
+                expected = true;
+                reason = "tTop bar view Home button Image is not consistent with local images";
+                break;
+            case "not see":
+                expected = false;
+                reason = "Top bar view Home button Image is consistent with local images";
+                break;
+            default:
+                throw new IllegalArgumentException("Illegal Argument : " + item);
+        }
         Assert.assertEquals(actual, expected, reason);
     }
 }

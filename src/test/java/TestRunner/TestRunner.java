@@ -6,10 +6,10 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterSuite;
 
 @CucumberOptions(
-        features = "src/test/java/gt.org/resources/Storellet",
+        features = "src/test/java/gt.org/resources/HkGovNew",
         glue = {"gt.org.Steps"},
 //        tags = "@AC1 and not @Skip",
-        tags = "not @email",
+        tags = "@AC1.2",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",

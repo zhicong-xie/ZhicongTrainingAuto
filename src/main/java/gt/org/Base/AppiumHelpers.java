@@ -5,6 +5,13 @@ import io.appium.java_client.android.AndroidDriver;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+import org.opencv.core.*;
+import org.opencv.features2d.DescriptorMatcher;
+import org.opencv.features2d.Features2d;
+import org.opencv.features2d.FlannBasedMatcher;
+import org.opencv.features2d.SIFT;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Rectangle;
@@ -16,15 +23,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class AppiumHelpers {
@@ -35,6 +41,7 @@ public class AppiumHelpers {
     private String footBarClassName = "android.widget.TabWidget";
 
     public AppiumHelpers() {
+        System.load("/usr/local//share/java/opencv4/libopencv_java4120.dylib");
         driverManager = DriverManager.getInstance();
         androidDriver = driverManager.getDriver();
     }
@@ -424,5 +431,61 @@ public class AppiumHelpers {
         iTesseract.setLanguage("eng+chi_sim+chi_tra");
 
         return iTesseract.doOCR(bufferedImage);
+    }
+
+    /*将本地文件转为Opencv Mat类型*/
+    protected Mat loadImageAsMat(String path) {
+        return Imgcodecs.imread(path);
+    }
+
+    /*将字节数据转为Opencv Mat类型*/
+    protected Mat loadImageAsMat(byte[] imageBytes) {
+        return Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_COLOR);
+    }
+
+    protected void extractSIFTFeatures(Mat image, MatOfKeyPoint keypoints, Mat descriptors) {
+        SIFT sift = SIFT.create();// 创建 SIFT 特征提取器
+        sift.detectAndCompute(image, new Mat(), keypoints, descriptors);// SIFT特征提取
+    }
+
+    protected boolean matchImagesAndDraw(Mat largeImage, Mat smallImage, String outputPath,int matchesCount) {
+        // 1. 提取关键点和描述符
+        MatOfKeyPoint largeImageKeypoints = new MatOfKeyPoint();
+        Mat largeImageDescriptors = new Mat();
+        extractSIFTFeatures(largeImage, largeImageKeypoints, largeImageDescriptors);
+
+        MatOfKeyPoint smallImageKeypoints = new MatOfKeyPoint();
+        Mat smallImageDescriptors = new Mat();
+        extractSIFTFeatures(smallImage, smallImageKeypoints, smallImageDescriptors);
+
+        // 2. FLANN匹配
+        DescriptorMatcher matcher = new FlannBasedMatcher();
+        List<MatOfDMatch> knnMatches = new ArrayList<>();
+        matcher.knnMatch(smallImageDescriptors, largeImageDescriptors, knnMatches, 2);
+
+        // 3. 过滤匹配结果：使用比率测试
+        int goodMatchesCount = 0;
+        float ratio = 0.75f;  // Lowe的比率测试阈值
+        List<DMatch> goodMatches = new ArrayList<>();
+        for (MatOfDMatch matOfDMatch : knnMatches) {
+            DMatch[] matchArray = matOfDMatch.toArray();
+            if (matchArray[0].distance < ratio * matchArray[1].distance) {
+                goodMatchesCount++;
+                goodMatches.add(matchArray[0]);
+            }
+        }
+        boolean isPresent = goodMatchesCount > matchesCount; // 阈值可以根据需要调整
+
+        System.out.println("Matches Count : "+goodMatchesCount);
+
+        //绘制结果
+        Mat resultImage = new Mat();
+        Features2d.drawMatches(smallImage, smallImageKeypoints, largeImage, largeImageKeypoints,
+                new MatOfDMatch(goodMatches.toArray(new DMatch[goodMatches.size()])),
+                resultImage);
+
+        Imgcodecs.imwrite(outputPath, resultImage);
+
+        return isPresent;
     }
 }
