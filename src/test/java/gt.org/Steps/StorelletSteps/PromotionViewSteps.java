@@ -23,17 +23,15 @@ public class PromotionViewSteps {
 
     @When("^the user click (Close|Check details) button in the Promotion view partial modal screen if exist$")
     public void clickButton(String buttonName) {
-        if (promotionViewFlow.isPromotionViewDisplayed()) {
-            switch (buttonName) {
-                case "Close":
-                    promotionViewFlow.clickCloseButton();
-                    break;
-                case "Update now":
-                    promotionViewFlow.clickCheckDetailsButton();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Illegal Argument : " + buttonName);
-            }
+        switch (buttonName) {
+            case "Close":
+                promotionViewFlow.clickCloseButton();
+                break;
+            case "Check details":
+                promotionViewFlow.clickCheckDetailsButton();
+                break;
+            default:
+                throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
     }
 }

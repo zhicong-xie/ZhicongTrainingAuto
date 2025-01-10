@@ -45,8 +45,8 @@ public class VerifyEmailAddressPartialModalSteps {
         }
     }
 
-    @When("^the user click Ignore button in the Verify email address partial modal screen if exist$")
-    public void clickIgnoreButtonIfExist() {
-        verifyEmailAddressPartialModalFlow.clickIgnoreButtonIfExist();
-    }
+//    @When("^the user click Ignore button in the Verify email address partial modal screen if exist$")
+//    public void clickIgnoreButtonIfExist() {
+//        verifyEmailAddressPartialModalFlow.clickIgnoreButtonIfExist();
+//    }
 }

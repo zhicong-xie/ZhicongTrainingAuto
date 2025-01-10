@@ -16,10 +16,22 @@ public class PromotionViewFlow extends AppiumHelpers {
     }
 
     public void clickCloseButton() {
-        waitForElementToClickable(promotionViewPage.promotionViewCloseButton).click();
+        if (checkElement(promotionViewPage.promotionViewCloseButton, 5)) {
+            waitForElementToClickable(promotionViewPage.promotionViewCloseButton).click();
+        }
+    }
+
+    public void closePromotionViewPartialModal(int waitTime) {
+        if (checkElement(promotionViewPage.promotionViewCloseButton, waitTime)) {
+            System.out.println("----------------   Appium Event Listener   -----------------\nPromotion view partial modal screen displayed...");
+            System.out.println("Click close button...");
+            waitForElementToClickable(promotionViewPage.promotionViewCloseButton).click();
+        }
     }
 
     public void clickCheckDetailsButton() {
-        waitForElementToClickable(promotionViewPage.promotionViewCheckDetailsButton).click();
+        if (checkElement(promotionViewPage.promotionViewCloseButton, 5)) {
+            waitForElementToClickable(promotionViewPage.promotionViewCheckDetailsButton).click();
+        }
     }
 }

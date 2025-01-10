@@ -37,88 +37,99 @@ import java.util.regex.Pattern;
 public class AppiumHelpers {
 
     private final int defaultWaitingTime = 30;
+    private WebDriver webDriver;
     private AndroidDriver androidDriver;
     private DriverManager driverManager;
     private String footBarClassName = "android.widget.TabWidget";
 
     public AppiumHelpers() {
-        System.load("/usr/local//share/java/opencv4/libopencv_java4120.dylib");
+        /*Opencv 安装与环境配置
+         *
+         * 1. 终端输入 'brew install ant'
+         * 2. 终端输入 'brew install opencv'
+         * 3. 终端输入 'brew edit opencv' 将 DBUILD_opencv_java=OFF 修改为 DBUILD_opencv_java=ON; 保存并退出
+         * 4. 终端输入 'brew install --build-from-source opencv'
+         *
+         * */
+        System.load("/usr/local/share/java/opencv4/libopencv_java4120.dylib"); // 变更为 使用上述命令，生成本地的opencv-java 链接库路径
         driverManager = DriverManager.getInstance();
         androidDriver = driverManager.getDriver();
+        webDriver = driverManager.getWebDecoratorDriver();
     }
 
     protected boolean checkElement(WebElement webElement) {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
         try {
             w.until(ExpectedConditions.visibilityOf(webElement));
-            return true;
+            return webElement.isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
     protected boolean checkElement(WebElement webElement, Integer timeInSeconds) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOf(webElement));
-            return true;
+            return webElement.isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
     protected boolean checkElementByText(String elementText, Integer timeInSeconds) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOf(findElementByText(elementText)));
-            return true;
+            return findElementByText(elementText).isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
     protected boolean checkElementByXpath(String elementXpath, Integer timeInSeconds) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-            return true;
+            return webDriver.findElement(By.xpath(elementXpath)).isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
     protected boolean checkElementClickable(WebElement webElement) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
         try {
-            w.until(ExpectedConditions.visibilityOf(webElement));
+            w.until(ExpectedConditions.elementToBeClickable(webElement));
+            return webElement.isEnabled();
         } catch (Exception e) {
+            return false;
         }
-        return w.until(ExpectedConditions.elementToBeClickable(webElement)).isEnabled();
     }
 
     protected boolean checkElementClickable(WebElement webElement, Integer timeInSeconds) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.elementToBeClickable(webElement));
-            return true;
+            return webElement.isEnabled();
         } catch (Exception e) {
             return false;
         }
     }
 
     protected WebElement waitForElement(WebElement webElement) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
         return w.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     protected WebElement waitForElementByXpath(String xpath) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
         return w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     protected List<WebElement> waitForElementsByXpath(String locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+            WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
         } catch (Exception e) {
             throw new NoSuchElementException("No element found");
@@ -127,7 +138,7 @@ public class AppiumHelpers {
 
     protected List<WebElement> waitForElementsById(String locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+            WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id(locator)));
         } catch (Exception e) {
             throw new NoSuchElementException("No element found");
@@ -135,18 +146,18 @@ public class AppiumHelpers {
     }
 
     protected WebElement waitForElementToClickable(WebElement webElement) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
         return w.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     protected WebElement waitForElementAttributeIsState(WebElement webElement, String attribute, String state) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
-        w.until(d -> webElement.getAttribute(attribute).equals(state));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
+        w.until(d -> webElement.getDomAttribute(attribute).equals(state));
         return webElement;
     }
 
     protected WebElement waitForElementToClickable(WebElement webElement, Integer timeInSeconds) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(timeInSeconds));
         return w.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
@@ -159,13 +170,13 @@ public class AppiumHelpers {
     }
 
     protected WebElement findElementByText(String text) {
-        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
+        WebDriverWait w = new WebDriverWait(webDriver, Duration.ofSeconds(defaultWaitingTime));
         String txtString = String.format("//*[contains(@text, '%s')]", text);
-        return w.until(ExpectedConditions.visibilityOf(androidDriver.findElement(By.xpath(txtString))));
+        return w.until(ExpectedConditions.visibilityOf(webDriver.findElement(By.xpath(txtString))));
     }
 
     protected void swipeFunction(String direction) {
-        Dimension size = androidDriver.manage().window().getSize();
+        Dimension size = webDriver.manage().window().getSize();
         int width = size.width;
         int height = size.height;
 
@@ -250,12 +261,12 @@ public class AppiumHelpers {
 
     protected boolean isViewNotInFinancialTimesFootBar(String xpath) {
         int footBarCoordinateY =
-                waitForElement(androidDriver.findElement(By.className(footBarClassName)))
+                waitForElement(webDriver.findElement(By.className(footBarClassName)))
                         .getLocation()
                         .getY();
         int viewBottomCoordinateY =
-                androidDriver.findElement(By.xpath(xpath)).getLocation().getY()
-                        + androidDriver.findElement(By.xpath(xpath)).getSize().getHeight();
+                webDriver.findElement(By.xpath(xpath)).getLocation().getY()
+                        + webDriver.findElement(By.xpath(xpath)).getSize().getHeight();
         if (viewBottomCoordinateY >= footBarCoordinateY) {
             return false;
         }
@@ -437,16 +448,8 @@ public class AppiumHelpers {
         if (matcher.matches()) {
             String directoryPath = matcher.group(1);
             File dir = new File(directoryPath);
-
             if (!dir.exists()) {
-                boolean created = dir.mkdirs();
-                if (created) {
-                    System.out.println("Directories created successfully: " + directoryPath);
-                } else {
-                    System.out.println("Failed to create directories: " + directoryPath);
-                }
-            } else {
-                System.out.println("Directories already exist: " + directoryPath);
+                dir.mkdirs();
             }
         } else {
             System.out.println("Invalid path format: " + path);

@@ -6,6 +6,7 @@ import gt.org.utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.awt.image.BufferedImage;
@@ -18,12 +19,12 @@ public class StorelletMainFlow extends AppiumHelpers {
 
     private StorelletMainPage storelletMainPage;
     private DriverManager driverManager;
-    private AndroidDriver driver;
+    private WebDriver driver;
 
     public StorelletMainFlow() {
         storelletMainPage = new StorelletMainPage();
         driverManager = DriverManager.getInstance();
-        driver = driverManager.getDriver();
+        driver = driverManager.getWebDecoratorDriver();
     }
 
     public boolean isStorelletMainSearchIconDisplayed() {

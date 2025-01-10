@@ -5,17 +5,31 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterSuite;
 
+/*Storellet*/
 @CucumberOptions(
-        features = "src/test/java/gt.org/resources/HkGovNew",
+        features = "src/test/java/gt.org/resources/Storellet",
         glue = {"gt.org.Steps"},
-//        tags = "@AC1 and not @Skip",
-        tags = "@AC1.2",
+//        tags = "not @email",
+        tags = "@AC2.2",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",
                 "json:target/cucumber-report/cucumber.json"
         },
         monochrome = true)
+
+/*HK Gov New*/
+//@CucumberOptions(
+//        features = "src/test/java/gt.org/resources/HkGovNew",
+//        glue = {"gt.org.Steps"},
+//        tags = "@AC1.2",
+//        plugin = {
+//                "pretty",
+//                "html:target/cucumber-report/report.html",
+//                "json:target/cucumber-report/cucumber.json"
+//        },
+//        monochrome = true)
+
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @AfterSuite

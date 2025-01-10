@@ -28,14 +28,15 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
         waitForElementToClickable(verifyEmailAddressPartialModalPage.changeEmailButton).click();
     }
 
-    public void clickIgnoreButton() {
-        waitForSecond(10);
-        waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
+    public void closeEmailAddressPartialModalPage(int waitTime) {
+        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle, waitTime)) {
+            System.out.println("----------------   Appium Event Listener   -----------------\nEmail address partial modal screen displayed");
+            System.out.println("Close Ignore points screen ...");
+            waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
+        }
     }
 
-    public void clickIgnoreButtonIfExist() {
-        if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle, 20)) {
-            clickIgnoreButton();
-        }
+    public void clickIgnoreButton() {
+        waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
     }
 }

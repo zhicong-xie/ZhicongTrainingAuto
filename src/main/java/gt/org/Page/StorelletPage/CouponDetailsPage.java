@@ -3,70 +3,73 @@ package gt.org.Page.StorelletPage;
 import gt.org.utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CouponDetailsPage {
 
     private DriverManager driverManager;
-    private AndroidDriver driver;
+    private WebDriver driver;
 
     public CouponDetailsPage() {
         driverManager = DriverManager.getInstance();
-        driver = driverManager.getDriver();
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        driver = driverManager.getWebDecoratorDriver();
+        PageFactory.initElements(driver, this);
     }
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_rv")
+    @FindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_rv")
     public WebElement couponDetailsView;
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_close_iv")
+    @FindBy(id = "com.storellet:id/dialog_coupon_list_fill_screen_dialog_close_iv")
     public WebElement closeButton;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_title_tv")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_title_tv")
     public WebElement couponTitle;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_coupon_expire_tv")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_coupon_expire_tv")
     public WebElement couponExpireField;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_coupon_reminder_btn")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_coupon_reminder_btn")
     public WebElement couponReminderButton;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_qr_iv")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_qr_iv")
     public WebElement couponQrCodeView;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_redeem_point_tv")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_redeem_point_tv")
     public WebElement couponRedeemPointField;
 
-    @AndroidFindBy(id = "com.storellet:id/item_coupon_fullscreen_redeem_cv")
+    @FindBy(id = "com.storellet:id/item_coupon_fullscreen_redeem_cv")
     public WebElement couponRedeemButton;
 
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_title")
+    @FindBy(id = "com.storellet:id/dialog_error_dialog_title")
     public WebElement redeemConfirmPartialModalTitle;
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
+    @FindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
     public WebElement redeemConfirmPartialModalCancelButton;
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_positive_btn")
+    @FindBy(id = "com.storellet:id/dialog_error_dialog_positive_btn")
     public WebElement redeemConfirmPartialModalConfirmButton;
 
-    @AndroidFindBys({
-            @AndroidBy(id = "com.storellet:id/dialog_error_dialog_content"),
-            @AndroidBy(xpath = "//*[@text='你沒有足夠的積分兌換此項目']")
+    @FindAll({
+            @FindBy(id = "com.storellet:id/dialog_error_dialog_content"),
+            @FindBy(xpath = "//*[@text='你沒有足夠的積分兌換此項目']")
     })
     public WebElement redemptionFailedPartialModalTitle;
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
+    @FindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
     public WebElement redemptionFailedPartialModalConfirmButton;
 
-    @AndroidFindBys({
-            @AndroidBy(id = "com.storellet:id/dialog_error_dialog_content"),
-            @AndroidBy(xpath = "//*[@text='兌換成功']")
+    @FindAll({
+            @FindBy(id = "com.storellet:id/dialog_error_dialog_content"),
+            @FindBy(xpath = "//*[@text='兌換成功']")
     })
     public WebElement redemptionSuccessPartialModalTitle;
 
-    @AndroidFindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
+    @FindBy(id = "com.storellet:id/dialog_error_dialog_negative_btn")
     public WebElement redemptionSuccessPartialModalConfirmButton;
 
 }

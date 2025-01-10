@@ -31,6 +31,4 @@ public class VerifyEmailAddressPartialModalPage {
 
     @FindBy(id = "item_email_verification_ignore_btn")
     public WebElement ignoreButton;
-
-
 }

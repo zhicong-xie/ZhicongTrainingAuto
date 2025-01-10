@@ -3,8 +3,7 @@ Feature: Verify Storellet APP Explore page function
 
   @AC3.1
   Scenario Outline: Verify explore page search function
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
+    Given the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
     Then the user in the Storellet explore screen
     When the user click Search bar in the Storellet explore screen
@@ -22,8 +21,7 @@ Feature: Verify Storellet APP Explore page function
 
   @AC3.2
   Scenario Outline: Verify select explore page search result - VIP restaurant name
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
+    Given the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
     Then the user in the Storellet explore screen
     When the user click Search bar in the Storellet explore screen
@@ -31,7 +29,6 @@ Feature: Verify Storellet APP Explore page function
     When the user input "<SearchData>" in the Storellet main search screen Search bar
     Then the Search result is contain "<SearchData>" data in the Storellet main search screen
     When the user select first search result view in the Storellet main search screen
-    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<SearchData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
@@ -50,13 +47,10 @@ Feature: Verify Storellet APP Explore page function
 
   @AC3.3
   Scenario Outline: Verify select explore page new arrivals view - VIP restaurant name
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
+    Given the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
     Then the user in the Storellet explore screen
     When the user swipe left to click "<RestaurantData>" restaurant name in the Storellet explore screen new arrivals view
-    And the user click Ignore button in the Verify email address partial modal screen if exist
-    And the user click Skip button in the New join guidelines screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to see restaurant name displayed "<RestaurantData>" in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
@@ -74,8 +68,7 @@ Feature: Verify Storellet APP Explore page function
 
   @AC3.4
   Scenario Outline: Verify select explore page all restaurant list view - VIP restaurant name
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
+    Given the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
     Then the user in the Storellet explore screen
     When the user swipe up to get "<RestaurantData>" member restaurant info and click in the Storellet explore screen
@@ -102,8 +95,7 @@ Feature: Verify Storellet APP Explore page function
 
   @AC3.5
   Scenario: Verify explore page select non-VIP restaurant become Member function
-    Given the user click Close button in the Promotion view partial modal screen if exist
-    Then the user in the Storellet main screen
+    Given the user in the Storellet main screen
     When the user click Explore button in the Storellet bottom navigation bar
     Then the user in the Storellet explore screen
     When the user click Become Member button in the Storellet explore screen
@@ -126,8 +118,6 @@ Feature: Verify Storellet APP Explore page function
     And the user swipe up until Agree button is enabled in the Membership terms and conditions screen
     Then the user able to see Agree button is enabled in the Membership terms and conditions screen
     When the user click Agree button in the Membership terms and conditions screen
-    And the user click Skip button in the New join guidelines screen if exist
-    And the user click Ignore button in the Verify email address partial modal screen if exist
     Then the user in the Storellet restaurant details screen
     And the user able to not see New join button in the Storellet restaurant details screen
     And the user able to see More details button in the Storellet restaurant details screen

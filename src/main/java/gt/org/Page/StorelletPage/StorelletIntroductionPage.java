@@ -1,7 +1,7 @@
 package gt.org.Page.StorelletPage;
 
 import gt.org.utils.DriverManager;
-import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,12 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 public class StorelletIntroductionPage {
 
     private DriverManager driverManager;
-    private AndroidDriver driver;
+    private WebDriver webDriver;
 
     public StorelletIntroductionPage() {
         driverManager = DriverManager.getInstance();
-        driver = driverManager.getDriver();
-        PageFactory.initElements(driver, this);
+        webDriver = driverManager.getWebDecoratorDriver();
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(id = "activity_introduction_indicator")

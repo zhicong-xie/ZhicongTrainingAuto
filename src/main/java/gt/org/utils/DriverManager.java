@@ -4,7 +4,9 @@ import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
 
 import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.events.EventFiringDecorator;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -20,6 +22,8 @@ public class DriverManager {
 
     private static DriverManager driverManager;
     private AndroidDriver driver;
+    private WebDriver webDecoratorDriver;
+    private EventListening eventListening = new EventListening();
 
     public static DriverManager getInstance() {
         if (driverManager == null) {
@@ -30,7 +34,7 @@ public class DriverManager {
 
     private DriverManager() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("appium:noReset", false);
+        desiredCapabilities.setCapability("appium:noReset", true);
         desiredCapabilities.setCapability("appium:fullReset", false);
         desiredCapabilities.setCapability("appium:platformName", "Android");
 
@@ -44,24 +48,26 @@ public class DriverManager {
 //        "appium:appActivity", "com.ft.news.presentation.main.MainActivity");
 
         /*storellet app*/
-//        desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");
-//        desiredCapabilities.setCapability("appium:platformVersion", "11.0");
-//        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/Storellet_4023303.apk");
-//        desiredCapabilities.setCapability("appium:appPackage", "com.storellet");
-//        desiredCapabilities.setCapability("appium:appActivity", "com.storellet.v3.basement.activity.SplashActivity");
-
-        /*hk gov new app*/
         desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");
         desiredCapabilities.setCapability("appium:platformVersion", "11.0");
-        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/news_gov_hk_2_4.apk");
-        desiredCapabilities.setCapability("appium:appPackage", "com.igpsd.govnews_2_1");
-        desiredCapabilities.setCapability("appium:appActivity", "com.igpsd.govnews_2_1.ISDSplashScreen");
+        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/Storellet_4023303.apk");
+        desiredCapabilities.setCapability("appium:appPackage", "com.storellet");
+        desiredCapabilities.setCapability("appium:appActivity", "com.storellet.v3.basement.activity.SplashActivity");
+
+        /*hk gov new app*/
+//        desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");
+//        desiredCapabilities.setCapability("appium:platformVersion", "11.0");
+//        desiredCapabilities.setCapability("appium:app", "/Users/automatiautomationon/Desktop/app/aos/news_gov_hk_2_4.apk");
+//        desiredCapabilities.setCapability("appium:appPackage", "com.igpsd.govnews_2_1");
+//        desiredCapabilities.setCapability("appium:appActivity", "com.igpsd.govnews_2_1.ISDSplashScreen");
 
         desiredCapabilities.setCapability("appium:autoGrantPermissions", true);
         desiredCapabilities.setCapability("appium:automationName", "UiAutomator2");
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
             driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 500);
+
+            webDecoratorDriver = new EventFiringDecorator(eventListening).decorate(driver);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -133,5 +139,9 @@ public class DriverManager {
 
     public AndroidDriver getDriver() {
         return driver;
+    }
+
+    public WebDriver getWebDecoratorDriver() {
+        return webDecoratorDriver;
     }
 }

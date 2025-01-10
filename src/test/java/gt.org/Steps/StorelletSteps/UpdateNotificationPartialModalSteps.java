@@ -23,17 +23,15 @@ public class UpdateNotificationPartialModalSteps {
 
     @When("^the user click (Close|Update now) button in the Update notification partial modal screen if exist$")
     public void clickButton(String buttonName) {
-        if (updateNotificationPartialModalFlow.isUpdateNotificationPartialModalTitleDisplayed()) {
-            switch (buttonName) {
-                case "Close":
-                    updateNotificationPartialModalFlow.clickCloseButton();
-                    break;
-                case "Update now":
-                    updateNotificationPartialModalFlow.clickUpdateNowButton();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Illegal Argument : " + buttonName);
-            }
+        switch (buttonName) {
+            case "Close":
+                updateNotificationPartialModalFlow.clickCloseButton();
+                break;
+            case "Update now":
+                updateNotificationPartialModalFlow.clickUpdateNowButton();
+                break;
+            default:
+                throw new IllegalArgumentException("Illegal Argument : " + buttonName);
         }
     }
 
