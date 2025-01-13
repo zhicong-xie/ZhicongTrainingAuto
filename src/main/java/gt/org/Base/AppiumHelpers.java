@@ -492,16 +492,17 @@ public class AppiumHelpers {
         // 1. 提取关键点和描述符
         MatOfKeyPoint largeImageKeypoints = new MatOfKeyPoint();
         Mat largeImageDescriptors = new Mat();
-        extractSIFTFeatures(largeImage, largeImageKeypoints, largeImageDescriptors);
+        extractSIFTFeatures(largeImage, largeImageKeypoints, largeImageDescriptors);//会检测图像的关键点，并计算每个关键点的特征向量。
 
         MatOfKeyPoint smallImageKeypoints = new MatOfKeyPoint();
         Mat smallImageDescriptors = new Mat();
-        extractSIFTFeatures(smallImage, smallImageKeypoints, smallImageDescriptors);
+        extractSIFTFeatures(smallImage, smallImageKeypoints, smallImageDescriptors);//它会检测图像的关键点，并计算每个关键点的特征向量。
 
         // 2. FLANN匹配
         DescriptorMatcher matcher = new FlannBasedMatcher();
         List<MatOfDMatch> knnMatches = new ArrayList<>();
         matcher.knnMatch(smallImageDescriptors, largeImageDescriptors, knnMatches, 2);
+        //使用 FLANN（快速近似最近邻）算法作为匹配器，适合高维特征向量的快速匹配。对每个描述符，找到两个最近的匹配点（k=2）。结果存储在 knnMatches 中。
 
         // 3. 过滤匹配结果：使用比率测试
         int goodMatchesCount = 0;
@@ -509,23 +510,28 @@ public class AppiumHelpers {
         List<DMatch> goodMatches = new ArrayList<>();
         for (MatOfDMatch matOfDMatch : knnMatches) {
             DMatch[] matchArray = matOfDMatch.toArray();
+            //如果最近邻点的距离（matchArray[0].distance）小于第二近邻点距离的 0.75 倍，则认为是好匹配
             if (matchArray[0].distance < ratio * matchArray[1].distance) {
                 goodMatchesCount++;
+                //将符合条件的匹配点添加到 goodMatches List中
                 goodMatches.add(matchArray[0]);
             }
         }
-        boolean isPresent = goodMatchesCount > matchesCount; // 阈值可以根据需要调整
+        boolean isPresent = goodMatchesCount > matchesCount; // 阈值可以根据需求自行调整
 
         System.out.println("Matches Count : " + goodMatchesCount);
 
+        //确保保存结果的目录存在（如不存在，则会创建）
         createDirectoryIfNotExists(outputPath);
 
         //绘制结果
         Mat resultImage = new Mat();
+        //将 goodMatches 中的匹配点绘制在一张新图（resultImage）上，直观展示匹配关系
         Features2d.drawMatches(smallImage, smallImageKeypoints, largeImage, largeImageKeypoints,
                 new MatOfDMatch(goodMatches.toArray(new DMatch[goodMatches.size()])),
                 resultImage);
 
+        //将绘制好的结果图保存到 outputPath 指定的位置
         Imgcodecs.imwrite(outputPath, resultImage);
 
         return isPresent;
