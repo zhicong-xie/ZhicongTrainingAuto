@@ -24,7 +24,7 @@ public class NewJoinGuidelinesFlow extends AppiumHelpers {
 
     public void closeNewJoinGuideScreen(int waitTime) {
         if (checkElement(newJoinGuidelinesPage.newJoinGuidelinesTitle, waitTime)) {
-            System.out.println("----------------   Appium Event Listener   -----------------\nRestaurant points screen displayed");
+            System.out.println("Restaurant points screen displayed");
             System.out.println("Close Restaurant points screen ...");
             waitForElement(newJoinGuidelinesPage.skipButton).click();
         }

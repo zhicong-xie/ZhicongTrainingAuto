@@ -11,6 +11,7 @@ public class EventListening implements WebDriverListener {
 
     @Override
     public void beforeAnyWebDriverCall(org.openqa.selenium.WebDriver driver, java.lang.reflect.Method method, Object[] args) {
+        System.out.println("----------------   Appium Event Listener   -----------------");
         PromotionViewFlow promotionViewFlow = new PromotionViewFlow();
         UpdateNotificationPartialModalFlow updateNotificationPartialModalFlow = new UpdateNotificationPartialModalFlow();
         NewJoinGuidelinesFlow newJoinGuidelinesFlow = new NewJoinGuidelinesFlow();

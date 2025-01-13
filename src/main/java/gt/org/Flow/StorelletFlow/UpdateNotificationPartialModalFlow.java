@@ -23,7 +23,7 @@ public class UpdateNotificationPartialModalFlow extends AppiumHelpers {
 
     public void closeUpdateNotificationPartialModal(int waitTime) {
         if (checkElement(updateNotificationPartialModalPage.updateNotificationPartialModalTitle, waitTime)) {
-            System.out.println("----------------   Appium Event Listener   -----------------\nUpdate notification partial modal screen displayed...");
+            System.out.println("Update notification partial modal screen displayed...");
             System.out.println("Click close button...");
             waitForElementToClickable(updateNotificationPartialModalPage.closeButton).click();
         }

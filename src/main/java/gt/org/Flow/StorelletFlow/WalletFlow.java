@@ -88,7 +88,7 @@ public class WalletFlow extends AppiumHelpers {
             } else {
                 WebElement webElement = waitForElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName));
                 int pixel = webElement.getRect().getY() - waitForElement(walletPage.bottomBar).getRect().getY();
-                if (pixel >= -100) {
+                if (pixel >= -250) {
                     swipeFunction("up");
                 }
                 return webElement;

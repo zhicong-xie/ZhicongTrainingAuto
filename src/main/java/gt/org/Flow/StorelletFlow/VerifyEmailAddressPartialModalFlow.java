@@ -30,7 +30,7 @@ public class VerifyEmailAddressPartialModalFlow extends AppiumHelpers {
 
     public void closeEmailAddressPartialModalPage(int waitTime) {
         if (checkElement(verifyEmailAddressPartialModalPage.verifyEmailAddressPartialModalTitle, waitTime)) {
-            System.out.println("----------------   Appium Event Listener   -----------------\nEmail address partial modal screen displayed");
+            System.out.println("Email address partial modal screen displayed");
             System.out.println("Close Ignore points screen ...");
             waitForElementToClickable(verifyEmailAddressPartialModalPage.ignoreButton).click();
         }
