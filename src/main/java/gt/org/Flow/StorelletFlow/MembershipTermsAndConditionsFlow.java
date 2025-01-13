@@ -36,7 +36,7 @@ public class MembershipTermsAndConditionsFlow extends AppiumHelpers {
     }
 
     public boolean isAgreeButtonClickable() {
-        return checkElementClickable(membershipTermsAndConditionsPage.agreeButton, 3);
+        return checkElementClickable(membershipTermsAndConditionsPage.agreeButton, 1);
     }
 
     public void clickAgreeButton() {

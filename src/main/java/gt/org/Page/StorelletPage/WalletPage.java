@@ -39,7 +39,7 @@ public class WalletPage {
 
     public String membershipRestaurantNameXpath = "//*[contains(@resource-id , 'item_large_image_portrait_tv') and contains(@text ,'%s')]";
 
-    public String membershipRestaurantNameId = "com.storellet:id/item_large_image_portrait_tv";
+    public String membershipRestaurantLastNameXpath = "(//*[@resource-id = 'com.storellet:id/item_large_image_portrait_tv'])[last()]";
 
     //优惠券
     public String myCouponsViewOfRestaurantNameXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]";
@@ -52,7 +52,7 @@ public class WalletPage {
 
     public String couponsExpirationXpath = "//*[contains(@resource-id, 'item_brand_coupon_rv_scroll_title_tv') and contains(@text ,'%s')]/..//*[contains(@resource-id, 'item_coupon_portrait_body2_tv') and contains(@text ,'%s')]";
 
-    public String myCouponsViewOfRestaurantNameId = "com.storellet:id/item_brand_coupon_rv_scroll_title_tv";
+    public String myCouponsViewOfLastRestaurantNameXpath = "(//*[@resource-id = 'com.storellet:id/item_brand_coupon_rv_scroll_title_tv'])[last()]";
 
     @AndroidFindBy(id = "view_main_navibar_v4_container")
     public WebElement bottomBar;

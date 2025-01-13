@@ -1,7 +1,7 @@
 @AC2
 Feature: Verify Storellet APP Home page function
 
-  @AC2.1
+  @AC2.1 @image
   Scenario: Verify Home page top promotion image is not null and save in local
     Given the user in the Storellet main screen
     When the user save the Storellet main screen big promotion image to local folder
@@ -118,3 +118,15 @@ Feature: Verify Storellet APP Home page function
       | restaurantName | EmailAddress    | WrongFormatEmailAddress | UpdateEmailAddress |
       | 富臨             | AT@Test.com     | 123123.com              | TestNG@Test.com    |
       | 富臨             | TestNG@Test.com | 123123.com              | AT@Test.com        |
+
+  @AC2.6 @image
+  Scenario: Verify Home page first top promotion image text displayed correct
+    Given the user in the Storellet main screen
+    Then the user able to see First big promotion image text contains "12種好食材‧會員優惠8折" in the Storellet main screen
+    When the user restart the APP
+
+  @AC2.7 @image
+  Scenario: Verify Home page first top promotion image consistent with local images
+    Given the user in the Storellet main screen
+    Then the user able to see First big promotion image consistent with local images
+    When the user restart the APP

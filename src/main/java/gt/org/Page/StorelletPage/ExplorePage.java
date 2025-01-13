@@ -26,7 +26,7 @@ public class ExplorePage {
     @FindBy(id = "item_recycler_view_retry_rv")
     public WebElement newArrivalsView;
 
-    public String newArrivalsRestaurantNameListId = "com.storellet:id/item_large_image_landscape_header";
+    public String newArrivalsLastRestaurantNameListXpath = "(//*[@resource-id = 'com.storellet:id/item_large_image_landscape_header'])[last()]";
 
     public String newArrivalsRestaurantName = "//*[contains(@resource-id, 'item_recycler_view_retry_rv')]//android.widget.TextView[contains(@text , '%s')]";
 
@@ -34,7 +34,7 @@ public class ExplorePage {
 
     public String restaurantCouponsXpath = "//*[contains(@resource-id , 'item_merchant_row_title_tv') and contains(@text , '%s')]/..//*[contains(@resource-id , 'item_merchant_row_value2_txt')]";
 
-    public String allRestaurantNameId = "com.storellet:id/item_merchant_row_title_tv";
+    public String allRestaurantViewLastNameXpath = "(//*[@resource-id = 'com.storellet:id/item_merchant_row_title_tv'])[last()]";
 
     @FindBy(id = "com.storellet:id/item_merchant_row_right_button")
     public WebElement becomeMemberButton;

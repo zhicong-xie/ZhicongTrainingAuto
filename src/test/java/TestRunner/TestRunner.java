@@ -9,8 +9,8 @@ import org.testng.annotations.AfterSuite;
 @CucumberOptions(
         features = "src/test/java/gt.org/resources/Storellet",
         glue = {"gt.org.Steps"},
-//        tags = "not @email",
-        tags = "@AC2.2",
+        tags = "not @email",
+//        tags = "@AC2.7",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",

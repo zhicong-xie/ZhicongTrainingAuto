@@ -441,6 +441,23 @@ public class AppiumHelpers {
         return iTesseract.doOCR(bufferedImage);
     }
 
+    protected String getImageText(BufferedImage bufferedImage, String language) throws TesseractException {
+        /*
+         *  在自己macbook终端输入"brew install tesseract" 安装
+         *  完成上述后在终端输入"brew install tesseract-lang" 获取除英文以外的全部语言包
+         *  或者在 "https://github.com/tesseract-ocr/tessdata" 手动下载'.traineddata'后缀的语言包并手动添加到该目录下'/usr/local/Cellar/tesseract/<tesseract version>/share/tessdata'
+         *
+         * iTesseract.setDatapath("path")        设置 Tess4J 数据路径
+         * iTesseract.setLanguage("language");   设置识别的语言(eng:英文; chi_sim:简中; chi_tra:繁中. 如果有字体混合组合可用'+')
+         */
+
+        ITesseract iTesseract = new Tesseract();
+        iTesseract.setDatapath("/usr/local/Cellar/tesseract/5.5.0/share/tessdata");
+        iTesseract.setLanguage(language);
+
+        return iTesseract.doOCR(bufferedImage);
+    }
+
     protected void createDirectoryIfNotExists(String path) {
         Pattern pattern = Pattern.compile("(.*/)(.*)$");
         Matcher matcher = pattern.matcher(path);

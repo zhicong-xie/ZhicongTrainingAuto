@@ -36,14 +36,12 @@ public class WalletFlow extends AppiumHelpers {
     }
 
     public void swipeLeftFindMembershipRestaurantAndClick(String restaurantName) {
-        List<WebElement> restaurantNameList = waitForElementsById(walletPage.membershipRestaurantNameId);
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName), 1)) {
                 swipeElementFunction("left", walletPage.membershipRestaurantSwipeView, 1, 1);
 
-                restaurantNameList = waitForElementsById(walletPage.membershipRestaurantNameId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
                 } else {
@@ -57,15 +55,12 @@ public class WalletFlow extends AppiumHelpers {
     }
 
     public void swipeUpFindMembershipRestaurantAndClick(String restaurantName) {
-        List<WebElement> restaurantNameList = waitForElementsById(walletPage.membershipRestaurantNameId);
-
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName), 1)) {
                 swipeFunction("up");
 
-                restaurantNameList = waitForElementsById(walletPage.membershipRestaurantNameId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
                 } else {
@@ -79,14 +74,12 @@ public class WalletFlow extends AppiumHelpers {
     }
 
     public WebElement swipeUpToFindMyCouponsViewOfRestaurant(String restaurantName) {
-        List<WebElement> restaurantNameList = waitForElementsById(walletPage.myCouponsViewOfRestaurantNameId);
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(walletPage.myCouponsViewOfLastRestaurantNameXpath).getText();
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.myCouponsViewOfRestaurantNameXpath, restaurantName), 1)) {
                 swipeFunction("up");
 
-                restaurantNameList = waitForElementsById(walletPage.myCouponsViewOfRestaurantNameId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(walletPage.myCouponsViewOfLastRestaurantNameXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
                 } else {

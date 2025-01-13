@@ -4,6 +4,8 @@ import gt.org.Base.AppiumHelpers;
 import gt.org.Page.StorelletPage.StorelletMainPage;
 import gt.org.utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
+import net.sourceforge.tess4j.TesseractException;
+import org.opencv.core.Mat;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,8 @@ import org.openqa.selenium.WebElement;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -75,13 +79,11 @@ public class StorelletMainFlow extends AppiumHelpers {
     }
 
     public void selectRestaurant(String restaurantInfo) {
-        List<WebElement> restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
-        String lastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastName = waitForElementByXpath(storelletMainPage.lastRestaurantNameXpath).getText();
         while (true) {
-            if (!checkElementByText(restaurantInfo, 2)) {
+            if (!checkElementByText(restaurantInfo, 1)) {
                 swipeFunction("up");
-                restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
-                String swipeUpLastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String swipeUpLastName = waitForElementByXpath(storelletMainPage.lastRestaurantNameXpath).getText();
                 if (lastName.equals(swipeUpLastName)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantInfo);
                 } else {
@@ -100,14 +102,11 @@ public class StorelletMainFlow extends AppiumHelpers {
     }
 
     public void clickJoinButton() {
-        List<WebElement> restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
-        String lastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
-
+        String lastName = waitForElementByXpath(storelletMainPage.lastRestaurantNameXpath).getText();
         while (true) {
-            if (!checkElement(storelletMainPage.jointButton, 2)) {
+            if (!checkElement(storelletMainPage.jointButton, 1)) {
                 swipeFunction("up");
-                restaurantNameList = waitForElementsById(storelletMainPage.restaurantNameId);
-                String swipeUpLastName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String swipeUpLastName = waitForElementByXpath(storelletMainPage.lastRestaurantNameXpath).getText();
                 if (lastName.equals(swipeUpLastName)) {
                     throw new NoSuchElementException("Join button not found");
                 } else {
@@ -122,5 +121,27 @@ public class StorelletMainFlow extends AppiumHelpers {
                 break;
             }
         }
+    }
+
+    public String getFirstBigPromotionImageText() throws IOException, TesseractException {
+        List<WebElement> imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
+        String result = getImageText(getElementScreenshot(imageViewElements.get(0)), "chi_tra").replaceAll(" ", "");
+        System.out.println("Home page first big promotion image text: " + result);
+        return result;
+    }
+
+    public boolean isFirstBigPromotionImageConsistentWithLocalImages() {
+        boolean actualResult = false;
+        Mat expectedMat = loadImageAsMat("LocalImage/First big promotion image.png");
+        Mat actualMat = loadImageAsMat(takeDeviceScreenshot());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = now.format(formatter);
+        String outputPath = String.format("LocalImage/CompareResult/matched_result_%s.png", formattedDate);
+
+        actualResult = matchImagesAndDraw(actualMat, expectedMat, outputPath, 5500);
+
+        System.out.println("Home page first big promotion image compare saved successfully at: " + outputPath);
+        return actualResult;
     }
 }

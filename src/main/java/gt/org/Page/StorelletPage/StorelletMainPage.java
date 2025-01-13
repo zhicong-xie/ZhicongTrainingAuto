@@ -41,5 +41,5 @@ public class StorelletMainPage {
     @FindBy(xpath = "//*[@resource-id = 'com.storellet:id/item_payload_action_row_right_button_txt' and @text = '加入']")
     public WebElement jointButton;
 
-    public String restaurantNameId = "com.storellet:id/item_payload_action_row_subheader_tv";
+    public String lastRestaurantNameXpath = "(//*[@resource-id = 'com.storellet:id/item_payload_action_row_subheader_tv'])[last()]";
 }

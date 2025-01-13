@@ -46,7 +46,7 @@ Feature: Verify Storellet APP Wallet page function
       | 富臨             |
       | 城中泰            |
 
-  @AC4.5
+  @AC4.3
   Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant and Verify existing coupon details function
     Given the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -74,7 +74,7 @@ Feature: Verify Storellet APP Wallet page function
       | RestaurantData | CouponsDescription |
       | Storellet Cafe | $20                |
 
-  @AC4.6
+  @AC4.4
   Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant and Verify redemption successful function
     Given the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -115,7 +115,7 @@ Feature: Verify Storellet APP Wallet page function
       | RestaurantData | CouponsDescription |
       | Storellet Cafe | VVIP會員套票           |
 
-  @AC4.7
+  @AC4.5
   Scenario Outline: Verify select wallet page my coupons view's Non-Storellet Cafe restaurant and Verify redemption failed function
     Given the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -149,7 +149,7 @@ Feature: Verify Storellet APP Wallet page function
       | RestaurantData | CouponsDescription |
       | 京城鴨子           | 甘香烤鴨               |
 
-  @AC4.8
+  @AC4.6
   Scenario Outline: Verify select wallet page my coupons view's Non-Storellet Cafe restaurant's coupons view function
     Given the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar
@@ -165,7 +165,7 @@ Feature: Verify Storellet APP Wallet page function
       | RestaurantData | CouponsDescription |
       | Rico Rico      | 迎新優惠：全單9折優惠        |
 
-  @AC4.9
+  @AC4.7
   Scenario Outline: Verify select wallet page my coupons view's Storellet Cafe restaurant's show all coupons button function
     Given the user in the Storellet main screen
     When the user click Wallet button in the Storellet bottom navigation bar

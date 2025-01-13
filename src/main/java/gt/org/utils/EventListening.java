@@ -10,7 +10,7 @@ import org.openqa.selenium.support.events.WebDriverListener;
 public class EventListening implements WebDriverListener {
 
     @Override
-    public void beforeAnyCall(Object target, java.lang.reflect.Method method, Object[] args) {
+    public void beforeAnyWebDriverCall(org.openqa.selenium.WebDriver driver, java.lang.reflect.Method method, Object[] args) {
         PromotionViewFlow promotionViewFlow = new PromotionViewFlow();
         UpdateNotificationPartialModalFlow updateNotificationPartialModalFlow = new UpdateNotificationPartialModalFlow();
         NewJoinGuidelinesFlow newJoinGuidelinesFlow = new NewJoinGuidelinesFlow();

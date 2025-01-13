@@ -33,13 +33,11 @@ public class ExploreFlow extends AppiumHelpers {
     }
 
     public void swipeLeftClickRestaurantInNewArrivalsView(String restaurantName) {
-        List<WebElement> restaurantNameList = waitForElementsById(explorePage.newArrivalsRestaurantNameListId);
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(explorePage.newArrivalsLastRestaurantNameListXpath).getText();
         while (true) {
-            if (!checkElementByXpath(String.format(explorePage.newArrivalsRestaurantName, restaurantName), 2)) {
+            if (!checkElementByXpath(String.format(explorePage.newArrivalsRestaurantName, restaurantName), 1)) {
                 swipeElementFunction("left", explorePage.newArrivalsView, 1, 1);
-                restaurantNameList = waitForElementsById(explorePage.newArrivalsRestaurantNameListId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(explorePage.newArrivalsLastRestaurantNameListXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
                 } else {
@@ -54,13 +52,11 @@ public class ExploreFlow extends AppiumHelpers {
 
     public HashMap<String, String> getMemberRestaurantInfoAndClick(String restaurantName) {
         HashMap<String, String> restaurantInfo = new HashMap<>();
-        List<WebElement> restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(explorePage.allRestaurantViewLastNameXpath).getText();
         while (true) {
-            if (!checkElementByXpath(String.format(explorePage.restaurantPointsXpath, restaurantName), 3)) {
+            if (!checkElementByXpath(String.format(explorePage.restaurantPointsXpath, restaurantName), 1)) {
                 swipeFunction("up");
-                restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(explorePage.allRestaurantViewLastNameXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
                 } else {
@@ -79,13 +75,11 @@ public class ExploreFlow extends AppiumHelpers {
     }
 
     public void clickBecomeMemberButton() {
-        List<WebElement> restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
-        String lastRestaurantName = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+        String lastRestaurantName = waitForElementByXpath(explorePage.allRestaurantViewLastNameXpath).getText();
         while (true) {
-            if (!checkElement(explorePage.becomeMemberButton, 3)) {
+            if (!checkElement(explorePage.becomeMemberButton, 1)) {
                 swipeFunction("up");
-                restaurantNameList = waitForElementsById(explorePage.allRestaurantNameId);
-                String lastRestaurantNameAfterSwipe = restaurantNameList.get(restaurantNameList.size() - 1).getText();
+                String lastRestaurantNameAfterSwipe = waitForElementByXpath(explorePage.allRestaurantViewLastNameXpath).getText();
 
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Become member button not found");
