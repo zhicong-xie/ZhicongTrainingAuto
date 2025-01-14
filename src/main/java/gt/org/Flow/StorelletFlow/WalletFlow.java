@@ -39,7 +39,7 @@ public class WalletFlow extends AppiumHelpers {
         String lastRestaurantName = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.membershipRestaurantNameXpath, restaurantName), 1)) {
-                swipeElementFunction("left", walletPage.membershipRestaurantSwipeView, 1, 1);
+                swipeElementFunction("left", walletPage.membershipRestaurantSwipeView);
 
                 String lastRestaurantNameAfterSwipe = waitForElementByXpath(walletPage.membershipRestaurantLastNameXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
@@ -110,7 +110,7 @@ public class WalletFlow extends AppiumHelpers {
         int num = 0;
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe), 1)) {
-                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)));
                 num++;
             } else {
                 waitForElementByXpath(String.format(walletPage.couponsDescribeXpath, restaurantName, couponsDescribe)).click();
@@ -127,7 +127,7 @@ public class WalletFlow extends AppiumHelpers {
         int num = 0;
         while (true) {
             if (!checkElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration), 1)) {
-                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)), 1, 1);
+                swipeElementFunction("left", waitForElementByXpath(String.format(walletPage.couponsSwipeViewXpath, restaurantName)));
                 num++;
             } else {
                 waitForElementByXpath(String.format(walletPage.couponsExpirationXpath, restaurantName, couponsExpiration)).click();

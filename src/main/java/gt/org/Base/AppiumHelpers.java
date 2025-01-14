@@ -61,7 +61,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
         try {
             w.until(ExpectedConditions.visibilityOf(webElement));
-            return webElement.isDisplayed();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -71,7 +71,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOf(webElement));
-            return webElement.isDisplayed();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -81,7 +81,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOf(findElementByText(elementText)));
-            return findElementByText(elementText).isDisplayed();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -91,7 +91,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-            return androidDriver.findElement(By.xpath(elementXpath)).isDisplayed();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -101,7 +101,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
         try {
             w.until(ExpectedConditions.elementToBeClickable(webElement));
-            return webElement.isEnabled();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -111,7 +111,7 @@ public class AppiumHelpers {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
         try {
             w.until(ExpectedConditions.elementToBeClickable(webElement));
-            return webElement.isEnabled();
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -214,14 +214,7 @@ public class AppiumHelpers {
                 throw new IllegalArgumentException("Invalid swipe direction: " + direction);
         }
 
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 0);
-
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-        androidDriver.perform(Collections.singletonList(swipe));
+        swipeCoordinateFunction(startX, startY, endX, endY);
     }
 
     protected WebElement swipeToUpFindFinancialTimesWebElementXpath(
@@ -358,7 +351,7 @@ public class AppiumHelpers {
         return true;
     }
 
-    protected void swipeElementFunction(String direction, WebElement webElement, Integer existenceTime, Integer attempts) {
+    protected void swipeElementFunction(String direction, WebElement webElement) {
         Rectangle rect = webElement.getRect();
         int x = rect.getX();
         int y = rect.getY();
@@ -399,14 +392,7 @@ public class AppiumHelpers {
                 throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
         }
 
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 0);
-
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-        androidDriver.perform(Collections.singletonList(swipe));
+        swipeCoordinateFunction(startX, startY, endX, endY);
     }
 
     protected byte[] takeDeviceScreenshot() {

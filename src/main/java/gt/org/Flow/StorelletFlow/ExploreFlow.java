@@ -36,7 +36,7 @@ public class ExploreFlow extends AppiumHelpers {
         String lastRestaurantName = waitForElementByXpath(explorePage.newArrivalsLastRestaurantNameListXpath).getText();
         while (true) {
             if (!checkElementByXpath(String.format(explorePage.newArrivalsRestaurantName, restaurantName), 1)) {
-                swipeElementFunction("left", explorePage.newArrivalsView, 1, 1);
+                swipeElementFunction("left", explorePage.newArrivalsView);
                 String lastRestaurantNameAfterSwipe = waitForElementByXpath(explorePage.newArrivalsLastRestaurantNameListXpath).getText();
                 if (lastRestaurantName.equals(lastRestaurantNameAfterSwipe)) {
                     throw new NoSuchElementException("Restaurant not found: " + restaurantName);
