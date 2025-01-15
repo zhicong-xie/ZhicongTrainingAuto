@@ -61,7 +61,7 @@ public class DriverManager {
 //        desiredCapabilities.setCapability("appium:appPackage", "com.igpsd.govnews_2_1");
 //        desiredCapabilities.setCapability("appium:appActivity", "com.igpsd.govnews_2_1.ISDSplashScreen");
 
-        desiredCapabilities.setCapability("appium:autoGrantPermissions", true);
+        desiredCapabilities.setCapability("appium:autoGrantPermissions", true); //Appium 自动授权， iOS用autoAcceptAlerts，AOS 用autoGrantPermissions
         desiredCapabilities.setCapability("appium:automationName", "UiAutomator2");
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
