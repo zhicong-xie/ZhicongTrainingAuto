@@ -41,7 +41,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
         if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
             System.out.println("Appium Server Port occupied, Close port...");
-            appiumServerGui.stepPort(4723);
+            appiumServerGui.stopPort(4723);
         }
 
         System.out.println("Appium Server Port start ...");

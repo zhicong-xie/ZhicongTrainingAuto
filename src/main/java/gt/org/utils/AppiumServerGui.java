@@ -52,12 +52,12 @@ public class AppiumServerGui {
         return result.length() > 0;
     }
 
-    public void stepPort(int port) throws IOException, InterruptedException {
+    public void stopPort(int port) {
         String stepCommand = String.format("kill $(lsof -t -i:%d)", port);
         try {
             process = Runtime.getRuntime().exec(new String[]{"/bin/bash", "-c", stepCommand});
             process.waitFor();
-            System.out.println(port + " port step...");
+            System.out.println(port + " port stop...");
         } catch (Exception e) {
             System.err.println("Failed to close port " + port + ": " + e.getMessage());
         }
