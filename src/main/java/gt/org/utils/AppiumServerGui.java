@@ -1,26 +1,40 @@
 package gt.org.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+
+import java.io.*;
 
 public class AppiumServerGui {
 
     private Process process;
-    private String[] command;
+    private AppiumDriverLocalService service;
 
-    public void startAppiumService(String proxy) throws IOException, InterruptedException {
-        String appiumCommand = String.format("appium --address 127.0.0.1 --port %s --allow-cors --base-path /wd/hub --use-plugins=execute-driver", proxy);
-        command = new String[]{
-                "osascript", "-e",
-                "tell application \"Terminal\" to do script \"" + appiumCommand + "\""};
-        process = Runtime.getRuntime().exec(command);
-        process.waitFor();
-        Thread.sleep(8000l);
+    public void startAppiumService(int proxy) throws IOException, InterruptedException {
+        File logFile = new File("appium-server.log");
+
+        try (RandomAccessFile file = new RandomAccessFile(logFile, "rw")) {
+            file.setLength(0);
+            System.out.println("File has been cleared.");
+        } catch (IOException e) {
+            System.err.println("Error clearing the file: " + e.getMessage());
+        }
+        service = new AppiumServiceBuilder()
+                .withIPAddress("127.0.0.1")
+                .usingPort(proxy)
+                .withArgument(() -> "--base-path", "/wd/hub")
+                .withLogFile(logFile)
+                .build();
+
+        service.clearOutPutStreams();
+
+        service.start();
+
+        System.out.println("Appium Server started at: " + service.getUrl());
     }
 
-    public boolean isAppiumServicePortFree(String port) {
-        String command = String.format("lsof -t -i:%s", port);
+    public boolean isAppiumServicePortOccupancy(int port) {
+        String command = String.format("lsof -t -i:%d", port);
         StringBuilder result = new StringBuilder();
 
         try {
@@ -38,29 +52,25 @@ public class AppiumServerGui {
         return result.length() > 0;
     }
 
-    public void closeAppiumService(String port) throws IOException, InterruptedException {
-        String closeCommand = String.format("kill $(lsof -t -i:%s)", port);
-        command = new String[]{
-                "osascript", "-e",
-                "tell application \"Terminal\" to do script \"" + closeCommand + "\""};
-        process = Runtime.getRuntime().exec(command);
-        process.waitFor();
+    public void stepPort(int port) throws IOException, InterruptedException {
+        String stepCommand = String.format("kill $(lsof -t -i:%d)", port);
+        try {
+            process = Runtime.getRuntime().exec(new String[]{"/bin/bash", "-c", stepCommand});
+            process.waitFor();
+            System.out.println(port + " port step...");
+        } catch (Exception e) {
+            System.err.println("Failed to close port " + port + ": " + e.getMessage());
+        }
     }
 
-    public void closeTerminalWindows() throws IOException, InterruptedException {
-        command = new String[]{
-                "pkill", "-f", "Terminal"
-        };
-
+    public void stopAppiumService() {
         try {
-            process = Runtime.getRuntime().exec(command);
-            process.waitFor();
-            System.out.println("All Terminal windows have been closed");
-        } catch (IOException | InterruptedException e) {
+            if (process != null) {
+                service.stop();
+                System.out.println("Appium Server stopped.");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Failed to close Terminal windows");
         }
     }
 }
-
-

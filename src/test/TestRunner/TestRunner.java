@@ -1,16 +1,20 @@
 package TestRunner;
 
 import gt.org.CucumberReport.PrettyCucumberReport;
+import gt.org.utils.AppiumServerGui;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+import java.io.IOException;
 
 /*Storellet*/
 @CucumberOptions(
         features = "src/test/java/gt.org/resources/Storellet",
         glue = {"gt.org.Steps"},
-        tags = "not @email",
-//        tags = "@AC2.7",
+//        tags = "not @email",
+        tags = "@AC1",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",
@@ -31,10 +35,28 @@ import org.testng.annotations.AfterSuite;
 //        monochrome = true)
 
 public class TestRunner extends AbstractTestNGCucumberTests {
+    @BeforeSuite
+    public void startAppiumServer() throws IOException, InterruptedException {
+        AppiumServerGui appiumServerGui = new AppiumServerGui();
+
+        if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
+            System.out.println("Appium Server Port occupied, Close port...");
+            appiumServerGui.stepPort(4723);
+        }
+
+        System.out.println("Appium Server Port start ...");
+        appiumServerGui.startAppiumService(4723);
+    }
 
     @AfterSuite
-    public void generateReport() {
+    public void generateReport() throws IOException, InterruptedException {
         PrettyCucumberReport prettyCucumberReport = new PrettyCucumberReport();
         prettyCucumberReport.generateReports();
+
+        AppiumServerGui appiumServerGui = new AppiumServerGui();
+        if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
+            System.out.println("Appium Server step...");
+            appiumServerGui.stopAppiumService();
+        }
     }
 }
