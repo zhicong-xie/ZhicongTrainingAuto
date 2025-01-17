@@ -15,7 +15,7 @@ public class AppiumServerGui {
 
         try (RandomAccessFile file = new RandomAccessFile(logFile, "rw")) {
             file.setLength(0);
-            System.out.println("File has been cleared.");
+            System.out.println("Local Appium log has been cleared.");
         } catch (IOException e) {
             System.err.println("Error clearing the file: " + e.getMessage());
         }
