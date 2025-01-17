@@ -49,7 +49,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     }
 
     @AfterSuite
-    public void generateReport() throws IOException, InterruptedException {
+    public void generateReport() {
         PrettyCucumberReport prettyCucumberReport = new PrettyCucumberReport();
         prettyCucumberReport.generateReports();
 
