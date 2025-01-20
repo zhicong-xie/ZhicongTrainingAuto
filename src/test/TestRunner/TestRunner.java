@@ -35,9 +35,10 @@ import java.io.IOException;
 //        monochrome = true)
 
 public class TestRunner extends AbstractTestNGCucumberTests {
+    private AppiumServerGui appiumServerGui = new AppiumServerGui();
+
     @BeforeSuite
     public void startAppiumServer() throws IOException, InterruptedException {
-        AppiumServerGui appiumServerGui = new AppiumServerGui();
 
         if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
             System.out.println("Appium Server Port occupied, Close port...");
@@ -55,7 +56,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
         AppiumServerGui appiumServerGui = new AppiumServerGui();
         if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
-            System.out.println("Appium Server step...");
+            System.out.println("Appium Server stop...");
             appiumServerGui.stopAppiumService();
         }
     }
