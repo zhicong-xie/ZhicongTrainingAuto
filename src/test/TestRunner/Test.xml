@@ -3,7 +3,7 @@
 <suite name="TestNg" parallel="tests" thread-count="2">
     <test name="testng">
         <classes>
-            <class name="TestRunner.TestRunner"/>
+            <class name="TestRunner"/>
         </classes>
     </test>
 </suite>

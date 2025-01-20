@@ -1,5 +1,3 @@
-package TestRunner;
-
 import gt.org.CucumberReport.PrettyCucumberReport;
 import gt.org.utils.AppiumServerGui;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
