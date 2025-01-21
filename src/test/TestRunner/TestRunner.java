@@ -52,9 +52,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         PrettyCucumberReport prettyCucumberReport = new PrettyCucumberReport();
         prettyCucumberReport.generateReports();
 
-        AppiumServerGui appiumServerGui = new AppiumServerGui();
         if (appiumServerGui.isAppiumServicePortOccupancy(4723)) {
-            System.out.println("Appium Server stop...");
+            System.out.println("Appium Server stopping...");
             appiumServerGui.stopAppiumService();
         }
     }
