@@ -149,7 +149,7 @@ public class StorelletMainFlow extends AppiumHelpers {
         boolean actualResult = false;
         Mat expectedMat = loadImageAsMat("LocalImage/First big image_1.png");
         List<WebElement> imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
-        Mat actualMat = loadImageAsMat(bufferedImageToBytes(getElementScreenshot(imageViewElements.get(0)),"png"));
+        Mat actualMat = loadImageAsMat(bufferedImageToBytes(getElementScreenshot(imageViewElements.get(0)), "png"));
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = now.format(formatter);

@@ -537,7 +537,7 @@ public class AppiumHelpers {
 
             createDirectoryIfNotExists("LocalImage/Threshold/");
             // 保存二值图
-            Imgcodecs.imwrite(String.format("LocalImage/Threshold/threshold_%s.png",formattedDate), threshold);
+            Imgcodecs.imwrite(String.format("LocalImage/Threshold/threshold_%s.png", formattedDate), threshold);
 
             // 计算非零像素点（差异点）
             int nonZeroCount = Core.countNonZero(threshold);
