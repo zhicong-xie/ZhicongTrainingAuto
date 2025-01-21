@@ -70,4 +70,12 @@ public class StorelletMainSteps {
         String reason = "the Storellet main screen first big promotion image not consistent with local images,Please see image compare.";
         Assert.assertEquals(actual, expected, reason);
     }
+
+    @Then("^the user able to see local images contains in the Storellet main screen First big promotion image$")
+    public void verifyLocalImages() throws Exception {
+        boolean expected = true;
+        boolean actual = storelletMainFlow.isLocalImageContainsFirstBigPromotion();
+        String reason = "the local images is not contains in the Storellet main screen First big promotion image";
+        Assert.assertEquals(actual, expected, reason);
+    }
 }

@@ -144,4 +144,20 @@ public class StorelletMainFlow extends AppiumHelpers {
         System.out.println("Home page first big promotion image compare saved successfully at: " + outputPath);
         return actualResult;
     }
+
+    public boolean isLocalImageContainsFirstBigPromotion() throws Exception {
+        boolean actualResult = false;
+        Mat expectedMat = loadImageAsMat("LocalImage/First big image_1.png");
+        List<WebElement> imageViewElements = waitForElementsByXpath(storelletMainPage.bigPromotionImageXpathString);
+        Mat actualMat = loadImageAsMat(bufferedImageToBytes(getElementScreenshot(imageViewElements.get(0)),"png"));
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = now.format(formatter);
+        String outputPath = String.format("LocalImage/CompareResult/matched_result_%s.png", formattedDate);
+
+        actualResult = matchImagesAndDraw(actualMat, expectedMat, outputPath, 130);
+
+        System.out.println("Home page first big promotion image compare saved successfully at: " + outputPath);
+        return actualResult;
+    }
 }

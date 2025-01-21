@@ -12,7 +12,7 @@ import java.io.IOException;
         features = "src/test/java/Resources/Storellet",
         glue = {"gt.org.Steps"},
 //        tags = "not @email",
-        tags = "@AC1",
+        tags = "@AC2.8",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report/report.html",
@@ -24,7 +24,7 @@ import java.io.IOException;
 //@CucumberOptions(
 //        features = "src/test/java/Resources/HkGovNew",
 //        glue = {"gt.org.Steps"},
-//        tags = "@AC1.2",
+//        tags = "@AC1.3",
 //        plugin = {
 //                "pretty",
 //                "html:target/cucumber-report/report.html",

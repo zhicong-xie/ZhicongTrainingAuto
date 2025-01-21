@@ -18,7 +18,7 @@ public class HomeFlow extends AppiumHelpers {
     }
 
     public boolean isHomePageIdentificationDisplayed() {
-        return checkElement(waitForElementAttributeIsState(homePage.topBarViewHomeOptionImage, "clickable", "true"));
+        return checkElement(waitForElementAttributeIsState(homePage.topBarViewHomeOptionImage, "clickable", "true",60));
     }
 
     public String getTopBarHomeButtonImageText() throws TesseractException, IOException {
@@ -42,5 +42,22 @@ public class HomeFlow extends AppiumHelpers {
 
         System.out.println("Home page Top bar Home button compare image saved successfully at: " + outputPath);
         return actualResult;
+    }
+
+    public void swipeToBottom(){
+        waitForElement(homePage.newListView);
+        waitForSecond(2);
+        Mat beforeSwipe = loadImageAsGreyMat(takeDeviceScreenshot());
+            while (true){
+                swipeFunction("up");
+                waitForSecond(2);
+                Mat afterSwipe = loadImageAsGreyMat(takeDeviceScreenshot());
+
+                if (openCvCompareImages(beforeSwipe,afterSwipe)){
+                    break;
+                }else {
+                    beforeSwipe = afterSwipe;
+                }
+            }
     }
 }

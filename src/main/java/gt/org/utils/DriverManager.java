@@ -34,18 +34,9 @@ public class DriverManager {
 
     private DriverManager() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("appium:noReset", false);
+        desiredCapabilities.setCapability("appium:noReset", true);
         desiredCapabilities.setCapability("appium:fullReset", false);
         desiredCapabilities.setCapability("appium:platformName", "Android");
-
-        /*financial-times app*/
-//    desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_29");
-//    desiredCapabilities.setCapability("appium:platformVersion", "10.0");
-//    desiredCapabilities.setCapability(
-//        "appium:app", "/Users/automatiautomationon/Desktop/app/aos/financial-times-2-266-0.apk");
-//    desiredCapabilities.setCapability("appium:appPackage", "com.ft.news");
-//    desiredCapabilities.setCapability(
-//        "appium:appActivity", "com.ft.news.presentation.main.MainActivity");
 
         /*storellet app*/
         desiredCapabilities.setCapability("appium:deviceName", "Pixel_9_Pro_XL_API_30");

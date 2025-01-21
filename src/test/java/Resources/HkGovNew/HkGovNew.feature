@@ -26,3 +26,11 @@ Feature: Verify HK Gov New APP Home page function
       | English             | not see  |
       | Traditional chinese | not see  |
       | Simplified chinese  | see      |
+
+  @AC1.3
+  Scenario: Verify HK Gov APP swipe to bottom function
+    Given the user in the HK Gov New Select language partial modal screen
+    When the user click English button in the HK Gov New Select language partial modal screen
+    Then the user in the HK Gov New Home screen
+    When the user swipe to bottom in the HK Gov New Home screen
+    When the user restart the APP

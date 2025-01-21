@@ -130,3 +130,9 @@ Feature: Verify Storellet APP Home page function
     Given the user in the Storellet main screen
     Then the user able to see First big promotion image consistent with local images
     When the user restart the APP
+
+  @AC2.8 @image
+  Scenario: Verify Home page first top promotion image consistent with local images
+    Given the user in the Storellet main screen
+    Then the user able to see local images contains in the Storellet main screen First big promotion image
+    When the user restart the APP

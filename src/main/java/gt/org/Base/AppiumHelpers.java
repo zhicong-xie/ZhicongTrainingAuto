@@ -11,6 +11,7 @@ import org.opencv.features2d.Features2d;
 import org.opencv.features2d.FlannBasedMatcher;
 import org.opencv.features2d.SIFT;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Rectangle;
@@ -20,6 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -149,6 +151,12 @@ public class AppiumHelpers {
         return w.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
+    protected WebElement waitForElementAttributeIsState(WebElement webElement, String attribute, String state, Integer timeInSeconds) {
+        WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(timeInSeconds));
+        w.until(d -> webElement.getDomAttribute(attribute).equals(state));
+        return webElement;
+    }
+
     protected WebElement waitForElementAttributeIsState(WebElement webElement, String attribute, String state) {
         WebDriverWait w = new WebDriverWait(androidDriver, Duration.ofSeconds(defaultWaitingTime));
         w.until(d -> webElement.getDomAttribute(attribute).equals(state));
@@ -213,7 +221,14 @@ public class AppiumHelpers {
                 throw new IllegalArgumentException("Invalid swipe direction: " + direction);
         }
 
-        swipeCoordinateFunction(startX, startY, endX, endY);
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        androidDriver.perform(Collections.singletonList(swipe));
     }
 
     protected void dismissKeyboard() {
@@ -260,6 +275,12 @@ public class AppiumHelpers {
         byte[] elementScreenshot = Base64.getDecoder().decode(base64);
         bufferedImage = ImageIO.read(new ByteArrayInputStream(elementScreenshot));
         return bufferedImage;
+    }
+
+    protected byte[] bufferedImageToBytes(BufferedImage image, String format) throws Exception {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(image, format, baos);
+        return baos.toByteArray();
     }
 
     protected boolean isImageViewNotNull(BufferedImage bufferedImage) {
@@ -356,8 +377,14 @@ public class AppiumHelpers {
             default:
                 throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
         }
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
 
-        swipeCoordinateFunction(startX, startY, endX, endY);
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        androidDriver.perform(Collections.singletonList(swipe));
     }
 
     protected byte[] takeDeviceScreenshot() {
@@ -434,6 +461,11 @@ public class AppiumHelpers {
         return Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_COLOR);
     }
 
+    /*将字节数据转为Opencv Mat类型*/
+    protected Mat loadImageAsGreyMat(byte[] imageBytes) {
+        return Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_GRAYSCALE);
+    }
+
     protected void extractSIFTFeatures(Mat image, MatOfKeyPoint keypoints, Mat descriptors) {
         SIFT sift = SIFT.create();// 创建 SIFT 特征提取器
         sift.detectAndCompute(image, new Mat(), keypoints, descriptors);// SIFT特征提取
@@ -486,5 +518,34 @@ public class AppiumHelpers {
         Imgcodecs.imwrite(outputPath, resultImage);
 
         return isPresent;
+    }
+
+    protected boolean openCvCompareImages(Mat img1, Mat img2) {
+        if (img1.size().equals(img2.size())) { // 判断两个图片大小是否一致
+            Mat diff = new Mat();
+            // 计算差异
+            Core.absdiff(img1, img2, diff);
+            Mat threshold = new Mat();
+            // 将差异图像转换为二值图
+            Imgproc.threshold(diff, threshold, 50, 255, Imgproc.THRESH_BINARY);
+            // Imgproc.threshold:将像素值与阈值（50）进行比较。如果像素值大于 50，设为 255（白色）；否则设为 0（黑色）
+            // threshold 存储二值化后的结果；通过二值化，提取出差异明显的区域，忽略细微的噪声
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = now.format(formatter);
+
+            createDirectoryIfNotExists("LocalImage/Threshold/");
+            // 保存二值图
+            Imgcodecs.imwrite(String.format("LocalImage/Threshold/threshold_%s.png",formattedDate), threshold);
+
+            // 计算非零像素点（差异点）
+            int nonZeroCount = Core.countNonZero(threshold);
+
+            System.out.println("nonZeroCount : " + nonZeroCount);
+            // 如果差异像素点非常少，认为图片相同
+            return nonZeroCount == 0;
+        }
+        return false;
     }
 }

@@ -4,4 +4,5 @@ README.md
 .idea
 .mvn
 LocalImage/CompareResult
+LocalImage/Threshold
 appium-server.log

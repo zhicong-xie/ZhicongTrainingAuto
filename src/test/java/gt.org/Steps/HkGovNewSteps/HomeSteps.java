@@ -2,6 +2,7 @@ package gt.org.Steps.HkGovNewSteps;
 
 import gt.org.Flow.HkGovNewFlow.HomeFlow;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.sourceforge.tess4j.TesseractException;
 import org.testng.Assert;
 
@@ -48,5 +49,10 @@ public class HomeSteps {
                 throw new IllegalArgumentException("Illegal Argument : " + item);
         }
         Assert.assertEquals(actual, expected, reason);
+    }
+
+    @When("^the user swipe to bottom in the HK Gov New Home screen$")
+    public void swipeToBottom() {
+        homeFlow.swipeToBottom();
     }
 }
