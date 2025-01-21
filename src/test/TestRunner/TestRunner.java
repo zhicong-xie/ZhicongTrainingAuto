@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /*Storellet*/
 @CucumberOptions(
-        features = "src/test/java/gt.org/resources/Storellet",
+        features = "src/test/java/Resources/Storellet",
         glue = {"gt.org.Steps"},
 //        tags = "not @email",
         tags = "@AC1",
@@ -22,7 +22,7 @@ import java.io.IOException;
 
 /*HK Gov New*/
 //@CucumberOptions(
-//        features = "src/test/java/gt.org/resources/HkGovNew",
+//        features = "src/test/java/Resources/HkGovNew",
 //        glue = {"gt.org.Steps"},
 //        tags = "@AC1.2",
 //        plugin = {

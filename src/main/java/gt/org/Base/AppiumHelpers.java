@@ -40,7 +40,6 @@ public class AppiumHelpers {
     //    private WebDriver webDriver;
     private AndroidDriver androidDriver;
     private DriverManager driverManager;
-    private String footBarClassName = "android.widget.TabWidget";
 
     public AppiumHelpers() {
         /*Opencv 安装与环境配置
@@ -217,26 +216,6 @@ public class AppiumHelpers {
         swipeCoordinateFunction(startX, startY, endX, endY);
     }
 
-    protected WebElement swipeToUpFindFinancialTimesWebElementXpath(
-            String xpath, Integer existenceTime, Integer attempts) throws Exception {
-        for (int i = 1; i <= attempts; i++) {
-            if (!checkElementByText(xpath, existenceTime)) {
-                swipeFunction("up");
-                waitForSecond(1);
-            } else if (!isViewNotInFinancialTimesFootBar(xpath)) {
-                swipeFunction("up");
-                waitForSecond(1);
-            } else {
-                break;
-            }
-        }
-        try {
-            return findElementByText(xpath);
-        } catch (Exception e) {
-            throw new Exception("Can't find this element : " + xpath);
-        }
-    }
-
     protected void dismissKeyboard() {
         androidDriver.hideKeyboard();
     }
@@ -250,20 +229,6 @@ public class AppiumHelpers {
         click.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         androidDriver.perform(Collections.singletonList(click));
-    }
-
-    protected boolean isViewNotInFinancialTimesFootBar(String xpath) {
-        int footBarCoordinateY =
-                waitForElement(androidDriver.findElement(By.className(footBarClassName)))
-                        .getLocation()
-                        .getY();
-        int viewBottomCoordinateY =
-                androidDriver.findElement(By.xpath(xpath)).getLocation().getY()
-                        + androidDriver.findElement(By.xpath(xpath)).getSize().getHeight();
-        if (viewBottomCoordinateY >= footBarCoordinateY) {
-            return false;
-        }
-        return true;
     }
 
     protected WebElement swipeToFindElement(String direction, WebElement webElement, Integer existenceTime, Integer attempts) {
